@@ -6,7 +6,21 @@
 
 Вы можете определять атрибут как подтип. Например, тип `list` в Python:
 
-{* ../../docs_src/body_nested_models/tutorial001_py310.py hl[12] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/body_nested_models/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="14"
+{!> ../../../docs_src/body_nested_models/tutorial001.py!}
+```
+
+////
 
 Это приведёт к тому, что обьект `tags` преобразуется в список, несмотря на то что тип его элементов не объявлен.
 
@@ -20,7 +34,9 @@
 
 Но в версиях Python до 3.9 (начиная с 3.6) сначала вам необходимо импортировать `List` из стандартного модуля `typing` в Python:
 
-{* ../../docs_src/body_nested_models/tutorial002.py hl[1] *}
+```Python hl_lines="1"
+{!> ../../../docs_src/body_nested_models/tutorial002.py!}
+```
 
 ### Объявление `list` с указанием типов для вложенных элементов
 
@@ -49,7 +65,29 @@ my_list: List[str]
 
 Таким образом, в нашем примере мы можем явно указать тип данных для поля `tags` как "список строк":
 
-{* ../../docs_src/body_nested_models/tutorial002_py310.py hl[12] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/body_nested_models/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="14"
+{!> ../../../docs_src/body_nested_models/tutorial002_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="14"
+{!> ../../../docs_src/body_nested_models/tutorial002.py!}
+```
+
+////
 
 ## Типы множеств
 
@@ -59,7 +97,29 @@ my_list: List[str]
 
 Тогда мы можем обьявить поле `tags` как множество строк:
 
-{* ../../docs_src/body_nested_models/tutorial003_py310.py hl[12] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/body_nested_models/tutorial003_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="14"
+{!> ../../../docs_src/body_nested_models/tutorial003_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="1  14"
+{!> ../../../docs_src/body_nested_models/tutorial003.py!}
+```
+
+////
 
 С помощью этого, даже если вы получите запрос с повторяющимися данными, они будут преобразованы в множество уникальных элементов.
 
@@ -81,13 +141,57 @@ my_list: List[str]
 
 Например, мы можем определить модель `Image`:
 
-{* ../../docs_src/body_nested_models/tutorial004_py310.py hl[7:9] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="7-9"
+{!> ../../../docs_src/body_nested_models/tutorial004_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="9-11"
+{!> ../../../docs_src/body_nested_models/tutorial004_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9-11"
+{!> ../../../docs_src/body_nested_models/tutorial004.py!}
+```
+
+////
 
 ### Использование вложенной модели в качестве типа
 
 Также мы можем использовать эту модель как тип атрибута:
 
-{* ../../docs_src/body_nested_models/tutorial004_py310.py hl[18] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="18"
+{!> ../../../docs_src/body_nested_models/tutorial004_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="20"
+{!> ../../../docs_src/body_nested_models/tutorial004_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="20"
+{!> ../../../docs_src/body_nested_models/tutorial004.py!}
+```
+
+////
 
 Это означает, что **FastAPI** будет ожидать тело запроса, аналогичное этому:
 
@@ -120,7 +224,29 @@ my_list: List[str]
 
 Например, так как в модели `Image` у нас есть поле `url`, то мы можем объявить его как тип `HttpUrl` из модуля Pydantic вместо типа `str`:
 
-{* ../../docs_src/body_nested_models/tutorial005_py310.py hl[2,8] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="2  8"
+{!> ../../../docs_src/body_nested_models/tutorial005_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="4  10"
+{!> ../../../docs_src/body_nested_models/tutorial005_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="4  10"
+{!> ../../../docs_src/body_nested_models/tutorial005.py!}
+```
+
+////
 
 Строка будет проверена на соответствие допустимому URL-адресу и задокументирована в JSON схему / OpenAPI.
 
@@ -128,7 +254,29 @@ my_list: List[str]
 
 Вы также можете использовать модели Pydantic в качестве типов вложенных  в `list`, `set` и т.д:
 
-{* ../../docs_src/body_nested_models/tutorial006_py310.py hl[18] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="18"
+{!> ../../../docs_src/body_nested_models/tutorial006_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="20"
+{!> ../../../docs_src/body_nested_models/tutorial006_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="20"
+{!> ../../../docs_src/body_nested_models/tutorial006.py!}
+```
+
+////
 
 Такая реализация будет ожидать (конвертировать, валидировать, документировать и т.д) JSON-содержимое в следующем формате:
 
@@ -156,7 +304,7 @@ my_list: List[str]
 }
 ```
 
-/// info | Информация
+/// info | "Информация"
 
 Заметьте, что теперь у ключа `images` есть список объектов изображений.
 
@@ -166,9 +314,31 @@ my_list: List[str]
 
 Вы можете определять модели с произвольным уровнем вложенности:
 
-{* ../../docs_src/body_nested_models/tutorial007_py310.py hl[7,12,18,21,25] *}
+//// tab | Python 3.10+
 
-/// info | Информация
+```Python hl_lines="7  12  18  21  25"
+{!> ../../../docs_src/body_nested_models/tutorial007_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="9  14  20  23  27"
+{!> ../../../docs_src/body_nested_models/tutorial007_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9  14  20  23  27"
+{!> ../../../docs_src/body_nested_models/tutorial007.py!}
+```
+
+////
+
+/// info | "Информация"
 
 Заметьте, что у объекта `Offer` есть список объектов `Item`, которые, в свою очередь, могут содержать необязательный список объектов `Image`
 
@@ -190,7 +360,21 @@ images: list[Image]
 
 например так:
 
-{* ../../docs_src/body_nested_models/tutorial008_py39.py hl[13] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="13"
+{!> ../../../docs_src/body_nested_models/tutorial008_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="15"
+{!> ../../../docs_src/body_nested_models/tutorial008.py!}
+```
+
+////
 
 ## Универсальная поддержка редактора
 
@@ -220,9 +404,23 @@ images: list[Image]
 
 В этом случае вы принимаете `dict`, пока у него есть ключи типа `int` со значениями типа `float`:
 
-{* ../../docs_src/body_nested_models/tutorial009_py39.py hl[7] *}
+//// tab | Python 3.9+
 
-/// tip | Совет
+```Python hl_lines="7"
+{!> ../../../docs_src/body_nested_models/tutorial009_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/body_nested_models/tutorial009.py!}
+```
+
+////
+
+/// tip | "Совет"
 
 Имейте в виду, что JSON поддерживает только ключи типа `str`.
 

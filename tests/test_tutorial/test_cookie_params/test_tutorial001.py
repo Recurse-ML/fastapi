@@ -1,27 +1,8 @@
-import importlib
-from types import ModuleType
-
 import pytest
 from dirty_equals import IsDict
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39, needs_py310
-
-
-@pytest.fixture(
-    name="mod",
-    params=[
-        "tutorial001",
-        pytest.param("tutorial001_py310", marks=needs_py310),
-        "tutorial001_an",
-        pytest.param("tutorial001_an_py39", marks=needs_py39),
-        pytest.param("tutorial001_an_py310", marks=needs_py310),
-    ],
-)
-def get_mod(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.cookie_params.{request.param}")
-
-    return mod
+from docs_src.cookie_params.tutorial001 import app
 
 
 @pytest.mark.parametrize(
@@ -38,15 +19,15 @@ def get_mod(request: pytest.FixtureRequest):
         ("/items", {"session": "cookiesession"}, 200, {"ads_id": None}),
     ],
 )
-def test(path, cookies, expected_status, expected_response, mod: ModuleType):
-    client = TestClient(mod.app, cookies=cookies)
+def test(path, cookies, expected_status, expected_response):
+    client = TestClient(app, cookies=cookies)
     response = client.get(path)
     assert response.status_code == expected_status
     assert response.json() == expected_response
 
 
-def test_openapi_schema(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_openapi_schema():
+    client = TestClient(app)
     response = client.get("/openapi.json")
     assert response.status_code == 200
     assert response.json() == {

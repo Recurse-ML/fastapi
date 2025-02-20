@@ -10,7 +10,57 @@ O **FastAPI** se encarrega de resolver essas dependências.
 
 Você pode criar uma primeira dependência (injetável) dessa forma:
 
-{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[8:9] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="8-9"
+{!> ../../../docs_src/dependencies/tutorial005_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="8-9"
+{!> ../../../docs_src/dependencies/tutorial005_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9-10"
+{!> ../../../docs_src/dependencies/tutorial005_an.py!}
+```
+
+////
+
+//// tab | Python 3.10 non-Annotated
+
+/// tip | "Dica"
+
+Utilize a versão com `Annotated` se possível.
+
+///
+
+```Python hl_lines="6-7"
+{!> ../../../docs_src/dependencies/tutorial005_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8 non-Annotated
+
+/// tip | "Dica"
+
+Utilize a versão com `Annotated` se possível.
+
+///
+
+```Python hl_lines="8-9"
+{!> ../../../docs_src/dependencies/tutorial005.py!}
+```
+
+////
 
 Esse código declara um parâmetro de consulta opcional, `q`, com o tipo `str`, e então retorna esse parâmetro.
 
@@ -20,7 +70,57 @@ Isso é bastante simples (e não muito útil), mas irá nos ajudar a focar em co
 
 Então, você pode criar uma outra função para uma dependência (um "injetável") que ao mesmo tempo declara sua própria dependência (o que faz dela um "dependente" também):
 
-{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[13] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="13"
+{!> ../../../docs_src/dependencies/tutorial005_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="13"
+{!> ../../../docs_src/dependencies/tutorial005_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="14"
+{!> ../../../docs_src/dependencies/tutorial005_an.py!}
+```
+
+////
+
+//// tab | Python 3.10 non-Annotated
+
+/// tip | "Dica"
+
+Utilize a versão com `Annotated` se possível.
+
+///
+
+```Python hl_lines="11"
+{!> ../../../docs_src/dependencies/tutorial005_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8 non-Annotated
+
+/// tip | "Dica"
+
+Utilize a versão com `Annotated` se possível.
+
+///
+
+```Python hl_lines="13"
+{!> ../../../docs_src/dependencies/tutorial005.py!}
+```
+
+////
 
 Vamos focar nos parâmetros declarados:
 
@@ -33,9 +133,59 @@ Vamos focar nos parâmetros declarados:
 
 Então podemos utilizar a dependência com:
 
-{* ../../docs_src/dependencies/tutorial005_an_py310.py hl[23] *}
+//// tab | Python 3.10+
 
-/// info | Informação
+```Python hl_lines="23"
+{!> ../../../docs_src/dependencies/tutorial005_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="23"
+{!> ../../../docs_src/dependencies/tutorial005_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="24"
+{!> ../../../docs_src/dependencies/tutorial005_an.py!}
+```
+
+////
+
+//// tab | Python 3.10 non-Annotated
+
+/// tip | "Dica"
+
+Utilize a versão com `Annotated` se possível.
+
+///
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial005_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8 non-Annotated
+
+/// tip | "Dica"
+
+Utilize a versão com `Annotated` se possível.
+
+///
+
+```Python hl_lines="22"
+{!> ../../../docs_src/dependencies/tutorial005.py!}
+```
+
+////
+
+/// info | "Informação"
 
 Perceba que nós estamos declarando apenas uma dependência na *função de operação de rota*, em `query_or_cookie_extractor`.
 
@@ -73,7 +223,7 @@ async def needy_dependency(fresh_value: Annotated[str, Depends(get_value, use_ca
 
 //// tab | Python 3.8+ non-Annotated
 
-/// tip | Dica
+/// tip | "Dica"
 
 Utilize a versão com `Annotated` se possível.
 
@@ -94,7 +244,7 @@ Consiste apenas de funções que parecem idênticas a *funções de operação d
 
 Mas ainda assim, é bastante poderoso, e permite que você declare grafos (árvores) de dependências com uma profundidade arbitrária.
 
-/// tip | Dica
+/// tip | "Dica"
 
 Tudo isso pode não parecer muito útil com esses exemplos.
 

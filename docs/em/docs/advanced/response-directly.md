@@ -34,9 +34,11 @@
 
 📚 💼, 👆 💪 ⚙️ `jsonable_encoder` 🗜 👆 📊 ⏭ 🚶‍♀️ ⚫️ 📨:
 
-{* ../../docs_src/response_directly/tutorial001.py hl[6:7,21:22] *}
+```Python hl_lines="6-7  21-22"
+{!../../../docs_src/response_directly/tutorial001.py!}
+```
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 👆 💪 ⚙️ `from starlette.responses import JSONResponse`.
 
@@ -54,7 +56,9 @@
 
 👆 💪 🚮 👆 📂 🎚 🎻, 🚮 ⚫️ `Response`, &amp; 📨 ⚫️:
 
-{* ../../docs_src/response_directly/tutorial002.py hl[1,18] *}
+```Python hl_lines="1  18"
+{!../../../docs_src/response_directly/tutorial002.py!}
+```
 
 ## 🗒
 
