@@ -20,7 +20,9 @@ You can declare a parameter of type `Response` in your *path operation function*
 
 And then you can set the `status_code` in that *temporal* response object.
 
-{* ../../docs_src/response_change_status_code/tutorial001.py hl[1,9,12] *}
+```Python hl_lines="1  9  12"
+{!../../../docs_src/response_change_status_code/tutorial001.py!}
+```
 
 And then you can return any object you need, as you normally would (a `dict`, a database model, etc).
 

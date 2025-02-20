@@ -32,11 +32,15 @@ For a simple example, let's consider a file structure similar to the one describ
 
 The file `main.py` would have:
 
-{* ../../docs_src/async_tests/main.py *}
+```Python
+{!../../../docs_src/async_tests/main.py!}
+```
 
 The file `test_main.py` would have the tests for `main.py`, it could look like this now:
 
-{* ../../docs_src/async_tests/test_main.py *}
+```Python
+{!../../../docs_src/async_tests/test_main.py!}
+```
 
 ## Run it
 
@@ -56,7 +60,9 @@ $ pytest
 
 The marker `@pytest.mark.anyio` tells pytest that this test function should be called asynchronously:
 
-{* ../../docs_src/async_tests/test_main.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/async_tests/test_main.py!}
+```
 
 /// tip
 
@@ -66,7 +72,9 @@ Note that the test function is now `async def` instead of just `def` as before w
 
 Then we can create an `AsyncClient` with the app, and send async requests to it, using `await`.
 
-{* ../../docs_src/async_tests/test_main.py hl[9:12] *}
+```Python hl_lines="9-12"
+{!../../../docs_src/async_tests/test_main.py!}
+```
 
 This is the equivalent to:
 
@@ -94,6 +102,6 @@ As the testing function is now asynchronous, you can now also call (and `await`)
 
 /// tip
 
-If you encounter a `RuntimeError: Task attached to a different loop` when integrating asynchronous function calls in your tests (e.g. when using <a href="https://stackoverflow.com/questions/41584243/runtimeerror-task-attached-to-a-different-loop" class="external-link" target="_blank">MongoDB's MotorClient</a>), remember to instantiate objects that need an event loop only within async functions, e.g. an `'@app.on_event("startup")` callback.
+If you encounter a `RuntimeError: Task attached to a different loop` when integrating asynchronous function calls in your tests (e.g. when using <a href="https://stackoverflow.com/questions/41584243/runtimeerror-task-attached-to-a-different-loop" class="external-link" target="_blank">MongoDB's MotorClient</a>) Remember to instantiate objects that need an event loop only within async functions, e.g. an `'@app.on_event("startup")` callback.
 
 ///

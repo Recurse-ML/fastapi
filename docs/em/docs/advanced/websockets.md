@@ -38,15 +38,19 @@ $ pip install websockets
 
 ✋️ ⚫️ 🙅 🌌 🎯 🔛 💽-🚄 *️⃣ &amp; ✔️ 👷 🖼:
 
-{* ../../docs_src/websockets/tutorial001.py hl[2,6:38,41:43] *}
+```Python hl_lines="2  6-38  41-43"
+{!../../../docs_src/websockets/tutorial001.py!}
+```
 
 ## ✍ `websocket`
 
 👆 **FastAPI** 🈸, ✍ `websocket`:
 
-{* ../../docs_src/websockets/tutorial001.py hl[1,46:47] *}
+```Python hl_lines="1  46-47"
+{!../../../docs_src/websockets/tutorial001.py!}
+```
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 👆 💪 ⚙️ `from starlette.websockets import WebSocket`.
 
@@ -58,7 +62,9 @@ $ pip install websockets
 
 👆 *️⃣ 🛣 👆 💪 `await` 📧 &amp; 📨 📧.
 
-{* ../../docs_src/websockets/tutorial001.py hl[48:52] *}
+```Python hl_lines="48-52"
+{!../../../docs_src/websockets/tutorial001.py!}
+```
 
 👆 💪 📨 &amp; 📨 💱, ✍, &amp; 🎻 💽.
 
@@ -109,7 +115,9 @@ $ uvicorn main:app --reload
 
 👫 👷 🎏 🌌 🎏 FastAPI 🔗/*➡ 🛠️*:
 
-{* ../../docs_src/websockets/tutorial002.py hl[66:77,76:91] *}
+```Python hl_lines="66-77  76-91"
+{!../../../docs_src/websockets/tutorial002.py!}
+```
 
 /// info
 
@@ -154,7 +162,9 @@ $ uvicorn main:app --reload
 
 🕐❔ *️⃣ 🔗 📪, `await websocket.receive_text()` 🔜 🤚 `WebSocketDisconnect` ⚠, ❔ 👆 💪 ⤴️ ✊ &amp; 🍵 💖 👉 🖼.
 
-{* ../../docs_src/websockets/tutorial003.py hl[81:83] *}
+```Python hl_lines="81-83"
+{!../../../docs_src/websockets/tutorial003.py!}
+```
 
 🔄 ⚫️ 👅:
 

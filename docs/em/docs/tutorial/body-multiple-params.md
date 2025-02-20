@@ -8,7 +8,21 @@
 
 &amp; 👆 💪 📣 💪 🔢 📦, ⚒ 🔢 `None`:
 
-{* ../../docs_src/body_multiple_params/tutorial001.py hl[19:21] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="19-21"
+{!> ../../../docs_src/body_multiple_params/tutorial001.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="17-19"
+{!> ../../../docs_src/body_multiple_params/tutorial001_py310.py!}
+```
+
+////
 
 /// note
 
@@ -31,7 +45,21 @@
 
 ✋️ 👆 💪 📣 💗 💪 🔢, ✅ `item` &amp; `user`:
 
-{* ../../docs_src/body_multiple_params/tutorial002.py hl[22] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="22"
+{!> ../../../docs_src/body_multiple_params/tutorial002.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="20"
+{!> ../../../docs_src/body_multiple_params/tutorial002_py310.py!}
+```
+
+////
 
 👉 💼, **FastAPI** 🔜 👀 👈 📤 🌅 🌘 1️⃣ 💪 🔢 🔢 (2️⃣ 🔢 👈 Pydantic 🏷).
 
@@ -72,7 +100,21 @@
 
 ✋️ 👆 💪 💡 **FastAPI** 😥 ⚫️ ➕1️⃣ 💪 🔑 ⚙️ `Body`:
 
-{* ../../docs_src/body_multiple_params/tutorial003.py hl[22] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="22"
+{!> ../../../docs_src/body_multiple_params/tutorial003.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="20"
+{!> ../../../docs_src/body_multiple_params/tutorial003_py310.py!}
+```
+
+////
 
 👉 💼, **FastAPI** 🔜 ⌛ 💪 💖:
 
@@ -112,7 +154,21 @@ q: str | None = None
 
 🖼:
 
-{* ../../docs_src/body_multiple_params/tutorial004.py hl[27] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="27"
+{!> ../../../docs_src/body_multiple_params/tutorial004.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="26"
+{!> ../../../docs_src/body_multiple_params/tutorial004_py310.py!}
+```
+
+////
 
 /// info
 
@@ -134,7 +190,21 @@ item: Item = Body(embed=True)
 
 :
 
-{* ../../docs_src/body_multiple_params/tutorial005.py hl[17] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="17"
+{!> ../../../docs_src/body_multiple_params/tutorial005.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="15"
+{!> ../../../docs_src/body_multiple_params/tutorial005_py310.py!}
+```
+
+////
 
 👉 💼 **FastAPI** 🔜 ⌛ 💪 💖:
 
