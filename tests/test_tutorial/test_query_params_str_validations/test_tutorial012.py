@@ -1,44 +1,25 @@
-import importlib
-
-import pytest
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39
+from docs_src.query_params_str_validations.tutorial012 import app
+
+client = TestClient(app)
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial012",
-        pytest.param("tutorial012_py39", marks=needs_py39),
-        "tutorial012_an",
-        pytest.param("tutorial012_an_py39", marks=needs_py39),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(
-        f"docs_src.query_params_str_validations.{request.param}"
-    )
-
-    client = TestClient(mod.app)
-    return client
-
-
-def test_default_query_values(client: TestClient):
+def test_default_query_values():
     url = "/items/"
     response = client.get(url)
     assert response.status_code == 200, response.text
     assert response.json() == {"q": ["foo", "bar"]}
 
 
-def test_multi_query_values(client: TestClient):
+def test_multi_query_values():
     url = "/items/?q=baz&q=foobar"
     response = client.get(url)
     assert response.status_code == 200, response.text
     assert response.json() == {"q": ["baz", "foobar"]}
 
 
-def test_openapi_schema(client: TestClient):
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {

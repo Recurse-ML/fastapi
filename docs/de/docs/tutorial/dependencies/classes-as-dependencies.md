@@ -6,7 +6,57 @@ Bevor wir tiefer in das **Dependency Injection** System eintauchen, lassen Sie u
 
 Im vorherigen Beispiel haben wir ein `dict` von unserer Abhängigkeit („Dependable“) zurückgegeben:
 
-{* ../../docs_src/dependencies/tutorial001_an_py310.py hl[9] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/dependencies/tutorial001_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="11"
+{!> ../../../docs_src/dependencies/tutorial001_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/dependencies/tutorial001_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="7"
+{!> ../../../docs_src/dependencies/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="11"
+{!> ../../../docs_src/dependencies/tutorial001.py!}
+```
+
+////
 
 Aber dann haben wir ein `dict` im Parameter `commons` der *Pfadoperation-Funktion*.
 
@@ -69,15 +119,165 @@ Das gilt auch für Callables ohne Parameter. So wie es auch für *Pfadoperation-
 
 Dann können wir das „Dependable“ `common_parameters` der Abhängigkeit von oben in die Klasse `CommonQueryParams` ändern:
 
-{* ../../docs_src/dependencies/tutorial002_an_py310.py hl[11:15] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="11-15"
+{!> ../../../docs_src/dependencies/tutorial002_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="11-15"
+{!> ../../../docs_src/dependencies/tutorial002_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="12-16"
+{!> ../../../docs_src/dependencies/tutorial002_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="9-13"
+{!> ../../../docs_src/dependencies/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="11-15"
+{!> ../../../docs_src/dependencies/tutorial002.py!}
+```
+
+////
 
 Achten Sie auf die Methode `__init__`, die zum Erstellen der Instanz der Klasse verwendet wird:
 
-{* ../../docs_src/dependencies/tutorial002_an_py310.py hl[12] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/dependencies/tutorial002_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/dependencies/tutorial002_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="13"
+{!> ../../../docs_src/dependencies/tutorial002_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="10"
+{!> ../../../docs_src/dependencies/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="12"
+{!> ../../../docs_src/dependencies/tutorial002.py!}
+```
+
+////
 
 ... sie hat die gleichen Parameter wie unsere vorherige `common_parameters`:
 
-{* ../../docs_src/dependencies/tutorial001_an_py310.py hl[8] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="8"
+{!> ../../../docs_src/dependencies/tutorial001_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/dependencies/tutorial001_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="10"
+{!> ../../../docs_src/dependencies/tutorial001_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="6"
+{!> ../../../docs_src/dependencies/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="9"
+{!> ../../../docs_src/dependencies/tutorial001.py!}
+```
+
+////
 
 Diese Parameter werden von **FastAPI** verwendet, um die Abhängigkeit „aufzulösen“.
 
@@ -93,7 +293,57 @@ In beiden Fällen werden die Daten konvertiert, validiert, im OpenAPI-Schema dok
 
 Jetzt können Sie Ihre Abhängigkeit mithilfe dieser Klasse deklarieren.
 
-{* ../../docs_src/dependencies/tutorial002_an_py310.py hl[19] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial002_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial002_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="20"
+{!> ../../../docs_src/dependencies/tutorial002_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="17"
+{!> ../../../docs_src/dependencies/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial002.py!}
+```
+
+////
 
 **FastAPI** ruft die Klasse `CommonQueryParams` auf. Dadurch wird eine „Instanz“ dieser Klasse erstellt und die Instanz wird als Parameter `commons` an Ihre Funktion überreicht.
 
@@ -111,7 +361,7 @@ commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]
 
 //// tab | Python 3.8+ nicht annotiert
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Bevorzugen Sie die `Annotated`-Version, falls möglich.
 
@@ -147,7 +397,7 @@ commons: Annotated[CommonQueryParams, ...
 
 //// tab | Python 3.8+ nicht annotiert
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Bevorzugen Sie die `Annotated`-Version, falls möglich.
 
@@ -173,7 +423,7 @@ commons: Annotated[Any, Depends(CommonQueryParams)]
 
 //// tab | Python 3.8+ nicht annotiert
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Bevorzugen Sie die `Annotated`-Version, falls möglich.
 
@@ -187,7 +437,57 @@ commons = Depends(CommonQueryParams)
 
 ... wie in:
 
-{* ../../docs_src/dependencies/tutorial003_an_py310.py hl[19] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial003_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial003_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="20"
+{!> ../../../docs_src/dependencies/tutorial003_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="17"
+{!> ../../../docs_src/dependencies/tutorial003_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial003.py!}
+```
+
+////
 
 Es wird jedoch empfohlen, den Typ zu deklarieren, da Ihr Editor so weiß, was als Parameter `commons` übergeben wird, und Ihnen dann bei der Codevervollständigung, Typprüfungen, usw. helfen kann:
 
@@ -207,7 +507,7 @@ commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]
 
 //// tab | Python 3.8+ nicht annotiert
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Bevorzugen Sie die `Annotated`-Version, falls möglich.
 
@@ -235,7 +535,7 @@ commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]
 
 //// tab | Python 3.8+ nicht annotiert
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Bevorzugen Sie die `Annotated`-Version, falls möglich.
 
@@ -259,7 +559,7 @@ commons: Annotated[CommonQueryParams, Depends()]
 
 //// tab | Python 3.8 nicht annotiert
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Bevorzugen Sie die `Annotated`-Version, falls möglich.
 
@@ -275,11 +575,61 @@ Sie deklarieren die Abhängigkeit als Typ des Parameters und verwenden `Depends(
 
 Dasselbe Beispiel würde dann so aussehen:
 
-{* ../../docs_src/dependencies/tutorial004_an_py310.py hl[19] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial004_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial004_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="20"
+{!> ../../../docs_src/dependencies/tutorial004_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="17"
+{!> ../../../docs_src/dependencies/tutorial004_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="19"
+{!> ../../../docs_src/dependencies/tutorial004.py!}
+```
+
+////
 
 ... und **FastAPI** wird wissen, was zu tun ist.
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Wenn Sie das eher verwirrt, als Ihnen zu helfen, ignorieren Sie es, Sie *brauchen* es nicht.
 
