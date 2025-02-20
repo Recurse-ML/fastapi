@@ -42,7 +42,9 @@
 
 👈 🌌, 🎏 🛣 🎓 💪 🍵 🗜 🗜 ⚖️ 🗜 📨.
 
-{* ../../docs_src/custom_request_and_route/tutorial001.py hl[8:15] *}
+```Python hl_lines="8-15"
+{!../../../docs_src/custom_request_and_route/tutorial001.py!}
+```
 
 ### ✍ 🛃 `GzipRoute` 🎓
 
@@ -54,9 +56,11 @@
 
 📥 👥 ⚙️ ⚫️ ✍ `GzipRequest` ⚪️➡️ ⏮️ 📨.
 
-{* ../../docs_src/custom_request_and_route/tutorial001.py hl[18:26] *}
+```Python hl_lines="18-26"
+{!../../../docs_src/custom_request_and_route/tutorial001.py!}
+```
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 `Request` ✔️ `request.scope` 🔢, 👈 🐍 `dict` ⚗ 🗃 🔗 📨.
 
@@ -92,18 +96,26 @@
 
 🌐 👥 💪 🍵 📨 🔘 `try`/`except` 🍫:
 
-{* ../../docs_src/custom_request_and_route/tutorial002.py hl[13,15] *}
+```Python hl_lines="13  15"
+{!../../../docs_src/custom_request_and_route/tutorial002.py!}
+```
 
 🚥 ⚠ 📉, `Request` 👐 🔜 ↔, 👥 💪 ✍ &amp; ⚒ ⚙️ 📨 💪 🕐❔ 🚚 ❌:
 
-{* ../../docs_src/custom_request_and_route/tutorial002.py hl[16:18] *}
+```Python hl_lines="16-18"
+{!../../../docs_src/custom_request_and_route/tutorial002.py!}
+```
 
 ## 🛃 `APIRoute` 🎓 📻
 
 👆 💪 ⚒ `route_class` 🔢 `APIRouter`:
 
-{* ../../docs_src/custom_request_and_route/tutorial003.py hl[26] *}
+```Python hl_lines="26"
+{!../../../docs_src/custom_request_and_route/tutorial003.py!}
+```
 
 👉 🖼, *➡ 🛠️* 🔽 `router` 🔜 ⚙️ 🛃 `TimedRoute` 🎓, &amp; 🔜 ✔️ ➕ `X-Response-Time` 🎚 📨 ⏮️ 🕰 ⚫️ ✊ 🏗 📨:
 
-{* ../../docs_src/custom_request_and_route/tutorial003.py hl[13:20] *}
+```Python hl_lines="13-20"
+{!../../../docs_src/custom_request_and_route/tutorial003.py!}
+```

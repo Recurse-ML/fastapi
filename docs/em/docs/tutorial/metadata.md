@@ -17,7 +17,9 @@
 
 👆 💪 ⚒ 👫 ⏩:
 
-{* ../../docs_src/metadata/tutorial001.py hl[3:16,19:31] *}
+```Python hl_lines="3-16  19-31"
+{!../../../docs_src/metadata/tutorial001.py!}
+```
 
 /// tip
 
@@ -49,7 +51,9 @@
 
 ✍ 🗃 👆 🔖 &amp; 🚶‍♀️ ⚫️ `openapi_tags` 🔢:
 
-{* ../../docs_src/metadata/tutorial004.py hl[3:16,18] *}
+```Python hl_lines="3-16  18"
+{!../../../docs_src/metadata/tutorial004.py!}
+```
 
 👀 👈 👆 💪 ⚙️ ✍ 🔘 📛, 🖼 "💳" 🔜 🎦 🦁 (**💳**) &amp; "🎀" 🔜 🎦 ❕ (_🎀_).
 
@@ -63,7 +67,9 @@
 
 ⚙️ `tags` 🔢 ⏮️ 👆 *➡ 🛠️* (&amp; `APIRouter`Ⓜ) 🛠️ 👫 🎏 🔖:
 
-{* ../../docs_src/metadata/tutorial004.py hl[21,26] *}
+```Python hl_lines="21  26"
+{!../../../docs_src/metadata/tutorial004.py!}
+```
 
 /// info
 
@@ -91,7 +97,9 @@
 
 🖼, ⚒ ⚫️ 🍦 `/api/v1/openapi.json`:
 
-{* ../../docs_src/metadata/tutorial002.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/metadata/tutorial002.py!}
+```
 
 🚥 👆 💚 ❎ 🗄 🔗 🍕 👆 💪 ⚒ `openapi_url=None`, 👈 🔜 ❎ 🧾 👩‍💻 🔢 👈 ⚙️ ⚫️.
 
@@ -108,4 +116,6 @@
 
 🖼, ⚒ 🦁 🎚 🍦 `/documentation` &amp; ❎ 📄:
 
-{* ../../docs_src/metadata/tutorial003.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/metadata/tutorial003.py!}
+```

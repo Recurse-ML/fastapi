@@ -8,11 +8,13 @@ Aqui estão várias formas de se fazer isso.
 
 Você pode declarar um `example` para um modelo Pydantic usando `Config` e `schema_extra`, conforme descrito em <a href="https://docs.pydantic.dev/latest/concepts/json_schema/#schema-customization" class="external-link" target="_blank">Documentação do Pydantic: Schema customization</a>:
 
-{* ../../docs_src/schema_extra_example/tutorial001.py hl[15:23] *}
+```Python hl_lines="15-23"
+{!../../../docs_src/schema_extra_example/tutorial001.py!}
+```
 
 Essas informações extras serão adicionadas como se encontram no **JSON Schema** de resposta desse modelo e serão usadas na documentação da API.
 
-/// tip | Dica
+/// tip | "Dica"
 
 Você pode usar a mesma técnica para estender o JSON Schema e adicionar suas próprias informações extras de forma personalizada.
 
@@ -26,9 +28,11 @@ Ao usar `Field ()` com modelos Pydantic, você também pode declarar informaçõ
 
 Você pode usar isso para adicionar um `example` para cada campo:
 
-{* ../../docs_src/schema_extra_example/tutorial002.py hl[4,10:13] *}
+```Python hl_lines="4  10-13"
+{!../../../docs_src/schema_extra_example/tutorial002.py!}
+```
 
-/// warning | Atenção
+/// warning | "Atenção"
 
 Lembre-se de que esses argumentos extras passados ​​não adicionarão nenhuma validação, apenas informações extras, para fins de documentação.
 
@@ -52,7 +56,9 @@ você também pode declarar um dado `example` ou um grupo de `examples` com info
 
 Aqui nós passamos um `example` dos dados esperados por `Body()`:
 
-{* ../../docs_src/schema_extra_example/tutorial003.py hl[21:26] *}
+```Python hl_lines="21-26"
+{!../../../docs_src/schema_extra_example/tutorial003.py!}
+```
 
 ### Exemplo na UI da documentação
 
@@ -73,7 +79,9 @@ Cada `dict` de exemplo específico em `examples` pode conter:
 * `value`: O próprio exemplo mostrado, ex: um `dict`.
 * `externalValue`: alternativa ao `value`, uma URL apontando para o exemplo. Embora isso possa não ser suportado por tantas ferramentas quanto `value`.
 
-{* ../../docs_src/schema_extra_example/tutorial004.py hl[22:48] *}
+```Python hl_lines="22-48"
+{!../../../docs_src/schema_extra_example/tutorial004.py!}
+```
 
 ### Exemplos na UI da documentação
 
@@ -83,7 +91,7 @@ Com `examples` adicionado a `Body()`, os `/docs` vão ficar assim:
 
 ## Detalhes técnicos
 
-/// warning | Atenção
+/// warning | "Atenção"
 
 Esses são detalhes muito técnicos sobre os padrões **JSON Schema** e **OpenAPI**.
 

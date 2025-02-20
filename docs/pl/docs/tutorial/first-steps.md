@@ -2,7 +2,9 @@
 
 Najprostszy plik FastAPI może wyglądać tak:
 
-{* ../../docs_src/first_steps/tutorial001.py *}
+```Python
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Skopiuj to do pliku `main.py`.
 
@@ -131,11 +133,13 @@ Możesz go również użyć do automatycznego generowania kodu dla klientów, kt
 
 ### Krok 1: zaimportuj `FastAPI`
 
-{* ../../docs_src/first_steps/tutorial001.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 `FastAPI` jest klasą, która zapewnia wszystkie funkcjonalności Twojego API.
 
-/// note | Szczegóły techniczne
+/// note | "Szczegóły techniczne"
 
 `FastAPI` jest klasą, która dziedziczy bezpośrednio z `Starlette`.
 
@@ -145,7 +149,9 @@ Oznacza to, że możesz korzystać ze wszystkich funkcjonalności <a href="https
 
 ### Krok 2: utwórz instancję `FastAPI`
 
-{*../../docs_src/first_steps/tutorial001.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Zmienna `app` będzie tutaj "instancją" klasy `FastAPI`.
 
@@ -165,7 +171,9 @@ $ uvicorn main:app --reload
 
 Jeśli stworzysz swoją aplikację, np.:
 
-{* ../../docs_src/first_steps/tutorial002.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/first_steps/tutorial002.py!}
+```
 
 I umieścisz to w pliku `main.py`, to będziesz mógł tak wywołać `uvicorn`:
 
@@ -242,14 +250,16 @@ Będziemy je również nazywali "**operacjami**".
 
 #### Zdefiniuj *dekorator operacji na ścieżce*
 
-{* ../../docs_src/first_steps/tutorial001.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 `@app.get("/")` mówi **FastAPI** że funkcja poniżej odpowiada za obsługę żądań, które trafiają do:
 
 * ścieżki `/`
 * używając <abbr title="metoda HTTP GET">operacji <code>get</code></abbr>
 
-/// info | `@decorator` Info
+/// info | "`@decorator` Info"
 
 Składnia `@something` jest w Pythonie nazywana "dekoratorem".
 
@@ -296,7 +306,9 @@ To jest nasza "**funkcja obsługująca ścieżkę**":
 * **operacja**: to `get`.
 * **funkcja**: to funkcja poniżej "dekoratora" (poniżej `@app.get("/")`).
 
-{* ../../docs_src/first_steps/tutorial001.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Jest to funkcja Python.
 
@@ -308,7 +320,9 @@ W tym przypadku jest to funkcja "asynchroniczna".
 
 Możesz również zdefiniować to jako normalną funkcję zamiast `async def`:
 
-{* ../../docs_src/first_steps/tutorial003.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/first_steps/tutorial003.py!}
+```
 
 /// note
 
@@ -318,7 +332,9 @@ Jeśli nie znasz różnicy, sprawdź [Async: *"In a hurry?"*](../async.md#in-a-h
 
 ### Krok 5: zwróć zawartość
 
-{* ../../docs_src/first_steps/tutorial001.py hl[8] *}
+```Python hl_lines="8"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Możesz zwrócić `dict`, `list`, pojedynczą wartość jako `str`, `int`, itp.
 
