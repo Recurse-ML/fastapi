@@ -1,6 +1,6 @@
 # Zusätzliche Responses in OpenAPI
 
-/// warning | Achtung
+/// warning | "Achtung"
 
 Dies ist ein eher fortgeschrittenes Thema.
 
@@ -26,9 +26,11 @@ Jedes dieser Response-`dict`s kann einen Schlüssel `model` haben, welcher ein P
 
 Um beispielsweise eine weitere Response mit dem Statuscode `404` und einem Pydantic-Modell `Message` zu deklarieren, können Sie schreiben:
 
-{* ../../docs_src/additional_responses/tutorial001.py hl[18,22] *}
+```Python hl_lines="18  22"
+{!../../../docs_src/additional_responses/tutorial001.py!}
+```
 
-/// note | Hinweis
+/// note | "Hinweis"
 
 Beachten Sie, dass Sie die `JSONResponse` direkt zurückgeben müssen.
 
@@ -175,9 +177,11 @@ Sie können denselben `responses`-Parameter verwenden, um verschiedene Medientyp
 
 Sie können beispielsweise einen zusätzlichen Medientyp `image/png` hinzufügen und damit deklarieren, dass Ihre *Pfadoperation* ein JSON-Objekt (mit dem Medientyp `application/json`) oder ein PNG-Bild zurückgeben kann:
 
-{* ../../docs_src/additional_responses/tutorial002.py hl[19:24,28] *}
+```Python hl_lines="19-24  28"
+{!../../../docs_src/additional_responses/tutorial002.py!}
+```
 
-/// note | Hinweis
+/// note | "Hinweis"
 
 Beachten Sie, dass Sie das Bild direkt mit einer `FileResponse` zurückgeben müssen.
 
@@ -203,7 +207,9 @@ Sie können beispielsweise eine Response mit dem Statuscode `404` deklarieren, d
 
 Und eine Response mit dem Statuscode `200`, die Ihr `response_model` verwendet, aber ein benutzerdefiniertes Beispiel (`example`) enthält:
 
-{* ../../docs_src/additional_responses/tutorial003.py hl[20:31] *}
+```Python hl_lines="20-31"
+{!../../../docs_src/additional_responses/tutorial003.py!}
+```
 
 Es wird alles kombiniert und in Ihre OpenAPI eingebunden und in der API-Dokumentation angezeigt:
 
@@ -237,7 +243,9 @@ Mit dieser Technik können Sie einige vordefinierte Responses in Ihren *Pfadoper
 
 Zum Beispiel:
 
-{* ../../docs_src/additional_responses/tutorial004.py hl[13:17,26] *}
+```Python hl_lines="13-17  26"
+{!../../../docs_src/additional_responses/tutorial004.py!}
+```
 
 ## Weitere Informationen zu OpenAPI-Responses
 

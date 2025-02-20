@@ -8,7 +8,7 @@
 * **出力モデル**はパスワードをもつべきではありません。
 * **データベースモデル**はおそらくハッシュ化されたパスワードが必要になるでしょう。
 
-/// danger | 危険
+/// danger | "危険"
 
 ユーザーの平文のパスワードは絶対に保存しないでください。常に認証に利用可能な「安全なハッシュ」を保存してください。
 
@@ -20,7 +20,9 @@
 
 ここでは、パスワードフィールドをもつモデルがどのように見えるのか、また、どこで使われるのか、大まかなイメージを紹介します:
 
-{* ../../docs_src/extra_models/tutorial001.py hl[9,11,16,22,24,29:30,33:35,40:41] *}
+```Python hl_lines="9  11  16  22  24  29-30  33-35  40-41"
+{!../../../docs_src/extra_models/tutorial001.py!}
+```
 
 ### `**user_in.dict()`について
 
@@ -132,7 +134,7 @@ UserInDB(
 )
 ```
 
-/// warning | 注意
+/// warning | "注意"
 
 サポートしている追加機能は、データの可能な流れをデモするだけであり、もちろん本当のセキュリティを提供しているわけではありません。
 
@@ -154,7 +156,9 @@ UserInDB(
 
 このようにして、モデル間の違いだけを宣言することができます:
 
-{* ../../docs_src/extra_models/tutorial002.py hl[9,15,16,19,20,23,24] *}
+```Python hl_lines="9  15 16  19 20  23 24"
+{!../../../docs_src/extra_models/tutorial002.py!}
+```
 
 ## `Union`または`anyOf`
 
@@ -164,7 +168,9 @@ OpenAPIでは`anyOf`で定義されます。
 
 そのためには、標準的なPythonの型ヒント<a href="https://docs.python.org/3/library/typing.html#typing.Union" class="external-link" target="_blank">`typing.Union`</a>を使用します:
 
-{* ../../docs_src/extra_models/tutorial003.py hl[1,14,15,18,19,20,33] *}
+```Python hl_lines="1 14 15 18 19 20 33"
+{!../../../docs_src/extra_models/tutorial003.py!}
+```
 
 ## モデルのリスト
 
@@ -172,7 +178,9 @@ OpenAPIでは`anyOf`で定義されます。
 
 そのためには、標準のPythonの`typing.List`を使用する:
 
-{* ../../docs_src/extra_models/tutorial004.py hl[1,20] *}
+```Python hl_lines="1 20"
+{!../../../docs_src/extra_models/tutorial004.py!}
+```
 
 ## 任意の`dict`を持つレスポンス
 
@@ -182,7 +190,9 @@ OpenAPIでは`anyOf`で定義されます。
 
 この場合、`typing.Dict`を使用することができます:
 
-{* ../../docs_src/extra_models/tutorial005.py hl[1,8] *}
+```Python hl_lines="1 8"
+{!../../../docs_src/extra_models/tutorial005.py!}
+```
 
 ## まとめ
 

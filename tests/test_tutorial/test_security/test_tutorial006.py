@@ -1,41 +1,26 @@
-import importlib
 from base64 import b64encode
 
-import pytest
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39
+from docs_src.security.tutorial006 import app
+
+client = TestClient(app)
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial006",
-        "tutorial006_an",
-        pytest.param("tutorial006_an_py39", marks=needs_py39),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.security.{request.param}")
-
-    client = TestClient(mod.app)
-    return client
-
-
-def test_security_http_basic(client: TestClient):
+def test_security_http_basic():
     response = client.get("/users/me", auth=("john", "secret"))
     assert response.status_code == 200, response.text
     assert response.json() == {"username": "john", "password": "secret"}
 
 
-def test_security_http_basic_no_credentials(client: TestClient):
+def test_security_http_basic_no_credentials():
     response = client.get("/users/me")
     assert response.json() == {"detail": "Not authenticated"}
     assert response.status_code == 401, response.text
     assert response.headers["WWW-Authenticate"] == "Basic"
 
 
-def test_security_http_basic_invalid_credentials(client: TestClient):
+def test_security_http_basic_invalid_credentials():
     response = client.get(
         "/users/me", headers={"Authorization": "Basic notabase64token"}
     )
@@ -44,7 +29,7 @@ def test_security_http_basic_invalid_credentials(client: TestClient):
     assert response.json() == {"detail": "Invalid authentication credentials"}
 
 
-def test_security_http_basic_non_basic_credentials(client: TestClient):
+def test_security_http_basic_non_basic_credentials():
     payload = b64encode(b"johnsecret").decode("ascii")
     auth_header = f"Basic {payload}"
     response = client.get("/users/me", headers={"Authorization": auth_header})
@@ -53,7 +38,7 @@ def test_security_http_basic_non_basic_credentials(client: TestClient):
     assert response.json() == {"detail": "Invalid authentication credentials"}
 
 
-def test_openapi_schema(client: TestClient):
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {

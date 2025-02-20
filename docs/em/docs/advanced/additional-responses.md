@@ -26,7 +26,9 @@
 
 🖼, 📣 ➕1️⃣ 📨 ⏮️ 👔 📟 `404` &amp; Pydantic 🏷 `Message`, 👆 💪 ✍:
 
-{* ../../docs_src/additional_responses/tutorial001.py hl[18,22] *}
+```Python hl_lines="18  22"
+{!../../../docs_src/additional_responses/tutorial001.py!}
+```
 
 /// note
 
@@ -175,7 +177,9 @@
 
 🖼, 👆 💪 🚮 🌖 📻 🆎 `image/png`, 📣 👈 👆 *➡ 🛠️* 💪 📨 🎻 🎚 (⏮️ 📻 🆎 `application/json`) ⚖️ 🇩🇴 🖼:
 
-{* ../../docs_src/additional_responses/tutorial002.py hl[19:24,28] *}
+```Python hl_lines="19-24  28"
+{!../../../docs_src/additional_responses/tutorial002.py!}
+```
 
 /// note
 
@@ -203,7 +207,9 @@
 
 &amp; 📨 ⏮️ 👔 📟 `200` 👈 ⚙️ 👆 `response_model`, ✋️ 🔌 🛃 `example`:
 
-{* ../../docs_src/additional_responses/tutorial003.py hl[20:31] *}
+```Python hl_lines="20-31"
+{!../../../docs_src/additional_responses/tutorial003.py!}
+```
 
 ⚫️ 🔜 🌐 🌀 &amp; 🔌 👆 🗄, &amp; 🎦 🛠️ 🩺:
 
@@ -237,7 +243,9 @@ new_dict = {**old_dict, "new key": "new value"}
 
 🖼:
 
-{* ../../docs_src/additional_responses/tutorial004.py hl[13:17,26] *}
+```Python hl_lines="13-17  26"
+{!../../../docs_src/additional_responses/tutorial004.py!}
+```
 
 ## 🌖 ℹ 🔃 🗄 📨
 

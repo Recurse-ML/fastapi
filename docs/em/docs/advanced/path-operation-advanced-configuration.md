@@ -12,7 +12,9 @@
 
 👆 🔜 ✔️ ⚒ 💭 👈 ⚫️ 😍 🔠 🛠️.
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial001.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial001.py!}
+```
 
 ### ⚙️ *➡ 🛠️ 🔢* 📛 {
 
@@ -20,7 +22,9 @@
 
 👆 🔜 ⚫️ ⏮️ ❎ 🌐 👆 *➡ 🛠️*.
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial002.py hl[2,12:21,24] *}
+```Python hl_lines="2  12-21  24"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial002.py!}
+```
 
 /// tip
 
@@ -40,7 +44,9 @@
 
 🚫 *➡ 🛠️* ⚪️➡️ 🏗 🗄 🔗 (&amp; ➡️, ⚪️➡️ 🏧 🧾 ⚙️), ⚙️ 🔢 `include_in_schema` &amp; ⚒ ⚫️ `False`:
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial003.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial003.py!}
+```
 
 ## 🏧 📛 ⚪️➡️ #️⃣
 
@@ -50,7 +56,9 @@
 
 ⚫️ 🏆 🚫 🎦 🆙 🧾, ✋️ 🎏 🧰 (✅ 🐉) 🔜 💪 ⚙️ 🎂.
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial004.py hl[19:29] *}
+```Python hl_lines="19-29"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial004.py!}
+```
 
 ## 🌖 📨
 
@@ -66,7 +74,7 @@
 
 🕐❔ 👆 📣 *➡ 🛠️* 👆 🈸, **FastAPI** 🔁 🏗 🔗 🗃 🔃 👈 *➡ 🛠️* 🔌 🗄 🔗.
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 🗄 🔧 ⚫️ 🤙 <a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#operation-object" class="external-link" target="_blank">🛠️ 🎚</a>.
 
@@ -92,7 +100,9 @@
 
 👉 `openapi_extra` 💪 👍, 🖼, 📣 [🗄 ↔](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#specificationExtensions):
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial005.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial005.py!}
+```
 
 🚥 👆 📂 🏧 🛠️ 🩺, 👆 ↔ 🔜 🎦 🆙 🔝 🎯 *➡ 🛠️*.
 
@@ -139,7 +149,9 @@
 
 👆 💪 👈 ⏮️ `openapi_extra`:
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial006.py hl[20:37,39:40] *}
+```Python hl_lines="20-37  39-40"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial006.py!}
+```
 
 👉 🖼, 👥 🚫 📣 🙆 Pydantic 🏷. 👐, 📨 💪 🚫 <abbr title="converted from some plain format, like bytes, into Python objects">🎻</abbr> 🎻, ⚫️ ✍ 🔗 `bytes`, &amp; 🔢 `magic_data_reader()` 🔜 🈚 🎻 ⚫️ 🌌.
 
@@ -153,7 +165,9 @@
 
 🖼, 👉 🈸 👥 🚫 ⚙️ FastAPI 🛠️ 🛠️ ⚗ 🎻 🔗 ⚪️➡️ Pydantic 🏷 🚫 🏧 🔬 🎻. 👐, 👥 📣 📨 🎚 🆎 📁, 🚫 🎻:
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial007.py hl[17:22,24] *}
+```Python hl_lines="17-22  24"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial007.py!}
+```
 
 👐, 👐 👥 🚫 ⚙️ 🔢 🛠️ 🛠️, 👥 ⚙️ Pydantic 🏷 ❎ 🏗 🎻 🔗 💽 👈 👥 💚 📨 📁.
 
@@ -161,7 +175,9 @@
 
 &amp; ⤴️ 👆 📟, 👥 🎻 👈 📁 🎚 🔗, &amp; ⤴️ 👥 🔄 ⚙️ 🎏 Pydantic 🏷 ✔ 📁 🎚:
 
-{* ../../docs_src/path_operation_advanced_configuration/tutorial007.py hl[26:33] *}
+```Python hl_lines="26-33"
+{!../../../docs_src/path_operation_advanced_configuration/tutorial007.py!}
+```
 
 /// tip
 
