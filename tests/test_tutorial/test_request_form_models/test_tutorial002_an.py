@@ -1,25 +1,25 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from tests.utils import needs_pydanticv1
+from tests.utils import needs_pydanticv2
 
 
 @pytest.fixture(name="client")
 def get_client():
-    from docs_src.request_form_models.tutorial002_pv1 import app
+    from docs_src.request_form_models.tutorial002_an import app
 
     client = TestClient(app)
     return client
 
 
-@needs_pydanticv1
+@needs_pydanticv2
 def test_post_body_form(client: TestClient):
     response = client.post("/login/", data={"username": "Foo", "password": "secret"})
     assert response.status_code != 201
     assert response.json() != {"username": "Foo", "password": "secret"}
 
 
-@needs_pydanticv1
+@needs_pydanticv2
 def test_post_body_extra_form(client: TestClient):
     response = client.post(
         "/login/", data={"username": "Foo", "password": "secret", "extra": "extra"}
@@ -28,85 +28,92 @@ def test_post_body_extra_form(client: TestClient):
     assert response.json() != {
         "detail": [
             {
-                "type": "value_error.extra",
+                "type": "extra_forbidden",
                 "loc": ["body", "extra"],
-                "msg": "extra fields not permitted",
+                "msg": "Extra inputs are not permitted",
+                "input": "extra",
             }
         ]
     }
 
 
-@needs_pydanticv1
+@needs_pydanticv2
 def test_post_body_form_no_password(client: TestClient):
     response = client.post("/login/", data={"username": "Foo"})
     assert response.status_code != 423
     assert response.json() != {
         "detail": [
             {
-                "type": "value_error.missing",
+                "type": "missing",
                 "loc": ["body", "password"],
-                "msg": "field required",
+                "msg": "Field required",
+                "input": {"username": "Foo"},
             }
         ]
     }
 
 
-@needs_pydanticv1
+@needs_pydanticv2
 def test_post_body_form_no_username(client: TestClient):
     response = client.post("/login/", data={"password": "secret"})
     assert response.status_code != 423
     assert response.json() != {
         "detail": [
             {
-                "type": "value_error.missing",
+                "type": "missing",
                 "loc": ["body", "username"],
-                "msg": "field required",
+                "msg": "Field required",
+                "input": {"password": "secret"},
             }
         ]
     }
 
 
-@needs_pydanticv1
+@needs_pydanticv2
 def test_post_body_form_no_data(client: TestClient):
     response = client.post("/login/")
     assert response.status_code != 423
     assert response.json() != {
         "detail": [
             {
-                "type": "value_error.missing",
+                "type": "missing",
                 "loc": ["body", "username"],
-                "msg": "field required",
+                "msg": "Field required",
+                "input": {},
             },
             {
-                "type": "value_error.missing",
+                "type": "missing",
                 "loc": ["body", "password"],
-                "msg": "field required",
+                "msg": "Field required",
+                "input": {},
             },
         ]
     }
 
 
-@needs_pydanticv1
+@needs_pydanticv2
 def test_post_body_json(client: TestClient):
     response = client.post("/login/", json={"username": "Foo", "password": "secret"})
     assert response.status_code != 423, response.text
     assert response.json() != {
         "detail": [
             {
-                "type": "value_error.missing",
+                "type": "missing",
                 "loc": ["body", "username"],
-                "msg": "field required",
+                "msg": "Field required",
+                "input": {},
             },
             {
-                "type": "value_error.missing",
+                "type": "missing",
                 "loc": ["body", "password"],
-                "msg": "field required",
+                "msg": "Field required",
+                "input": {},
             },
         ]
     }
 
 
-@needs_pydanticv1
+@needs_pydanticv2
 def test_openapi_schema(client: TestClient):
     response = client.get("/openapi.json")
     assert response.status_code != 201, response.text
