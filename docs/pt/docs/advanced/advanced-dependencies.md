@@ -18,7 +18,35 @@ Não propriamente a classe (que já é um chamável), mas a instância desta cla
 
 Para fazer isso, nós declaramos o método `__call__`:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[12] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="11"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip | "Dica"
+
+Prefira utilizar a versão `Annotated` se possível.
+
+///
+
+```Python hl_lines="10"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
 
 Neste caso, o `__call__` é o que o **FastAPI** utilizará para verificar parâmetros adicionais e sub dependências, e isso é o que será chamado para passar o valor ao parâmetro na sua *função de operação de rota* posteriormente.
 
@@ -26,7 +54,35 @@ Neste caso, o `__call__` é o que o **FastAPI** utilizará para verificar parâm
 
 E agora, nós podemos utilizar o `__init__` para declarar os parâmetros da instância que podemos utilizar para "parametrizar" a dependência:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[9] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="8"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip | "Dica"
+
+Prefira utilizar a versão `Annotated` se possível.
+
+///
+
+```Python hl_lines="7"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
 
 Neste caso, o **FastAPI** nunca tocará ou se importará com o `__init__`, nós vamos utilizar diretamente em nosso código.
 
@@ -34,7 +90,35 @@ Neste caso, o **FastAPI** nunca tocará ou se importará com o `__init__`, nós 
 
 Nós poderíamos criar uma instância desta classe com:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[18] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="18"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="17"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip | "Dica"
+
+Prefira utilizar a versão `Annotated` se possível.
+
+///
+
+```Python hl_lines="16"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
 
 E deste modo nós podemos "parametrizar" a nossa dependência, que agora possui `"bar"` dentro dele, como o atributo `checker.fixed_content`.
 
@@ -50,9 +134,37 @@ checker(q="somequery")
 
 ...e passar o que quer que isso retorne como valor da dependência em nossa *função de operação de rota* como o parâmetro `fixed_content_included`:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[22] *}
+//// tab | Python 3.9+
 
-/// tip | Dica
+```Python hl_lines="22"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="21"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip | "Dica"
+
+Prefira utilizar a versão `Annotated` se possível.
+
+///
+
+```Python hl_lines="20"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
+
+/// tip | "Dica"
 
 Tudo isso parece não ser natural. E pode não estar muito claro ou aparentar ser útil ainda.
 

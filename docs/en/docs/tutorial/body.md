@@ -22,7 +22,21 @@ As it is discouraged, the interactive docs with Swagger UI won't show the docume
 
 First, you need to import `BaseModel` from `pydantic`:
 
-{* ../../docs_src/body/tutorial001_py310.py hl[2] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="2"
+{!> ../../../docs_src/body/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="4"
+{!> ../../../docs_src/body/tutorial001.py!}
+```
+
+////
 
 ## Create your data model
 
@@ -30,8 +44,21 @@ Then you declare your data model as a class that inherits from `BaseModel`.
 
 Use standard Python types for all the attributes:
 
-{* ../../docs_src/body/tutorial001_py310.py hl[5:9] *}
+//// tab | Python 3.10+
 
+```Python hl_lines="5-9"
+{!> ../../../docs_src/body/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="7-11"
+{!> ../../../docs_src/body/tutorial001.py!}
+```
+
+////
 
 The same as when declaring query parameters, when a model attribute has a default value, it is not required. Otherwise, it is required. Use `None` to make it just optional.
 
@@ -59,7 +86,21 @@ For example, this model above declares a JSON "`object`" (or Python `dict`) like
 
 To add it to your *path operation*, declare it the same way you declared path and query parameters:
 
-{* ../../docs_src/body/tutorial001_py310.py hl[16] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="16"
+{!> ../../../docs_src/body/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="18"
+{!> ../../../docs_src/body/tutorial001.py!}
+```
+
+////
 
 ...and declare its type as the model you created, `Item`.
 
@@ -126,7 +167,21 @@ It improves editor support for Pydantic models, with:
 
 Inside of the function, you can access all the attributes of the model object directly:
 
-{* ../../docs_src/body/tutorial002_py310.py *}
+//// tab | Python 3.10+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/body/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="21"
+{!> ../../../docs_src/body/tutorial002.py!}
+```
+
+////
 
 ## Request body + path parameters
 
@@ -134,8 +189,21 @@ You can declare path parameters and request body at the same time.
 
 **FastAPI** will recognize that the function parameters that match path parameters should be **taken from the path**, and that function parameters that are declared to be Pydantic models should be **taken from the request body**.
 
-{* ../../docs_src/body/tutorial003_py310.py hl[15:16] *}
+//// tab | Python 3.10+
 
+```Python hl_lines="15-16"
+{!> ../../../docs_src/body/tutorial003_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="17-18"
+{!> ../../../docs_src/body/tutorial003.py!}
+```
+
+////
 
 ## Request body + path + query parameters
 
@@ -143,7 +211,21 @@ You can also declare **body**, **path** and **query** parameters, all at the sam
 
 **FastAPI** will recognize each of them and take the data from the correct place.
 
-{* ../../docs_src/body/tutorial004_py310.py hl[16] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="16"
+{!> ../../../docs_src/body/tutorial004_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="18"
+{!> ../../../docs_src/body/tutorial004.py!}
+```
+
+////
 
 The function parameters will be recognized as follows:
 

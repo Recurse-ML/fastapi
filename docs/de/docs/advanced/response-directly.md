@@ -14,7 +14,7 @@ Das kann beispielsweise nützlich sein, um benutzerdefinierte Header oder Cookie
 
 Tatsächlich können Sie jede `Response` oder jede Unterklasse davon zurückgeben.
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 `JSONResponse` selbst ist eine Unterklasse von `Response`.
 
@@ -34,9 +34,11 @@ Sie können beispielsweise kein Pydantic-Modell in eine `JSONResponse` einfügen
 
 In diesen Fällen können Sie den `jsonable_encoder` verwenden, um Ihre Daten zu konvertieren, bevor Sie sie an eine Response übergeben:
 
-{* ../../docs_src/response_directly/tutorial001.py hl[6:7,21:22] *}
+```Python hl_lines="6-7  21-22"
+{!../../../docs_src/response_directly/tutorial001.py!}
+```
 
-/// note | Technische Details
+/// note | "Technische Details"
 
 Sie können auch `from starlette.responses import JSONResponse` verwenden.
 
@@ -54,7 +56,9 @@ Nehmen wir an, Sie möchten eine <a href="https://en.wikipedia.org/wiki/XML" cla
 
 Sie könnten Ihren XML-Inhalt als String in eine `Response` einfügen und sie zurückgeben:
 
-{* ../../docs_src/response_directly/tutorial002.py hl[1,18] *}
+```Python hl_lines="1  18"
+{!../../../docs_src/response_directly/tutorial002.py!}
+```
 
 ## Anmerkungen
 

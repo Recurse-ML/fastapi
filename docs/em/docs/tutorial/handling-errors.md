@@ -25,7 +25,9 @@
 
 ### 🗄 `HTTPException`
 
-{* ../../docs_src/handling_errors/tutorial001.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/handling_errors/tutorial001.py!}
+```
 
 ### 🤚 `HTTPException` 👆 📟
 
@@ -39,7 +41,9 @@
 
 👉 🖼, 🕐❔ 👩‍💻 📨 🏬 🆔 👈 🚫 🔀, 🤚 ⚠ ⏮️ 👔 📟 `404`:
 
-{* ../../docs_src/handling_errors/tutorial001.py hl[11] *}
+```Python hl_lines="11"
+{!../../../docs_src/handling_errors/tutorial001.py!}
+```
 
 ### 📉 📨
 
@@ -77,7 +81,9 @@
 
 ✋️ 💼 👆 💪 ⚫️ 🏧 😐, 👆 💪 🚮 🛃 🎚:
 
-{* ../../docs_src/handling_errors/tutorial002.py hl[14] *}
+```Python hl_lines="14"
+{!../../../docs_src/handling_errors/tutorial002.py!}
+```
 
 ## ❎ 🛃 ⚠ 🐕‍🦺
 
@@ -89,7 +95,9 @@
 
 👆 💪 🚮 🛃 ⚠ 🐕‍🦺 ⏮️ `@app.exception_handler()`:
 
-{* ../../docs_src/handling_errors/tutorial003.py hl[5:7,13:18,24] *}
+```Python hl_lines="5-7  13-18  24"
+{!../../../docs_src/handling_errors/tutorial003.py!}
+```
 
 📥, 🚥 👆 📨 `/unicorns/yolo`, *➡ 🛠️* 🔜 `raise` `UnicornException`.
 
@@ -101,7 +109,7 @@
 {"message": "Oops! yolo did something. There goes a rainbow..."}
 ```
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 👆 💪 ⚙️ `from starlette.requests import Request` &amp; `from starlette.responses import JSONResponse`.
 
@@ -127,7 +135,9 @@
 
 ⚠ 🐕‍🦺 🔜 📨 `Request` &amp; ⚠.
 
-{* ../../docs_src/handling_errors/tutorial004.py hl[2,14:16] *}
+```Python hl_lines="2  14-16"
+{!../../../docs_src/handling_errors/tutorial004.py!}
+```
 
 🔜, 🚥 👆 🚶 `/items/foo`, ↩️ 💆‍♂ 🔢 🎻 ❌ ⏮️:
 
@@ -178,9 +188,11 @@ path -> item_id
 
 🖼, 👆 💪 💚 📨 ✅ ✍ 📨 ↩️ 🎻 👫 ❌:
 
-{* ../../docs_src/handling_errors/tutorial004.py hl[3:4,9:11,22] *}
+```Python hl_lines="3-4  9-11  22"
+{!../../../docs_src/handling_errors/tutorial004.py!}
+```
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 👆 💪 ⚙️ `from starlette.responses import PlainTextResponse`.
 
@@ -194,7 +206,9 @@ path -> item_id
 
 👆 💪 ⚙️ ⚫️ ⏪ 🛠️ 👆 📱 🕹 💪 &amp; ℹ ⚫️, 📨 ⚫️ 👩‍💻, ♒️.
 
-{* ../../docs_src/handling_errors/tutorial005.py hl[14] *}
+```Python hl_lines="14"
+{!../../../docs_src/handling_errors/tutorial005.py!}
+```
 
 🔜 🔄 📨 ❌ 🏬 💖:
 
@@ -252,6 +266,8 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 🚥 👆 💚 ⚙️ ⚠ ⤴️ ⏮️ 🎏 🔢 ⚠ 🐕‍🦺 ⚪️➡️ **FastAPI**, 👆 💪 🗄 &amp; 🏤-⚙️ 🔢 ⚠ 🐕‍🦺 ⚪️➡️ `fastapi.exception_handlers`:
 
-{* ../../docs_src/handling_errors/tutorial006.py hl[2:5,15,21] *}
+```Python hl_lines="2-5  15  21"
+{!../../../docs_src/handling_errors/tutorial006.py!}
+```
 
 👉 🖼 👆 `print`😅 ❌ ⏮️ 📶 🎨 📧, ✋️ 👆 🤚 💭. 👆 💪 ⚙️ ⚠ &amp; ⤴️ 🏤-⚙️ 🔢 ⚠ 🐕‍🦺.
