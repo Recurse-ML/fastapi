@@ -6,7 +6,57 @@ So wie Sie mit `Query` für Query-Parameter zusätzliche Validierungen und Metad
 
 Importieren Sie zuerst `Path` von `fastapi`, und importieren Sie `Annotated`.
 
-{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[1,3] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="1  3"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="1  3"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="3-4"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="1"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="3"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001.py!}
+```
+
+////
 
 /// info
 
@@ -24,9 +74,59 @@ Sie können die gleichen Parameter deklarieren wie für `Query`.
 
 Um zum Beispiel einen `title`-Metadaten-Wert für den Pfad-Parameter `item_id` zu deklarieren, schreiben Sie:
 
-{* ../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py hl[10] *}
+//// tab | Python 3.10+
 
-/// note | Hinweis
+```Python hl_lines="10"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="10"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="11"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="8"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="10"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial001.py!}
+```
+
+////
+
+/// note | "Hinweis"
 
 Ein Pfad-Parameter ist immer erforderlich, weil er Teil des Pfads sein muss.
 
@@ -38,7 +138,7 @@ Doch selbst wenn Sie ihn mit `None` deklarieren, oder einen Defaultwert setzen, 
 
 ## Sortieren Sie die Parameter, wie Sie möchten
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Wenn Sie `Annotated` verwenden, ist das folgende nicht so wichtig / nicht notwendig.
 
@@ -60,25 +160,39 @@ Sie können Ihre Funktion also so deklarieren:
 
 //// tab | Python 3.8 nicht annotiert
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Bevorzugen Sie die `Annotated`-Version, falls möglich.
 
 ///
 
 ```Python hl_lines="7"
-{!> ../../docs_src/path_params_numeric_validations/tutorial002.py!}
+{!> ../../../docs_src/path_params_numeric_validations/tutorial002.py!}
 ```
 
 ////
 
 Aber bedenken Sie, dass Sie dieses Problem nicht haben, wenn Sie `Annotated` verwenden, da Sie nicht die Funktions-Parameter-Defaultwerte für `Query()` oder `Path()` verwenden.
 
-{* ../../docs_src/path_params_numeric_validations/tutorial002_an_py39.py hl[10] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="10"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial002_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial002_an.py!}
+```
+
+////
 
 ## Sortieren Sie die Parameter wie Sie möchten: Tricks
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Wenn Sie `Annotated` verwenden, ist das folgende nicht so wichtig / nicht notwendig.
 
@@ -99,20 +213,64 @@ Wenn Sie eines der folgenden Dinge tun möchten:
 
 Python macht nichts mit diesem `*`, aber es wird wissen, dass alle folgenden Parameter als <abbr title="Keyword-Argument – Schlüsselwort-Argument: Das Argument wird anhand seines Namens erkannt, nicht anhand seiner Reihenfolge in der Argumentliste">Keyword-Argumente</abbr> (Schlüssel-Wert-Paare), auch bekannt als <abbr title="Von: K-ey W-ord Arg-uments"><code>kwargs</code></abbr>, verwendet werden. Selbst wenn diese keinen Defaultwert haben.
 
-{* ../../docs_src/path_params_numeric_validations/tutorial003.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/path_params_numeric_validations/tutorial003.py!}
+```
 
 ### Besser mit `Annotated`
 
 Bedenken Sie, dass Sie, wenn Sie `Annotated` verwenden, dieses Problem nicht haben, weil Sie keine Defaultwerte für Ihre Funktionsparameter haben. Sie müssen daher wahrscheinlich auch nicht `*` verwenden.
 
-{* ../../docs_src/path_params_numeric_validations/tutorial003_an_py39.py hl[10] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="10"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial003_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial003_an.py!}
+```
+
+////
 
 ## Validierung von Zahlen: Größer oder gleich
 
 Mit `Query` und `Path` (und anderen, die Sie später kennenlernen), können Sie Zahlenbeschränkungen deklarieren.
 
 Hier, mit `ge=1`, wird festgelegt, dass `item_id` eine Ganzzahl benötigt, die größer oder gleich `1` ist (`g`reater than or `e`qual).
-{* ../../docs_src/path_params_numeric_validations/tutorial004_an_py39.py hl[10] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="10"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial004_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial004_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="8"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial004.py!}
+```
+
+////
 
 ## Validierung von Zahlen: Größer und kleiner oder gleich
 
@@ -121,7 +279,35 @@ Das Gleiche trifft zu auf:
 * `gt`: `g`reater `t`han – größer als
 * `le`: `l`ess than or `e`qual – kleiner oder gleich
 
-{* ../../docs_src/path_params_numeric_validations/tutorial005_an_py39.py hl[10] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="10"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial005_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial005_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="9"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial005.py!}
+```
+
+////
 
 ## Validierung von Zahlen: Floats, größer und kleiner
 
@@ -133,7 +319,35 @@ Hier wird es wichtig, in der Lage zu sein, <abbr title="greater than – größe
 
 Das gleiche gilt für <abbr title="less than – kleiner als"><code>lt</code></abbr>.
 
-{* ../../docs_src/path_params_numeric_validations/tutorial006_an_py39.py hl[13] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="13"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial006_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial006_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="11"
+{!> ../../../docs_src/path_params_numeric_validations/tutorial006.py!}
+```
+
+////
 
 ## Zusammenfassung
 
@@ -154,7 +368,7 @@ Sie alle teilen die gleichen Parameter für zusätzliche Validierung und Metadat
 
 ///
 
-/// note | Technische Details
+/// note | "Technische Details"
 
 `Query`, `Path` und andere, die Sie von `fastapi` importieren, sind tatsächlich Funktionen.
 

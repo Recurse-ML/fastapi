@@ -6,7 +6,9 @@ You can declare a parameter of type `Response` in your *path operation function*
 
 And then you can set cookies in that *temporal* response object.
 
-{* ../../docs_src/response_cookies/tutorial002.py hl[1, 8:9] *}
+```Python hl_lines="1  8-9"
+{!../../../docs_src/response_cookies/tutorial002.py!}
+```
 
 And then you can return any object you need, as you normally would (a `dict`, a database model, etc).
 
@@ -24,7 +26,9 @@ To do that, you can create a response as described in [Return a Response Directl
 
 Then set Cookies in it, and then return it:
 
-{* ../../docs_src/response_cookies/tutorial001.py hl[10:12] *}
+```Python hl_lines="10-12"
+{!../../../docs_src/response_cookies/tutorial001.py!}
+```
 
 /// tip
 
@@ -38,7 +42,7 @@ And also that you are not sending any data that should have been filtered by a `
 
 ### More info
 
-/// note | Technical Details
+/// note | "Technical Details"
 
 You could also use `from starlette.responses import Response` or `from starlette.responses import JSONResponse`.
 
