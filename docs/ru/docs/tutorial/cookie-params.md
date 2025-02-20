@@ -6,7 +6,21 @@
 
 Сначала импортируйте `Cookie`:
 
-{* ../../docs_src/cookie_params/tutorial001_py310.py hl[1] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="1"
+{!> ../../../docs_src/cookie_params/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="3"
+{!> ../../../docs_src/cookie_params/tutorial001.py!}
+```
+
+////
 
 ## Объявление параметров `Cookie`
 
@@ -14,9 +28,23 @@
 
 Первое значение - это значение по умолчанию, вы можете передать все дополнительные параметры проверки или аннотации:
 
-{* ../../docs_src/cookie_params/tutorial001_py310.py hl[7] *}
+//// tab | Python 3.10+
 
-/// note | Технические детали
+```Python hl_lines="7"
+{!> ../../../docs_src/cookie_params/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/cookie_params/tutorial001.py!}
+```
+
+////
+
+/// note | "Технические детали"
 
 `Cookie` - это класс, родственный `Path` и `Query`. Он также наследуется от общего класса `Param`.
 
@@ -24,7 +52,7 @@
 
 ///
 
-/// info | Дополнительная информация
+/// info | "Дополнительная информация"
 
 Для объявления cookies, вам нужно использовать `Cookie`, иначе параметры будут интерпретированы как параметры запроса.
 

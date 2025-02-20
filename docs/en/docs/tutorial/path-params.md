@@ -2,7 +2,9 @@
 
 You can declare path "parameters" or "variables" with the same syntax used by Python format strings:
 
-{* ../../docs_src/path_params/tutorial001.py hl[6:7] *}
+```Python hl_lines="6-7"
+{!../../../docs_src/path_params/tutorial001.py!}
+```
 
 The value of the path parameter `item_id` will be passed to your function as the argument `item_id`.
 
@@ -16,7 +18,9 @@ So, if you run this example and go to <a href="http://127.0.0.1:8000/items/foo" 
 
 You can declare the type of a path parameter in the function, using standard Python type annotations:
 
-{* ../../docs_src/path_params/tutorial002.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/path_params/tutorial002.py!}
+```
 
 In this case, `item_id` is declared to be an `int`.
 
@@ -119,13 +123,17 @@ And then you can also have a path `/users/{user_id}` to get data about a specifi
 
 Because *path operations* are evaluated in order, you need to make sure that the path for `/users/me` is declared before the one for `/users/{user_id}`:
 
-{* ../../docs_src/path_params/tutorial003.py hl[6,11] *}
+```Python hl_lines="6  11"
+{!../../../docs_src/path_params/tutorial003.py!}
+```
 
 Otherwise, the path for `/users/{user_id}` would match also for `/users/me`, "thinking" that it's receiving a parameter `user_id` with a value of `"me"`.
 
 Similarly, you cannot redefine a path operation:
 
-{* ../../docs_src/path_params/tutorial003b.py hl[6,11] *}
+```Python hl_lines="6  11"
+{!../../../docs_src/path_params/tutorial003b.py!}
+```
 
 The first one will always be used since the path matches first.
 
@@ -141,7 +149,9 @@ By inheriting from `str` the API docs will be able to know that the values must 
 
 Then create class attributes with fixed values, which will be the available valid values:
 
-{* ../../docs_src/path_params/tutorial005.py hl[1,6:9] *}
+```Python hl_lines="1  6-9"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
 /// info
 
@@ -159,7 +169,9 @@ If you are wondering, "AlexNet", "ResNet", and "LeNet" are just names of Machine
 
 Then create a *path parameter* with a type annotation using the enum class you created (`ModelName`):
 
-{* ../../docs_src/path_params/tutorial005.py hl[16] *}
+```Python hl_lines="16"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
 ### Check the docs
 
@@ -175,13 +187,17 @@ The value of the *path parameter* will be an *enumeration member*.
 
 You can compare it with the *enumeration member* in your created enum `ModelName`:
 
-{* ../../docs_src/path_params/tutorial005.py hl[17] *}
+```Python hl_lines="17"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
 #### Get the *enumeration value*
 
 You can get the actual value (a `str` in this case) using `model_name.value`, or in general, `your_enum_member.value`:
 
-{* ../../docs_src/path_params/tutorial005.py hl[20] *}
+```Python hl_lines="20"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
 /// tip
 
@@ -195,7 +211,9 @@ You can return *enum members* from your *path operation*, even nested in a JSON 
 
 They will be converted to their corresponding values (strings in this case) before returning them to the client:
 
-{* ../../docs_src/path_params/tutorial005.py hl[18,21,23] *}
+```Python hl_lines="18  21  23"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
 In your client you will get a JSON response like:
 
@@ -234,7 +252,9 @@ In this case, the name of the parameter is `file_path`, and the last part, `:pat
 
 So, you can use it with:
 
-{* ../../docs_src/path_params/tutorial004.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/path_params/tutorial004.py!}
+```
 
 /// tip
 

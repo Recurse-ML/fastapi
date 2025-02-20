@@ -1,37 +1,18 @@
-import importlib
-
 import pytest
-from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from fastapi.websockets import WebSocketDisconnect
 
-from ...utils import needs_py39, needs_py310
+from docs_src.websockets.tutorial002 import app
 
 
-@pytest.fixture(
-    name="app",
-    params=[
-        "tutorial002",
-        pytest.param("tutorial002_py310", marks=needs_py310),
-        "tutorial002_an",
-        pytest.param("tutorial002_an_py39", marks=needs_py39),
-        pytest.param("tutorial002_an_py310", marks=needs_py310),
-    ],
-)
-def get_app(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.websockets.{request.param}")
-
-    return mod.app
-
-
-def test_main(app: FastAPI):
+def test_main():
     client = TestClient(app)
     response = client.get("/")
     assert response.status_code == 200, response.text
     assert b"<!DOCTYPE html>" in response.content
 
 
-def test_websocket_with_cookie(app: FastAPI):
+def test_websocket_with_cookie():
     client = TestClient(app, cookies={"session": "fakesession"})
     with pytest.raises(WebSocketDisconnect):
         with client.websocket_connect("/items/foo/ws") as websocket:
@@ -49,7 +30,7 @@ def test_websocket_with_cookie(app: FastAPI):
             assert data == f"Message text was: {message}, for item ID: foo"
 
 
-def test_websocket_with_header(app: FastAPI):
+def test_websocket_with_header():
     client = TestClient(app)
     with pytest.raises(WebSocketDisconnect):
         with client.websocket_connect("/items/bar/ws?token=some-token") as websocket:
@@ -67,7 +48,7 @@ def test_websocket_with_header(app: FastAPI):
             assert data == f"Message text was: {message}, for item ID: bar"
 
 
-def test_websocket_with_header_and_query(app: FastAPI):
+def test_websocket_with_header_and_query():
     client = TestClient(app)
     with pytest.raises(WebSocketDisconnect):
         with client.websocket_connect("/items/2/ws?q=3&token=some-token") as websocket:
@@ -89,7 +70,7 @@ def test_websocket_with_header_and_query(app: FastAPI):
             assert data == f"Message text was: {message}, for item ID: 2"
 
 
-def test_websocket_no_credentials(app: FastAPI):
+def test_websocket_no_credentials():
     client = TestClient(app)
     with pytest.raises(WebSocketDisconnect):
         with client.websocket_connect("/items/foo/ws"):
@@ -98,7 +79,7 @@ def test_websocket_no_credentials(app: FastAPI):
             )  # pragma: no cover
 
 
-def test_websocket_invalid_data(app: FastAPI):
+def test_websocket_invalid_data():
     client = TestClient(app)
     with pytest.raises(WebSocketDisconnect):
         with client.websocket_connect("/items/foo/ws?q=bar&token=some-token"):

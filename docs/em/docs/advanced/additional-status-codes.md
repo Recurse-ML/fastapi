@@ -14,7 +14,9 @@
 
 🏆 👈, 🗄 `JSONResponse`, &amp; 📨 👆 🎚 📤 🔗, ⚒ `status_code` 👈 👆 💚:
 
-{* ../../docs_src/additional_status_codes/tutorial001.py hl[4,25] *}
+```Python hl_lines="4  25"
+{!../../../docs_src/additional_status_codes/tutorial001.py!}
+```
 
 /// warning
 
@@ -26,7 +28,7 @@
 
 ///
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 👆 💪 ⚙️ `from starlette.responses import JSONResponse`.
 

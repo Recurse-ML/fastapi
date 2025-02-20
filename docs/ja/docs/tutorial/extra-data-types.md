@@ -55,8 +55,12 @@
 
 ここでは、上記の型のいくつかを使用したパラメータを持つ*path operation*の例を示します。
 
-{* ../../docs_src/extra_data_types/tutorial001.py hl[1,2,12:16] *}
+```Python hl_lines="1 2 12-16"
+{!../../../docs_src/extra_data_types/tutorial001.py!}
+```
 
 関数内のパラメータは自然なデータ型を持っていることに注意してください。そして、以下のように通常の日付操作を行うことができます:
 
-{* ../../docs_src/extra_data_types/tutorial001.py hl[18,19] *}
+```Python hl_lines="18 19"
+{!../../../docs_src/extra_data_types/tutorial001.py!}
+```
