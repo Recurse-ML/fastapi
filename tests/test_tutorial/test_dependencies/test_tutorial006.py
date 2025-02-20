@@ -1,28 +1,12 @@
-import importlib
-
-import pytest
 from dirty_equals import IsDict
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39
+from docs_src.dependencies.tutorial006 import app
+
+client = TestClient(app)
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial006",
-        "tutorial006_an",
-        pytest.param("tutorial006_an_py39", marks=needs_py39),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.dependencies.{request.param}")
-
-    client = TestClient(mod.app)
-    return client
-
-
-def test_get_no_headers(client: TestClient):
+def test_get_no_headers():
     response = client.get("/items/")
     assert response.status_code == 422, response.text
     assert response.json() == IsDict(
@@ -61,13 +45,13 @@ def test_get_no_headers(client: TestClient):
     )
 
 
-def test_get_invalid_one_header(client: TestClient):
+def test_get_invalid_one_header():
     response = client.get("/items/", headers={"X-Token": "invalid"})
     assert response.status_code == 400, response.text
     assert response.json() == {"detail": "X-Token header invalid"}
 
 
-def test_get_invalid_second_header(client: TestClient):
+def test_get_invalid_second_header():
     response = client.get(
         "/items/", headers={"X-Token": "fake-super-secret-token", "X-Key": "invalid"}
     )
@@ -75,7 +59,7 @@ def test_get_invalid_second_header(client: TestClient):
     assert response.json() == {"detail": "X-Key header invalid"}
 
 
-def test_get_valid_headers(client: TestClient):
+def test_get_valid_headers():
     response = client.get(
         "/items/",
         headers={
@@ -87,7 +71,7 @@ def test_get_valid_headers(client: TestClient):
     assert response.json() == [{"item": "Foo"}, {"item": "Bar"}]
 
 
-def test_openapi_schema(client: TestClient):
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {

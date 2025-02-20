@@ -6,7 +6,21 @@
 
 🥇 🗄 `Header`:
 
-{* ../../docs_src/header_params/tutorial001.py hl[3] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="3"
+{!> ../../../docs_src/header_params/tutorial001.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="1"
+{!> ../../../docs_src/header_params/tutorial001_py310.py!}
+```
+
+////
 
 ## 📣 `Header` 🔢
 
@@ -14,9 +28,23 @@
 
 🥇 💲 🔢 💲, 👆 💪 🚶‍♀️ 🌐 ➕ 🔬 ⚖️ ✍ 🔢:
 
-{* ../../docs_src/header_params/tutorial001.py hl[9] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
 
-/// note | 📡 ℹ
+```Python hl_lines="9"
+{!> ../../../docs_src/header_params/tutorial001.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="7"
+{!> ../../../docs_src/header_params/tutorial001_py310.py!}
+```
+
+////
+
+/// note | "📡 ℹ"
 
 `Header` "👭" 🎓 `Path`, `Query` &amp; `Cookie`. ⚫️ 😖 ⚪️➡️ 🎏 ⚠ `Param` 🎓.
 
@@ -46,7 +74,21 @@
 
 🚥 🤔 👆 💪 ❎ 🏧 🛠️ 🎦 🔠, ⚒ 🔢 `convert_underscores` `Header` `False`:
 
-{* ../../docs_src/header_params/tutorial002.py hl[10] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="10"
+{!> ../../../docs_src/header_params/tutorial002.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="8"
+{!> ../../../docs_src/header_params/tutorial002_py310.py!}
+```
+
+////
 
 /// warning
 
@@ -64,7 +106,29 @@
 
 🖼, 📣 🎚 `X-Token` 👈 💪 😑 🌅 🌘 🕐, 👆 💪 ✍:
 
-{* ../../docs_src/header_params/tutorial003.py hl[9] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="9"
+{!> ../../../docs_src/header_params/tutorial003.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.9️⃣ &amp; 🔛
+
+```Python hl_lines="9"
+{!> ../../../docs_src/header_params/tutorial003_py39.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="7"
+{!> ../../../docs_src/header_params/tutorial003_py310.py!}
+```
+
+////
 
 🚥 👆 🔗 ⏮️ 👈 *➡ 🛠️* 📨 2️⃣ 🇺🇸🔍 🎚 💖:
 

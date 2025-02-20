@@ -15,7 +15,9 @@
 
 首先导入 `BackgroundTasks` 并在 *路径操作函数* 中使用类型声明 `BackgroundTasks` 定义一个参数：
 
-{* ../../docs_src/background_tasks/tutorial001.py hl[1, 13] *}
+```Python hl_lines="1  13"
+{!../../../docs_src/background_tasks/tutorial001.py!}
+```
 
 **FastAPI** 会创建一个 `BackgroundTasks` 类型的对象并作为该参数传入。
 
@@ -31,13 +33,17 @@
 
 由于写操作不使用 `async` 和 `await`，我们用普通的 `def` 定义函数：
 
-{* ../../docs_src/background_tasks/tutorial001.py hl[6:9] *}
+```Python hl_lines="6-9"
+{!../../../docs_src/background_tasks/tutorial001.py!}
+```
 
 ## 添加后台任务
 
 在你的 *路径操作函数* 里，用 `.add_task()` 方法将任务函数传到 *后台任务* 对象中：
 
-{* ../../docs_src/background_tasks/tutorial001.py hl[14] *}
+```Python hl_lines="14"
+{!../../../docs_src/background_tasks/tutorial001.py!}
+```
 
 `.add_task()` 接收以下参数：
 
@@ -53,19 +59,25 @@
 
 //// tab | Python 3.10+
 
-{* ../../docs_src/background_tasks/tutorial002_an_py310.py hl[13, 15, 22, 25] *}
+```Python hl_lines="13  15  22  25"
+{!> ../../../docs_src/background_tasks/tutorial002_an_py310.py!}
+```
 
 ////
 
 //// tab | Python 3.9+
 
-{* ../../docs_src/background_tasks/tutorial002_an_py39.py hl[13, 15, 22, 25] *}
+```Python hl_lines="13  15  22  25"
+{!> ../../../docs_src/background_tasks/tutorial002_an_py39.py!}
+```
 
 ////
 
 //// tab | Python 3.8+
 
-{* ../../docs_src/background_tasks/tutorial002_an.py hl[14, 16, 23, 26] *}
+```Python hl_lines="14  16  23  26"
+{!> ../../../docs_src/background_tasks/tutorial002_an.py!}
+```
 
 ////
 
@@ -77,7 +89,9 @@
 
 ///
 
-{* ../../docs_src/background_tasks/tutorial002_py310.py hl[11, 13, 20, 23] *}
+```Python hl_lines="11  13  20  23"
+{!> ../../../docs_src/background_tasks/tutorial002_py310.py!}
+```
 
 ////
 
@@ -89,7 +103,9 @@
 
 ///
 
-{* ../../docs_src/background_tasks/tutorial002.py hl[13, 15, 22, 25] *}
+```Python hl_lines="13  15  22  25"
+{!> ../../../docs_src/background_tasks/tutorial002.py!}
+```
 
 ////
 
@@ -116,6 +132,8 @@
 如果您需要执行繁重的后台计算，并且不一定需要由同一进程运行（例如，您不需要共享内存、变量等），那么使用其他更大的工具（如 <a href="https://docs.celeryq.dev" class="external-link" target="_blank">Celery</a>）可能更好。
 
 它们往往需要更复杂的配置，即消息/作业队列管理器，如RabbitMQ或Redis，但它们允许您在多个进程中运行后台任务，甚至是在多个服务器中。
+
+要查看示例，查阅 [Project Generators](../project-generation.md){.internal-link target=_blank}，它们都包括已经配置的Celery。
 
 但是，如果您需要从同一个**FastAPI**应用程序访问变量和对象，或者您需要执行小型后台任务（如发送电子邮件通知），您只需使用 `BackgroundTasks` 即可。
 

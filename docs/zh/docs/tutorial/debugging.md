@@ -6,7 +6,9 @@
 
 在你的 FastAPI 应用中直接导入 `uvicorn` 并运行：
 
-{* ../../docs_src/debugging/tutorial001.py hl[1,15] *}
+```Python hl_lines="1  15"
+{!../../../docs_src/debugging/tutorial001.py!}
+```
 
 ### 关于 `__name__ == "__main__"`
 

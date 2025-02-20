@@ -8,7 +8,9 @@
 * `@app.delete()`
 * ♒️.
 
-{* ../../docs_src/response_status_code/tutorial001.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/response_status_code/tutorial001.py!}
+```
 
 /// note
 
@@ -74,7 +76,9 @@ FastAPI 💭 👉, &amp; 🔜 🏭 🗄 🩺 👈 🇵🇸 📤 🙅‍♂ 📨 
 
 ➡️ 👀 ⏮️ 🖼 🔄:
 
-{* ../../docs_src/response_status_code/tutorial001.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/response_status_code/tutorial001.py!}
+```
 
 `201` 👔 📟 "✍".
 
@@ -82,13 +86,15 @@ FastAPI 💭 👉, &amp; 🔜 🏭 🗄 🩺 👈 🇵🇸 📤 🙅‍♂ 📨 
 
 👆 💪 ⚙️ 🏪 🔢 ⚪️➡️ `fastapi.status`.
 
-{* ../../docs_src/response_status_code/tutorial002.py hl[1,6] *}
+```Python hl_lines="1  6"
+{!../../../docs_src/response_status_code/tutorial002.py!}
+```
 
 👫 🏪, 👫 🧑‍🤝‍🧑 🎏 🔢, ✋️ 👈 🌌 👆 💪 ⚙️ 👨‍🎨 📋 🔎 👫:
 
 <img src="/img/tutorial/response-status-code/image02.png">
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 👆 💪 ⚙️ `from starlette import status`.
 

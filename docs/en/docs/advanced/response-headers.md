@@ -6,7 +6,9 @@ You can declare a parameter of type `Response` in your *path operation function*
 
 And then you can set headers in that *temporal* response object.
 
-{* ../../docs_src/response_headers/tutorial002.py hl[1, 7:8] *}
+```Python hl_lines="1  7-8"
+{!../../../docs_src/response_headers/tutorial002.py!}
+```
 
 And then you can return any object you need, as you normally would (a `dict`, a database model, etc).
 
@@ -22,9 +24,11 @@ You can also add headers when you return a `Response` directly.
 
 Create a response as described in [Return a Response Directly](response-directly.md){.internal-link target=_blank} and pass the headers as an additional parameter:
 
-{* ../../docs_src/response_headers/tutorial001.py hl[10:12] *}
+```Python hl_lines="10-12"
+{!../../../docs_src/response_headers/tutorial001.py!}
+```
 
-/// note | Technical Details
+/// note | "Technical Details"
 
 You could also use `from starlette.responses import Response` or `from starlette.responses import JSONResponse`.
 
