@@ -2,7 +2,7 @@
 
 Es gibt mehrere Konfigurations-Parameter, die Sie Ihrem *Pfadoperation-Dekorator* übergeben können.
 
-/// warning | Achtung
+/// warning | "Achtung"
 
 Beachten Sie, dass diese Parameter direkt dem *Pfadoperation-Dekorator* übergeben werden, nicht der *Pfadoperation-Funktion*.
 
@@ -16,11 +16,33 @@ Sie können direkt den `int`-Code übergeben, etwa `404`.
 
 Aber falls Sie sich nicht mehr erinnern, wofür jede Nummer steht, können Sie die Abkürzungs-Konstanten in `status` verwenden:
 
-{* ../../docs_src/path_operation_configuration/tutorial001_py310.py hl[1,15] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="1  15"
+{!> ../../../docs_src/path_operation_configuration/tutorial001_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="3  17"
+{!> ../../../docs_src/path_operation_configuration/tutorial001_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="3  17"
+{!> ../../../docs_src/path_operation_configuration/tutorial001.py!}
+```
+
+////
 
 Dieser Statuscode wird in der Response verwendet und zum OpenAPI-Schema hinzugefügt.
 
-/// note | Technische Details
+/// note | "Technische Details"
 
 Sie können auch `from starlette import status` verwenden.
 
@@ -32,7 +54,29 @@ Sie können auch `from starlette import status` verwenden.
 
 Sie können Ihrer *Pfadoperation* Tags hinzufügen, mittels des Parameters `tags`, dem eine `list`e von `str`s übergeben wird (in der Regel nur ein `str`):
 
-{* ../../docs_src/path_operation_configuration/tutorial002_py310.py hl[15,20,25] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="15  20  25"
+{!> ../../../docs_src/path_operation_configuration/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="17  22  27"
+{!> ../../../docs_src/path_operation_configuration/tutorial002_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="17  22  27"
+{!> ../../../docs_src/path_operation_configuration/tutorial002.py!}
+```
+
+////
 
 Diese werden zum OpenAPI-Schema hinzugefügt und von den automatischen Dokumentations-Benutzeroberflächen verwendet:
 
@@ -46,13 +90,37 @@ In diesem Fall macht es Sinn, die Tags in einem `Enum` zu speichern.
 
 **FastAPI** unterstützt diese genauso wie einfache Strings:
 
-{* ../../docs_src/path_operation_configuration/tutorial002b.py hl[1,8:10,13,18] *}
+```Python hl_lines="1  8-10  13  18"
+{!../../../docs_src/path_operation_configuration/tutorial002b.py!}
+```
 
 ## Zusammenfassung und Beschreibung
 
 Sie können eine Zusammenfassung (`summary`) und eine Beschreibung (`description`) hinzufügen:
 
-{* ../../docs_src/path_operation_configuration/tutorial003_py310.py hl[18:19] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="18-19"
+{!> ../../../docs_src/path_operation_configuration/tutorial003_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="20-21"
+{!> ../../../docs_src/path_operation_configuration/tutorial003_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="20-21"
+{!> ../../../docs_src/path_operation_configuration/tutorial003.py!}
+```
+
+////
 
 ## Beschreibung mittels Docstring
 
@@ -60,7 +128,29 @@ Da Beschreibungen oft mehrere Zeilen lang sind, können Sie die Beschreibung der
 
 Sie können im Docstring <a href="https://en.wikipedia.org/wiki/Markdown" class="external-link" target="_blank">Markdown</a> schreiben, es wird korrekt interpretiert und angezeigt (die Einrückung des Docstring beachtend).
 
-{* ../../docs_src/path_operation_configuration/tutorial004_py310.py hl[17:25] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="17-25"
+{!> ../../../docs_src/path_operation_configuration/tutorial004_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="19-27"
+{!> ../../../docs_src/path_operation_configuration/tutorial004_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="19-27"
+{!> ../../../docs_src/path_operation_configuration/tutorial004.py!}
+```
+
+////
 
 In der interaktiven Dokumentation sieht das dann so aus:
 
@@ -70,7 +160,29 @@ In der interaktiven Dokumentation sieht das dann so aus:
 
 Die Response können Sie mit dem Parameter `response_description` beschreiben:
 
-{* ../../docs_src/path_operation_configuration/tutorial005_py310.py hl[19] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="19"
+{!> ../../../docs_src/path_operation_configuration/tutorial005_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="21"
+{!> ../../../docs_src/path_operation_configuration/tutorial005_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="21"
+{!> ../../../docs_src/path_operation_configuration/tutorial005.py!}
+```
+
+////
 
 /// info
 
@@ -92,7 +204,9 @@ Daher, wenn Sie keine vergeben, wird **FastAPI** automatisch eine für „Erfolg
 
 Wenn Sie eine *Pfadoperation* als <abbr title="deprecated – obsolet, veraltet: Es soll nicht mehr verwendet werden">deprecated</abbr> kennzeichnen möchten, ohne sie zu entfernen, fügen Sie den Parameter `deprecated` hinzu:
 
-{* ../../docs_src/path_operation_configuration/tutorial006.py hl[16] *}
+```Python hl_lines="16"
+{!../../../docs_src/path_operation_configuration/tutorial006.py!}
+```
 
 Sie wird in der interaktiven Dokumentation gut sichtbar als deprecated markiert werden:
 

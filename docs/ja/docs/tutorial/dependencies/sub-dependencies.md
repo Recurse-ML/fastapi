@@ -10,7 +10,9 @@
 
 以下のような最初の依存関係（「依存可能なもの」）を作成することができます:
 
-{* ../../docs_src/dependencies/tutorial005.py hl[8,9] *}
+```Python hl_lines="8 9"
+{!../../../docs_src/dependencies/tutorial005.py!}
+```
 
 これはオプショナルのクエリパラメータ`q`を`str`として宣言し、それを返すだけです。
 
@@ -20,7 +22,9 @@
 
 そして、別の依存関数（「依存可能なもの」）を作成して、同時にそれ自身の依存関係を宣言することができます（つまりそれ自身も「依存」です）:
 
-{* ../../docs_src/dependencies/tutorial005.py hl[13] *}
+```Python hl_lines="13"
+{!../../../docs_src/dependencies/tutorial005.py!}
+```
 
 宣言されたパラメータに注目してみましょう:
 
@@ -33,9 +37,11 @@
 
 以下のように依存関係を使用することができます:
 
-{* ../../docs_src/dependencies/tutorial005.py hl[21] *}
+```Python hl_lines="21"
+{!../../../docs_src/dependencies/tutorial005.py!}
+```
 
-/// info | 情報
+/// info | "情報"
 
 *path operation関数*の中で宣言している依存関係は`query_or_cookie_extractor`の１つだけであることに注意してください。
 
@@ -75,7 +81,7 @@ async def needy_dependency(fresh_value: str = Depends(get_value, use_cache=False
 
 しかし、それでも非常に強力で、任意の深くネストされた依存関係「グラフ」（ツリー）を宣言することができます。
 
-/// tip | 豆知識
+/// tip | "豆知識"
 
 これらの単純な例では、全てが役に立つとは言えないかもしれません。
 

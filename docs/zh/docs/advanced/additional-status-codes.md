@@ -14,9 +14,11 @@
 
 要实现它，导入 `JSONResponse`，然后在其中直接返回你的内容，并将 `status_code` 设置为为你要的值。
 
-{* ../../docs_src/additional_status_codes/tutorial001.py hl[4,25] *}
+```Python hl_lines="4  25"
+{!../../../docs_src/additional_status_codes/tutorial001.py!}
+```
 
-/// warning | 警告
+/// warning | "警告"
 
 当你直接返回一个像上面例子中的 `Response` 对象时，它会直接返回。
 
@@ -26,7 +28,7 @@ FastAPI 不会用模型等对该响应进行序列化。
 
 ///
 
-/// note | 技术细节
+/// note | "技术细节"
 
 你也可以使用 `from starlette.responses import JSONResponse`。　
 

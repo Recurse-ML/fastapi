@@ -1,33 +1,18 @@
-import importlib
-from types import ModuleType
-
-import pytest
 from dirty_equals import IsDict, IsOneOf
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39, needs_py310
-
-
-@pytest.fixture(
-    name="mod",
-    params=[
-        "tutorial005",
-        pytest.param("tutorial005_py310", marks=needs_py310),
-        "tutorial005_an",
-        pytest.param("tutorial005_py39", marks=needs_py39),
-        pytest.param("tutorial005_an_py39", marks=needs_py39),
-        pytest.param("tutorial005_an_py310", marks=needs_py310),
-    ],
+from docs_src.security.tutorial005 import (
+    app,
+    create_access_token,
+    fake_users_db,
+    get_password_hash,
+    verify_password,
 )
-def get_mod(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.security.{request.param}")
 
-    return mod
+client = TestClient(app)
 
 
-def get_access_token(
-    *, username="johndoe", password="secret", scope=None, client: TestClient
-):
+def get_access_token(username="johndoe", password="secret", scope=None):
     data = {"username": username, "password": password}
     if scope:
         data["scope"] = scope
@@ -37,8 +22,7 @@ def get_access_token(
     return access_token
 
 
-def test_login(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_login():
     response = client.post("/token", data={"username": "johndoe", "password": "secret"})
     assert response.status_code == 200, response.text
     content = response.json()
@@ -46,8 +30,7 @@ def test_login(mod: ModuleType):
     assert content["token_type"] == "bearer"
 
 
-def test_login_incorrect_password(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_login_incorrect_password():
     response = client.post(
         "/token", data={"username": "johndoe", "password": "incorrect"}
     )
@@ -55,24 +38,21 @@ def test_login_incorrect_password(mod: ModuleType):
     assert response.json() == {"detail": "Incorrect username or password"}
 
 
-def test_login_incorrect_username(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_login_incorrect_username():
     response = client.post("/token", data={"username": "foo", "password": "secret"})
     assert response.status_code == 400, response.text
     assert response.json() == {"detail": "Incorrect username or password"}
 
 
-def test_no_token(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_no_token():
     response = client.get("/users/me")
     assert response.status_code == 401, response.text
     assert response.json() == {"detail": "Not authenticated"}
     assert response.headers["WWW-Authenticate"] == "Bearer"
 
 
-def test_token(mod: ModuleType):
-    client = TestClient(mod.app)
-    access_token = get_access_token(scope="me", client=client)
+def test_token():
+    access_token = get_access_token(scope="me")
     response = client.get(
         "/users/me", headers={"Authorization": f"Bearer {access_token}"}
     )
@@ -85,16 +65,14 @@ def test_token(mod: ModuleType):
     }
 
 
-def test_incorrect_token(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_incorrect_token():
     response = client.get("/users/me", headers={"Authorization": "Bearer nonexistent"})
     assert response.status_code == 401, response.text
     assert response.json() == {"detail": "Could not validate credentials"}
     assert response.headers["WWW-Authenticate"] == 'Bearer scope="me"'
 
 
-def test_incorrect_token_type(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_incorrect_token_type():
     response = client.get(
         "/users/me", headers={"Authorization": "Notexistent testtoken"}
     )
@@ -103,24 +81,20 @@ def test_incorrect_token_type(mod: ModuleType):
     assert response.headers["WWW-Authenticate"] == "Bearer"
 
 
-def test_verify_password(mod: ModuleType):
-    assert mod.verify_password(
-        "secret", mod.fake_users_db["johndoe"]["hashed_password"]
-    )
+def test_verify_password():
+    assert verify_password("secret", fake_users_db["johndoe"]["hashed_password"])
 
 
-def test_get_password_hash(mod: ModuleType):
-    assert mod.get_password_hash("secretalice")
+def test_get_password_hash():
+    assert get_password_hash("secretalice")
 
 
-def test_create_access_token(mod: ModuleType):
-    access_token = mod.create_access_token(data={"data": "foo"})
+def test_create_access_token():
+    access_token = create_access_token(data={"data": "foo"})
     assert access_token
 
 
-def test_token_no_sub(mod: ModuleType):
-    client = TestClient(mod.app)
-
+def test_token_no_sub():
     response = client.get(
         "/users/me",
         headers={
@@ -132,9 +106,7 @@ def test_token_no_sub(mod: ModuleType):
     assert response.headers["WWW-Authenticate"] == 'Bearer scope="me"'
 
 
-def test_token_no_username(mod: ModuleType):
-    client = TestClient(mod.app)
-
+def test_token_no_username():
     response = client.get(
         "/users/me",
         headers={
@@ -146,10 +118,8 @@ def test_token_no_username(mod: ModuleType):
     assert response.headers["WWW-Authenticate"] == 'Bearer scope="me"'
 
 
-def test_token_no_scope(mod: ModuleType):
-    client = TestClient(mod.app)
-
-    access_token = get_access_token(client=client)
+def test_token_no_scope():
+    access_token = get_access_token()
     response = client.get(
         "/users/me", headers={"Authorization": f"Bearer {access_token}"}
     )
@@ -158,9 +128,7 @@ def test_token_no_scope(mod: ModuleType):
     assert response.headers["WWW-Authenticate"] == 'Bearer scope="me"'
 
 
-def test_token_nonexistent_user(mod: ModuleType):
-    client = TestClient(mod.app)
-
+def test_token_nonexistent_user():
     response = client.get(
         "/users/me",
         headers={
@@ -172,11 +140,9 @@ def test_token_nonexistent_user(mod: ModuleType):
     assert response.headers["WWW-Authenticate"] == 'Bearer scope="me"'
 
 
-def test_token_inactive_user(mod: ModuleType):
-    client = TestClient(mod.app)
-
+def test_token_inactive_user():
     access_token = get_access_token(
-        username="alice", password="secretalice", scope="me", client=client
+        username="alice", password="secretalice", scope="me"
     )
     response = client.get(
         "/users/me", headers={"Authorization": f"Bearer {access_token}"}
@@ -185,9 +151,8 @@ def test_token_inactive_user(mod: ModuleType):
     assert response.json() == {"detail": "Inactive user"}
 
 
-def test_read_items(mod: ModuleType):
-    client = TestClient(mod.app)
-    access_token = get_access_token(scope="me items", client=client)
+def test_read_items():
+    access_token = get_access_token(scope="me items")
     response = client.get(
         "/users/me/items/", headers={"Authorization": f"Bearer {access_token}"}
     )
@@ -195,9 +160,8 @@ def test_read_items(mod: ModuleType):
     assert response.json() == [{"item_id": "Foo", "owner": "johndoe"}]
 
 
-def test_read_system_status(mod: ModuleType):
-    client = TestClient(mod.app)
-    access_token = get_access_token(client=client)
+def test_read_system_status():
+    access_token = get_access_token()
     response = client.get(
         "/status/", headers={"Authorization": f"Bearer {access_token}"}
     )
@@ -205,16 +169,14 @@ def test_read_system_status(mod: ModuleType):
     assert response.json() == {"status": "ok"}
 
 
-def test_read_system_status_no_token(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_read_system_status_no_token():
     response = client.get("/status/")
     assert response.status_code == 401, response.text
     assert response.json() == {"detail": "Not authenticated"}
     assert response.headers["WWW-Authenticate"] == "Bearer"
 
 
-def test_openapi_schema(mod: ModuleType):
-    client = TestClient(mod.app)
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {
@@ -363,7 +325,7 @@ def test_openapi_schema(mod: ModuleType):
                             {
                                 "title": "Grant Type",
                                 "anyOf": [
-                                    {"pattern": "^password$", "type": "string"},
+                                    {"pattern": "password", "type": "string"},
                                     {"type": "null"},
                                 ],
                             }
@@ -372,7 +334,7 @@ def test_openapi_schema(mod: ModuleType):
                             # TODO: remove when deprecating Pydantic v1
                             {
                                 "title": "Grant Type",
-                                "pattern": "^password$",
+                                "pattern": "password",
                                 "type": "string",
                             }
                         ),
