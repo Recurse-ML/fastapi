@@ -10,7 +10,9 @@ Wenn Sie zwei unabhängige FastAPI-Anwendungen mit deren eigenen unabhängigen O
 
 Erstellen Sie zunächst die Hauptanwendung **FastAPI** und deren *Pfadoperationen*:
 
-{* ../../docs_src/sub_applications/tutorial001.py hl[3,6:8] *}
+```Python hl_lines="3  6-8"
+{!../../../docs_src/sub_applications/tutorial001.py!}
+```
 
 ### Unteranwendung
 
@@ -18,7 +20,9 @@ Erstellen Sie dann Ihre Unteranwendung und deren *Pfadoperationen*.
 
 Diese Unteranwendung ist nur eine weitere Standard-FastAPI-Anwendung, aber diese wird „gemountet“:
 
-{* ../../docs_src/sub_applications/tutorial001.py hl[11,14:16] *}
+```Python hl_lines="11  14-16"
+{!../../../docs_src/sub_applications/tutorial001.py!}
+```
 
 ### Die Unteranwendung mounten
 
@@ -26,7 +30,9 @@ Mounten Sie in Ihrer Top-Level-Anwendung `app` die Unteranwendung `subapi`.
 
 In diesem Fall wird sie im Pfad `/subapi` gemountet:
 
-{* ../../docs_src/sub_applications/tutorial001.py hl[11,19] *}
+```Python hl_lines="11  19"
+{!../../../docs_src/sub_applications/tutorial001.py!}
+```
 
 ### Es in der automatischen API-Dokumentation betrachten
 

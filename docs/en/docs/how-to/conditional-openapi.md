@@ -29,7 +29,9 @@ You can easily use the same Pydantic settings to configure your generated OpenAP
 
 For example:
 
-{* ../../docs_src/conditional_openapi/tutorial001.py hl[6,11] *}
+```Python hl_lines="6  11"
+{!../../../docs_src/conditional_openapi/tutorial001.py!}
+```
 
 Here we declare the setting `openapi_url` with the same default of `"/openapi.json"`.
 

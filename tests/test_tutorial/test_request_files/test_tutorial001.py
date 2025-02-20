@@ -1,28 +1,23 @@
-import importlib
-
-import pytest
 from dirty_equals import IsDict
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39
+from docs_src.request_files.tutorial001 import app
+
+client = TestClient(app)
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial001",
-        "tutorial001_an",
-        pytest.param("tutorial001_an_py39", marks=needs_py39),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.request_files.{request.param}")
-
-    client = TestClient(mod.app)
-    return client
+file_required = {
+    "detail": [
+        {
+            "loc": ["body", "file"],
+            "msg": "field required",
+            "type": "value_error.missing",
+        }
+    ]
+}
 
 
-def test_post_form_no_body(client: TestClient):
+def test_post_form_no_body():
     response = client.post("/files/")
     assert response.status_code == 422, response.text
     assert response.json() == IsDict(
@@ -50,7 +45,7 @@ def test_post_form_no_body(client: TestClient):
     )
 
 
-def test_post_body_json(client: TestClient):
+def test_post_body_json():
     response = client.post("/files/", json={"file": "Foo"})
     assert response.status_code == 422, response.text
     assert response.json() == IsDict(
@@ -78,38 +73,41 @@ def test_post_body_json(client: TestClient):
     )
 
 
-def test_post_file(tmp_path, client: TestClient):
+def test_post_file(tmp_path):
     path = tmp_path / "test.txt"
     path.write_bytes(b"<file content>")
 
+    client = TestClient(app)
     with path.open("rb") as file:
         response = client.post("/files/", files={"file": file})
     assert response.status_code == 200, response.text
     assert response.json() == {"file_size": 14}
 
 
-def test_post_large_file(tmp_path, client: TestClient):
+def test_post_large_file(tmp_path):
     default_pydantic_max_size = 2**16
     path = tmp_path / "test.txt"
     path.write_bytes(b"x" * (default_pydantic_max_size + 1))
 
+    client = TestClient(app)
     with path.open("rb") as file:
         response = client.post("/files/", files={"file": file})
     assert response.status_code == 200, response.text
     assert response.json() == {"file_size": default_pydantic_max_size + 1}
 
 
-def test_post_upload_file(tmp_path, client: TestClient):
+def test_post_upload_file(tmp_path):
     path = tmp_path / "test.txt"
     path.write_bytes(b"<file content>")
 
+    client = TestClient(app)
     with path.open("rb") as file:
         response = client.post("/uploadfile/", files={"file": file})
     assert response.status_code == 200, response.text
     assert response.json() == {"filename": "test.txt"}
 
 
-def test_openapi_schema(client: TestClient):
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {

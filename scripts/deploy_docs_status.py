@@ -2,7 +2,7 @@ import logging
 import re
 
 from github import Github
-from pydantic import BaseModel, SecretStr
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings
 
 
@@ -15,13 +15,7 @@ class Settings(BaseSettings):
     is_done: bool = False
 
 
-class LinkData(BaseModel):
-    previous_link: str
-    preview_link: str
-    en_link: str | None = None
-
-
-def main() -> None:
+def main():
     logging.basicConfig(level=logging.INFO)
     settings = Settings()
 
@@ -66,7 +60,7 @@ def main() -> None:
     docs_files = [f for f in files if f.filename.startswith("docs/")]
 
     deploy_url = settings.deploy_url.rstrip("/")
-    lang_links: dict[str, list[LinkData]] = {}
+    lang_links: dict[str, list[str]] = {}
     for f in docs_files:
         match = re.match(r"docs/([^/]+)/docs/(.*)", f.filename)
         if not match:
@@ -77,22 +71,15 @@ def main() -> None:
             path = path.replace("index.md", "")
         else:
             path = path.replace(".md", "/")
-        en_path = path
         if lang == "en":
-            use_path = en_path
+            link = f"{deploy_url}/{path}"
         else:
-            use_path = f"{lang}/{path}"
-        link = LinkData(
-            previous_link=f"https://fastapi.tiangolo.com/{use_path}",
-            preview_link=f"{deploy_url}/{use_path}",
-        )
-        if lang != "en":
-            link.en_link = f"https://fastapi.tiangolo.com/{en_path}"
+            link = f"{deploy_url}/{lang}/{path}"
         lang_links.setdefault(lang, []).append(link)
 
-    links: list[LinkData] = []
+    links: list[str] = []
     en_links = lang_links.get("en", [])
-    en_links.sort(key=lambda x: x.preview_link)
+    en_links.sort()
     links.extend(en_links)
 
     langs = list(lang_links.keys())
@@ -101,19 +88,14 @@ def main() -> None:
         if lang == "en":
             continue
         current_lang_links = lang_links[lang]
-        current_lang_links.sort(key=lambda x: x.preview_link)
+        current_lang_links.sort()
         links.extend(current_lang_links)
 
     message = f"📝 Docs preview for commit {settings.commit_sha} at: {deploy_url}"
 
     if links:
         message += "\n\n### Modified Pages\n\n"
-        for link in links:
-            message += f"* {link.preview_link}"
-            message += f" - ([before]({link.previous_link}))"
-            if link.en_link:
-                message += f" - ([English]({link.en_link}))"
-            message += "\n"
+        message += "\n".join([f"* {link}" for link in links])
 
     print(message)
     use_pr.as_issue().create_comment(message)

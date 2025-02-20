@@ -2,7 +2,9 @@
 
 一つ前の章では、（依存性注入システムに基づいた）セキュリティシステムは、 *path operation関数* に `str` として `token` を与えていました:
 
-{* ../../docs_src/security/tutorial001.py hl[10] *}
+```Python hl_lines="10"
+{!../../../docs_src/security/tutorial001.py!}
+```
 
 しかし、それはまだそんなに有用ではありません。
 
@@ -14,7 +16,9 @@
 
 ボディを宣言するのにPydanticを使用するのと同じやり方で、Pydanticを別のどんなところでも使うことができます:
 
-{* ../../docs_src/security/tutorial002.py hl[5,12:16] *}
+```Python hl_lines="5  12-16"
+{!../../../docs_src/security/tutorial002.py!}
+```
 
 ## 依存関係 `get_current_user` を作成
 
@@ -26,25 +30,31 @@
 
 以前直接 *path operation* の中でしていたのと同じように、新しい依存関係である `get_current_user` は `str` として `token` を受け取るようになります:
 
-{* ../../docs_src/security/tutorial002.py hl[25] *}
+```Python hl_lines="25"
+{!../../../docs_src/security/tutorial002.py!}
+```
 
 ## ユーザーの取得
 
 `get_current_user` は作成した（偽物の）ユーティリティ関数を使って、 `str` としてトークンを受け取り、先ほどのPydanticの `User` モデルを返却します:
 
-{* ../../docs_src/security/tutorial002.py hl[19:22,26:27] *}
+```Python hl_lines="19-22  26-27"
+{!../../../docs_src/security/tutorial002.py!}
+```
 
 ## 現在のユーザーの注入
 
 ですので、 `get_current_user` に対して同様に *path operation* の中で `Depends` を利用できます。
 
-{* ../../docs_src/security/tutorial002.py hl[31] *}
+```Python hl_lines="31"
+{!../../../docs_src/security/tutorial002.py!}
+```
 
 Pydanticモデルの `User` として、 `current_user` の型を宣言することに注意してください。
 
 その関数の中ですべての入力補完や型チェックを行う際に役に立ちます。
 
-/// tip | 豆知識
+/// tip | "豆知識"
 
 リクエストボディはPydanticモデルでも宣言できることを覚えているかもしれません。
 
@@ -52,7 +62,7 @@ Pydanticモデルの `User` として、 `current_user` の型を宣言するこ
 
 ///
 
-/// check | 確認
+/// check | "確認"
 
 依存関係システムがこのように設計されているおかげで、 `User` モデルを返却する別の依存関係（別の"dependables"）を持つことができます。
 
@@ -93,7 +103,9 @@ Pydanticモデルの `User` として、 `current_user` の型を宣言するこ
 
 さらに、こうした何千もの *path operations* は、たった3行で表現できるのです:
 
-{* ../../docs_src/security/tutorial002.py hl[30:32] *}
+```Python hl_lines="30-32"
+{!../../../docs_src/security/tutorial002.py!}
+```
 
 ## まとめ
 

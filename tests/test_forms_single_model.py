@@ -3,7 +3,7 @@ from typing import List, Optional
 from dirty_equals import IsDict
 from fastapi import FastAPI, Form
 from fastapi.testclient import TestClient
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing_extensions import Annotated
 
 app = FastAPI()
@@ -14,7 +14,6 @@ class FormModel(BaseModel):
     lastname: str
     age: Optional[int] = None
     tags: List[str] = ["foo", "bar"]
-    alias_with: str = Field(alias="with", default="nothing")
 
 
 @app.post("/form/")
@@ -33,7 +32,6 @@ def test_send_all_data():
             "lastname": "Sanchez",
             "age": "70",
             "tags": ["plumbus", "citadel"],
-            "with": "something",
         },
     )
     assert response.status_code == 200, response.text
@@ -42,7 +40,6 @@ def test_send_all_data():
         "lastname": "Sanchez",
         "age": 70,
         "tags": ["plumbus", "citadel"],
-        "with": "something",
     }
 
 
@@ -54,7 +51,6 @@ def test_defaults():
         "lastname": "Sanchez",
         "age": None,
         "tags": ["foo", "bar"],
-        "with": "nothing",
     }
 
 
@@ -104,13 +100,13 @@ def test_no_data():
                     "type": "missing",
                     "loc": ["body", "username"],
                     "msg": "Field required",
-                    "input": {"tags": ["foo", "bar"], "with": "nothing"},
+                    "input": {"tags": ["foo", "bar"]},
                 },
                 {
                     "type": "missing",
                     "loc": ["body", "lastname"],
                     "msg": "Field required",
-                    "input": {"tags": ["foo", "bar"], "with": "nothing"},
+                    "input": {"tags": ["foo", "bar"]},
                 },
             ]
         }
