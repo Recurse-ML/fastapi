@@ -2,7 +2,9 @@
 
 Самый простой FastAPI файл может выглядеть так:
 
-{* ../../docs_src/first_steps/tutorial001.py *}
+```Python
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Скопируйте в файл `main.py`.
 
@@ -22,7 +24,7 @@ $ uvicorn main:app --reload
 
 </div>
 
-/// note | Технические детали
+/// note | "Технические детали"
 
 Команда `uvicorn main:app` обращается к:
 
@@ -131,11 +133,13 @@ OpenAPI описывает схему API. Эта схема содержит о
 
 ### Шаг 1: импортируйте `FastAPI`
 
-{* ../../docs_src/first_steps/tutorial001.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 `FastAPI` это класс в Python, который предоставляет всю функциональность для API.
 
-/// note | Технические детали
+/// note | "Технические детали"
 
 `FastAPI` это класс, который наследуется непосредственно от `Starlette`.
 
@@ -145,7 +149,9 @@ OpenAPI описывает схему API. Эта схема содержит о
 
 ### Шаг 2: создайте экземпляр `FastAPI`
 
-{* ../../docs_src/first_steps/tutorial001.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Переменная `app` является экземпляром класса `FastAPI`.
 
@@ -165,7 +171,9 @@ $ uvicorn main:app --reload
 
 Если создать такое приложение:
 
-{* ../../docs_src/first_steps/tutorial002.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/first_steps/tutorial002.py!}
+```
 
 И поместить его в `main.py`, тогда вызов `uvicorn` будет таким:
 
@@ -197,7 +205,7 @@ https://example.com/items/foo
 /items/foo
 ```
 
-/// info | Дополнительная иформация
+/// info | "Дополнительная иформация"
 
 Термин "path" также часто называется "endpoint" или "route".
 
@@ -242,14 +250,16 @@ https://example.com/items/foo
 
 #### Определите *декоратор операции пути (path operation decorator)*
 
-{* ../../docs_src/first_steps/tutorial001.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Декоратор `@app.get("/")` указывает **FastAPI**, что функция, прямо под ним, отвечает за обработку запросов, поступающих по адресу:
 
 * путь `/`
 * использующих <abbr title="HTTP GET метод"><code>get</code> операцию</abbr>
 
-/// info | `@decorator` Дополнительная информация
+/// info | "`@decorator` Дополнительная информация"
 
 Синтаксис `@something` в Python называется "декоратор".
 
@@ -276,7 +286,7 @@ https://example.com/items/foo
 * `@app.patch()`
 * `@app.trace()`
 
-/// tip | Подсказка
+/// tip | "Подсказка"
 
 Вы можете использовать каждую операцию (HTTP-метод) по своему усмотрению.
 
@@ -296,7 +306,9 @@ https://example.com/items/foo
 * **операция**: `get`.
 * **функция**: функция ниже "декоратора" (ниже `@app.get("/")`).
 
-{* ../../docs_src/first_steps/tutorial001.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Это обычная Python функция.
 
@@ -308,9 +320,11 @@ https://example.com/items/foo
 
 Вы также можете определить ее как обычную функцию вместо `async def`:
 
-{* ../../docs_src/first_steps/tutorial003.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/first_steps/tutorial003.py!}
+```
 
-/// note | Технические детали
+/// note | "Технические детали"
 
 Если не знаете в чём разница, посмотрите [Конкурентность: *"Нет времени?"*](../async.md#_1){.internal-link target=_blank}.
 
@@ -318,7 +332,9 @@ https://example.com/items/foo
 
 ### Шаг 5: верните результат
 
-{* ../../docs_src/first_steps/tutorial001.py hl[8] *}
+```Python hl_lines="8"
+{!../../../docs_src/first_steps/tutorial001.py!}
+```
 
 Вы можете вернуть `dict`, `list`, отдельные значения `str`, `int` и т.д.
 

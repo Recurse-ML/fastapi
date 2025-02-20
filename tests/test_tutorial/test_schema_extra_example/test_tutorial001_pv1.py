@@ -1,22 +1,14 @@
-import importlib
-
 import pytest
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py310, needs_pydanticv1
+from ...utils import needs_pydanticv1
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial001_pv1",
-        pytest.param("tutorial001_pv1_py310", marks=needs_py310),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.schema_extra_example.{request.param}")
+@pytest.fixture(name="client")
+def get_client():
+    from docs_src.schema_extra_example.tutorial001_pv1 import app
 
-    client = TestClient(mod.app)
+    client = TestClient(app)
     return client
 
 

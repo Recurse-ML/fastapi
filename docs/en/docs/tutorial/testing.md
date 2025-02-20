@@ -30,7 +30,9 @@ Use the `TestClient` object the same way as you do with `httpx`.
 
 Write simple `assert` statements with the standard Python expressions that you need to check (again, standard `pytest`).
 
-{* ../../docs_src/app_testing/tutorial001.py hl[2,12,15:18] *}
+```Python hl_lines="2  12  15-18"
+{!../../../docs_src/app_testing/tutorial001.py!}
+```
 
 /// tip
 
@@ -42,7 +44,7 @@ This allows you to use `pytest` directly without complications.
 
 ///
 
-/// note | Technical Details
+/// note | "Technical Details"
 
 You could also use `from starlette.testclient import TestClient`.
 
@@ -76,7 +78,9 @@ Let's say you have a file structure as described in [Bigger Applications](bigger
 In the file `main.py` you have your **FastAPI** app:
 
 
-{* ../../docs_src/app_testing/main.py *}
+```Python
+{!../../../docs_src/app_testing/main.py!}
+```
 
 ### Testing file
 
@@ -92,8 +96,9 @@ Then you could have a file `test_main.py` with your tests. It could live on the 
 
 Because this file is in the same package, you can use relative imports to import the object `app` from the `main` module (`main.py`):
 
-{* ../../docs_src/app_testing/test_main.py hl[3] *}
-
+```Python hl_lines="3"
+{!../../../docs_src/app_testing/test_main.py!}
+```
 
 ...and have the code for the tests just like before.
 
@@ -124,7 +129,7 @@ Both *path operations* require an `X-Token` header.
 //// tab | Python 3.10+
 
 ```Python
-{!> ../../docs_src/app_testing/app_b_an_py310/main.py!}
+{!> ../../../docs_src/app_testing/app_b_an_py310/main.py!}
 ```
 
 ////
@@ -132,7 +137,7 @@ Both *path operations* require an `X-Token` header.
 //// tab | Python 3.9+
 
 ```Python
-{!> ../../docs_src/app_testing/app_b_an_py39/main.py!}
+{!> ../../../docs_src/app_testing/app_b_an_py39/main.py!}
 ```
 
 ////
@@ -140,7 +145,7 @@ Both *path operations* require an `X-Token` header.
 //// tab | Python 3.8+
 
 ```Python
-{!> ../../docs_src/app_testing/app_b_an/main.py!}
+{!> ../../../docs_src/app_testing/app_b_an/main.py!}
 ```
 
 ////
@@ -154,7 +159,7 @@ Prefer to use the `Annotated` version if possible.
 ///
 
 ```Python
-{!> ../../docs_src/app_testing/app_b_py310/main.py!}
+{!> ../../../docs_src/app_testing/app_b_py310/main.py!}
 ```
 
 ////
@@ -168,7 +173,7 @@ Prefer to use the `Annotated` version if possible.
 ///
 
 ```Python
-{!> ../../docs_src/app_testing/app_b/main.py!}
+{!> ../../../docs_src/app_testing/app_b/main.py!}
 ```
 
 ////
@@ -177,8 +182,9 @@ Prefer to use the `Annotated` version if possible.
 
 You could then update `test_main.py` with the extended tests:
 
-{* ../../docs_src/app_testing/app_b/test_main.py *}
-
+```Python
+{!> ../../../docs_src/app_testing/app_b/test_main.py!}
+```
 
 Whenever you need the client to pass information in the request and you don't know how to, you can search (Google) how to do it in `httpx`, or even how to do it with `requests`, as HTTPX's design is based on Requests' design.
 
