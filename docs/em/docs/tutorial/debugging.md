@@ -6,7 +6,9 @@
 
 👆 FastAPI 🈸, 🗄 &amp; 🏃 `uvicorn` 🔗:
 
-{* ../../docs_src/debugging/tutorial001.py hl[1,15] *}
+```Python hl_lines="1  15"
+{!../../../docs_src/debugging/tutorial001.py!}
+```
 
 ### 🔃 `__name__ == "__main__"`
 

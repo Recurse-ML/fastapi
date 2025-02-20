@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, timezone
-from typing import Annotated, Union
+from typing import Annotated, List, Union
 
 import jwt
 from fastapi import Depends, FastAPI, HTTPException, Security, status
@@ -44,7 +44,7 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: Union[str, None] = None
-    scopes: list[str] = []
+    scopes: List[str] = []
 
 
 class User(BaseModel):
@@ -116,7 +116,7 @@ async def get_current_user(
     )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username = payload.get("sub")
+        username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
         token_scopes = payload.get("scopes", [])

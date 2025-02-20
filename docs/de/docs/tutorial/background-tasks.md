@@ -15,7 +15,9 @@ Hierzu zählen beispielsweise:
 
 Importieren Sie zunächst `BackgroundTasks` und definieren Sie einen Parameter in Ihrer *Pfadoperation-Funktion* mit der Typdeklaration `BackgroundTasks`:
 
-{* ../../docs_src/background_tasks/tutorial001.py hl[1,13] *}
+```Python hl_lines="1  13"
+{!../../../docs_src/background_tasks/tutorial001.py!}
+```
 
 **FastAPI** erstellt für Sie das Objekt vom Typ `BackgroundTasks` und übergibt es als diesen Parameter.
 
@@ -31,13 +33,17 @@ In diesem Fall schreibt die Taskfunktion in eine Datei (den Versand einer E-Mail
 
 Und da der Schreibvorgang nicht `async` und `await` verwendet, definieren wir die Funktion mit normalem `def`:
 
-{* ../../docs_src/background_tasks/tutorial001.py hl[6:9] *}
+```Python hl_lines="6-9"
+{!../../../docs_src/background_tasks/tutorial001.py!}
+```
 
 ## Den Hintergrundtask hinzufügen
 
 Übergeben Sie innerhalb Ihrer *Pfadoperation-Funktion* Ihre Taskfunktion mit der Methode `.add_task()` an das *Hintergrundtasks*-Objekt:
 
-{* ../../docs_src/background_tasks/tutorial001.py hl[14] *}
+```Python hl_lines="14"
+{!../../../docs_src/background_tasks/tutorial001.py!}
+```
 
 `.add_task()` erhält als Argumente:
 
@@ -51,7 +57,57 @@ Die Verwendung von `BackgroundTasks` funktioniert auch mit dem <abbr title="Einb
 
 **FastAPI** weiß, was jeweils zu tun ist und wie dasselbe Objekt wiederverwendet werden kann, sodass alle Hintergrundtasks zusammengeführt und anschließend im Hintergrund ausgeführt werden:
 
-{* ../../docs_src/background_tasks/tutorial002_an_py310.py hl[13,15,22,25] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="13  15  22  25"
+{!> ../../../docs_src/background_tasks/tutorial002_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="13  15  22  25"
+{!> ../../../docs_src/background_tasks/tutorial002_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="14  16  23  26"
+{!> ../../../docs_src/background_tasks/tutorial002_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="11  13  20  23"
+{!> ../../../docs_src/background_tasks/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="13  15  22  25"
+{!> ../../../docs_src/background_tasks/tutorial002.py!}
+```
+
+////
 
 In obigem Beispiel werden die Nachrichten, *nachdem* die Response gesendet wurde, in die Datei `log.txt` geschrieben.
 
@@ -76,6 +132,8 @@ Weitere Details finden Sie in der <a href="https://www.starlette.io/background/"
 Wenn Sie umfangreiche Hintergrundberechnungen durchführen müssen und diese nicht unbedingt vom selben Prozess ausgeführt werden müssen (z. B. müssen Sie Speicher, Variablen, usw. nicht gemeinsam nutzen), könnte die Verwendung anderer größerer Tools wie z. B. <a href="https://docs.celeryq.dev" class="external-link" target="_blank">Celery</a> von Vorteil sein.
 
 Sie erfordern in der Regel komplexere Konfigurationen und einen Nachrichten-/Job-Queue-Manager wie RabbitMQ oder Redis, ermöglichen Ihnen jedoch die Ausführung von Hintergrundtasks in mehreren Prozessen und insbesondere auf mehreren Servern.
+
+Um ein Beispiel zu sehen, sehen Sie sich die [Projektgeneratoren](../project-generation.md){.internal-link target=_blank} an. Sie alle enthalten Celery, bereits konfiguriert.
 
 Wenn Sie jedoch über dieselbe **FastAPI**-Anwendung auf Variablen und Objekte zugreifen oder kleine Hintergrundtasks ausführen müssen (z. B. das Senden einer E-Mail-Benachrichtigung), können Sie einfach `BackgroundTasks` verwenden.
 

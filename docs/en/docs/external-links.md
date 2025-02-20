@@ -28,12 +28,9 @@ If you have an article, project, tool, or anything related to **FastAPI** that i
 {% endfor %}
 {% endfor %}
 
-## GitHub Repositories
+## Projects
 
-Most starred GitHub repositories with the topic `fastapi`:
+Latest GitHub projects with the topic `fastapi`:
 
-{% for repo in topic_repos %}
-
-<a href={{repo.html_url}} target="_blank">★ {{repo.stars}} - {{repo.name}}</a> by <a href={{repo.owner_html_url}} target="_blank">@{{repo.owner_login}}</a>.
-
-{% endfor %}
+<div class="github-topic-projects">
+</div>

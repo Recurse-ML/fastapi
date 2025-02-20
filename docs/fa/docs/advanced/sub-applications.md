@@ -12,7 +12,9 @@
 ابتدا برنامه اصلی سطح بالا، **FastAPI** و path operations آن را ایجاد کنید:
 
 
-{* ../../docs_src/sub_applications/tutorial001.py hl[3,6:8] *}
+```Python hl_lines="3  6-8"
+{!../../../docs_src/sub_applications/tutorial001.py!}
+```
 
 ### زیر برنامه
 
@@ -20,13 +22,17 @@
 
 این زیر برنامه فقط یکی دیگر از برنامه های استاندارد FastAPI است، اما این برنامه ای است که متصل می شود:
 
-{* ../../docs_src/sub_applications/tutorial001.py hl[11,14:16] *}
+```Python hl_lines="11  14-16"
+{!../../../docs_src/sub_applications/tutorial001.py!}
+```
 
 ### اتصال زیر برنامه
 
 در برنامه سطح بالا `app` اتصال زیر برنامه `subapi` در این نمونه `/subapi` در مسیر قرار میدهد و میشود:
 
-{* ../../docs_src/sub_applications/tutorial001.py hl[11,19] *}
+```Python hl_lines="11  19"
+{!../../../docs_src/sub_applications/tutorial001.py!}
+```
 
 ### اسناد API خودکار را بررسی کنید
 

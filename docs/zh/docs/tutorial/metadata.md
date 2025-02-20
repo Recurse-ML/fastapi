@@ -18,7 +18,9 @@
 
 你可以按如下方式设置它们：
 
-{* ../../docs_src/metadata/tutorial001.py hl[4:6] *}
+```Python hl_lines="4-6"
+{!../../../docs_src/metadata/tutorial001.py!}
+```
 
 /// tip
 
@@ -38,11 +40,13 @@
 
 创建标签元数据并把它传递给 `openapi_tags` 参数：
 
-{* ../../docs_src/metadata/tutorial004.py hl[3:16,18] *}
+```Python hl_lines="3-16  18"
+{!../../../docs_src/metadata/tutorial004.py!}
+```
 
 注意你可以在描述内使用 Markdown，例如「login」会显示为粗体（**login**）以及「fancy」会显示为斜体（_fancy_）。
 
-/// tip | 提示
+/// tip | "提示"
 
 不必为你使用的所有标签都添加元数据。
 
@@ -52,9 +56,11 @@
 
 将 `tags` 参数和*路径操作*（以及 `APIRouter`）一起使用，将其分配给不同的标签：
 
-{* ../../docs_src/metadata/tutorial004.py hl[21,26] *}
+```Python hl_lines="21  26"
+{!../../../docs_src/metadata/tutorial004.py!}
+```
 
-/// info | 信息
+/// info | "信息"
 
 阅读更多关于标签的信息[路径操作配置](path-operation-configuration.md#tags){.internal-link target=_blank}。
 
@@ -80,7 +86,9 @@
 
 例如，将其设置为服务于 `/api/v1/openapi.json`：
 
-{* ../../docs_src/metadata/tutorial002.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/metadata/tutorial002.py!}
+```
 
 如果你想完全禁用 OpenAPI 模式，可以将其设置为 `openapi_url=None`，这样也会禁用使用它的文档用户界面。
 
@@ -97,4 +105,6 @@
 
 例如，设置 Swagger UI 服务于 `/documentation` 并禁用 ReDoc：
 
-{* ../../docs_src/metadata/tutorial003.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/metadata/tutorial003.py!}
+```

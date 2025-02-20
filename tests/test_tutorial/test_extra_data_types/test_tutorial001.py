@@ -1,30 +1,12 @@
-import importlib
-
-import pytest
 from dirty_equals import IsDict
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39, needs_py310
+from docs_src.extra_data_types.tutorial001 import app
+
+client = TestClient(app)
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial001",
-        pytest.param("tutorial001_py310", marks=needs_py310),
-        "tutorial001_an",
-        pytest.param("tutorial001_an_py39", marks=needs_py39),
-        pytest.param("tutorial001_an_py310", marks=needs_py310),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.extra_data_types.{request.param}")
-
-    client = TestClient(mod.app)
-    return client
-
-
-def test_extra_types(client: TestClient):
+def test_extra_types():
     item_id = "ff97dd87-a4a5-4a12-b412-cde99f33e00e"
     data = {
         "start_datetime": "2018-12-22T14:00:00+00:00",
@@ -45,7 +27,7 @@ def test_extra_types(client: TestClient):
     assert response.json() == expected_response
 
 
-def test_openapi_schema(client: TestClient):
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {

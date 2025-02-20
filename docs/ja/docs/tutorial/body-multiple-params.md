@@ -8,9 +8,11 @@
 
 また、デフォルトの`None`を設定することで、ボディパラメータをオプションとして宣言することもできます:
 
-{* ../../docs_src/body_multiple_params/tutorial001.py hl[19,20,21] *}
+```Python hl_lines="19 20 21"
+{!../../../docs_src/body_multiple_params/tutorial001.py!}
+```
 
-/// note | 備考
+/// note | "備考"
 
 この場合、ボディから取得する`item`はオプションであることに注意してください。デフォルト値は`None`です。
 
@@ -31,7 +33,9 @@
 
 しかし、`item`と`user`のように複数のボディパラメータを宣言することもできます:
 
-{* ../../docs_src/body_multiple_params/tutorial002.py hl[22] *}
+```Python hl_lines="22"
+{!../../../docs_src/body_multiple_params/tutorial002.py!}
+```
 
 この場合、**FastAPI**は関数内に複数のボディパラメータ（Pydanticモデルである２つのパラメータ）があることに気付きます。
 
@@ -52,7 +56,7 @@
 }
 ```
 
-/// note | 備考
+/// note | "備考"
 
 以前と同じように`item`が宣言されていたにもかかわらず、`item`はキー`item`を持つボディの内部にあることが期待されていることに注意してください。
 
@@ -73,7 +77,9 @@
 しかし、`Body`を使用して、**FastAPI** に別のボディキーとして扱うように指示することができます:
 
 
-{* ../../docs_src/body_multiple_params/tutorial003.py hl[23] *}
+```Python hl_lines="23"
+{!../../../docs_src/body_multiple_params/tutorial003.py!}
+```
 
 この場合、**FastAPI** は以下のようなボディを期待します:
 
@@ -108,9 +114,11 @@ q: str = None
 
 以下において:
 
-{* ../../docs_src/body_multiple_params/tutorial004.py hl[27] *}
+```Python hl_lines="27"
+{!../../../docs_src/body_multiple_params/tutorial004.py!}
+```
 
-/// info | 情報
+/// info | "情報"
 
 `Body`もまた、後述する `Query` や `Path` などと同様に、すべての検証パラメータとメタデータパラメータを持っています。
 
@@ -130,7 +138,9 @@ item: Item = Body(..., embed=True)
 
 以下において:
 
-{* ../../docs_src/body_multiple_params/tutorial005.py hl[17] *}
+```Python hl_lines="17"
+{!../../../docs_src/body_multiple_params/tutorial005.py!}
+```
 
 この場合、**FastAPI** は以下のようなボディを期待します:
 
