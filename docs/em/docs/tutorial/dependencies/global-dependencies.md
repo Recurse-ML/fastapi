@@ -6,7 +6,9 @@
 
 👈 💼, 👫 🔜 ✔ 🌐 *➡ 🛠️* 🈸:
 
-{* ../../docs_src/dependencies/tutorial012.py hl[15] *}
+```Python hl_lines="15"
+{!../../../docs_src/dependencies/tutorial012.py!}
+```
 
 &amp; 🌐 💭 📄 🔃 [❎ `dependencies` *➡ 🛠️ 👨‍🎨*](dependencies-in-path-operation-decorators.md){.internal-link target=_blank} ✔, ✋️ 👉 💼, 🌐 *➡ 🛠️* 📱.
 

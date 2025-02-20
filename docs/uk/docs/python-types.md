@@ -22,8 +22,9 @@ Python підтримує додаткові "підказки типу" ("type 
 
 Давайте почнемо з простого прикладу:
 
-{* ../../docs_src/python_types/tutorial001.py *}
-
+```Python
+{!../../../docs_src/python_types/tutorial001.py!}
+```
 
 Виклик цієї програми виводить:
 
@@ -37,8 +38,9 @@ John Doe
 * Конвертує кожну літеру кожного слова у верхній регістр за допомогою `title()`.
 * <abbr title="З’єднує їх, як одне ціле. З вмістом один за одним.">Конкатенує</abbr> їх разом із пробілом по середині.
 
-{* ../../docs_src/python_types/tutorial001.py hl[2] *}
-
+```Python hl_lines="2"
+{!../../../docs_src/python_types/tutorial001.py!}
+```
 
 ### Редагуйте це
 
@@ -80,8 +82,9 @@ John Doe
 
 Це "type hints":
 
-{* ../../docs_src/python_types/tutorial002.py hl[1] *}
-
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial002.py!}
+```
 
 Це не те саме, що оголошення значень за замовчуванням, як це було б з:
 
@@ -109,8 +112,9 @@ John Doe
 
 Перевірте цю функцію, вона вже має анотацію типу:
 
-{* ../../docs_src/python_types/tutorial003.py hl[1] *}
-
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial003.py!}
+```
 
 Оскільки редактор знає типи змінних, ви не тільки отримаєте автозаповнення, ви також отримаєте перевірку помилок:
 
@@ -118,8 +122,9 @@ John Doe
 
 Тепер ви знаєте, щоб виправити це, вам потрібно перетворити `age` у строку з допомогою `str(age)`:
 
-{* ../../docs_src/python_types/tutorial004.py hl[2] *}
-
+```Python hl_lines="2"
+{!../../../docs_src/python_types/tutorial004.py!}
+```
 
 ## Оголошення типів
 
@@ -138,8 +143,9 @@ John Doe
 * `bool`
 * `bytes`
 
-{* ../../docs_src/python_types/tutorial005.py hl[1] *}
-
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial005.py!}
+```
 
 ### Generic-типи з параметрами типів
 
@@ -166,7 +172,7 @@ John Doe
 З модуля `typing`, імпортуємо `List` (з великої літери `L`):
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial006.py!}
+{!> ../../../docs_src/python_types/tutorial006.py!}
 ```
 
 Оголосимо змінну з тим самим синтаксисом двокрапки (`:`).
@@ -176,7 +182,7 @@ John Doe
 Оскільки список є типом, який містить деякі внутрішні типи, ви поміщаєте їх у квадратні дужки:
 
 ```Python hl_lines="4"
-{!> ../../docs_src/python_types/tutorial006.py!}
+{!> ../../../docs_src/python_types/tutorial006.py!}
 ```
 
 ////
@@ -190,7 +196,7 @@ John Doe
 Оскільки список є типом, який містить деякі внутрішні типи, ви поміщаєте їх у квадратні дужки:
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial006_py39.py!}
+{!> ../../../docs_src/python_types/tutorial006_py39.py!}
 ```
 
 ////
@@ -228,7 +234,7 @@ John Doe
 //// tab | Python 3.8 і вище
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial007.py!}
+{!> ../../../docs_src/python_types/tutorial007.py!}
 ```
 
 ////
@@ -236,7 +242,7 @@ John Doe
 //// tab | Python 3.9 і вище
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial007_py39.py!}
+{!> ../../../docs_src/python_types/tutorial007_py39.py!}
 ```
 
 ////
@@ -257,7 +263,7 @@ John Doe
 //// tab | Python 3.8 і вище
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial008.py!}
+{!> ../../../docs_src/python_types/tutorial008.py!}
 ```
 
 ////
@@ -265,7 +271,7 @@ John Doe
 //// tab | Python 3.9 і вище
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial008_py39.py!}
+{!> ../../../docs_src/python_types/tutorial008_py39.py!}
 ```
 
 ////
@@ -287,7 +293,7 @@ John Doe
 //// tab | Python 3.8 і вище
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial008b.py!}
+{!> ../../../docs_src/python_types/tutorial008b.py!}
 ```
 
 ////
@@ -295,7 +301,7 @@ John Doe
 //// tab | Python 3.10 і вище
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial008b_py310.py!}
+{!> ../../../docs_src/python_types/tutorial008b_py310.py!}
 ```
 
 ////
@@ -309,7 +315,7 @@ John Doe
 У Python 3.6 і вище (включаючи Python 3.10) ви можете оголосити його, імпортувавши та використовуючи `Optional` з модуля `typing`.
 
 ```Python hl_lines="1  4"
-{!../../docs_src/python_types/tutorial009.py!}
+{!../../../docs_src/python_types/tutorial009.py!}
 ```
 
 Використання `Optional[str]` замість просто `str` дозволить редактору допомогти вам виявити помилки, коли ви могли б вважати, що значенням завжди є `str`, хоча насправді воно також може бути `None`.
@@ -321,7 +327,7 @@ John Doe
 //// tab | Python 3.8 і вище
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial009.py!}
+{!> ../../../docs_src/python_types/tutorial009.py!}
 ```
 
 ////
@@ -329,7 +335,7 @@ John Doe
 //// tab | Python 3.8 і вище - альтернатива
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial009b.py!}
+{!> ../../../docs_src/python_types/tutorial009b.py!}
 ```
 
 ////
@@ -337,7 +343,7 @@ John Doe
 //// tab | Python 3.10 і вище
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial009_py310.py!}
+{!> ../../../docs_src/python_types/tutorial009_py310.py!}
 ```
 
 ////
@@ -400,13 +406,15 @@ John Doe
 
 Скажімо, у вас є клас `Person` з імʼям:
 
-{* ../../docs_src/python_types/tutorial010.py hl[1:3] *}
-
+```Python hl_lines="1-3"
+{!../../../docs_src/python_types/tutorial010.py!}
+```
 
 Потім ви можете оголосити змінну типу `Person`:
 
-{* ../../docs_src/python_types/tutorial010.py hl[6] *}
-
+```Python hl_lines="6"
+{!../../../docs_src/python_types/tutorial010.py!}
+```
 
 І знову ж таки, ви отримуєте всю підтримку редактора:
 
@@ -429,7 +437,7 @@ John Doe
 //// tab | Python 3.8 і вище
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011.py!}
+{!> ../../../docs_src/python_types/tutorial011.py!}
 ```
 
 ////
@@ -437,7 +445,7 @@ John Doe
 //// tab | Python 3.9 і вище
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011_py39.py!}
+{!> ../../../docs_src/python_types/tutorial011_py39.py!}
 ```
 
 ////
@@ -445,7 +453,7 @@ John Doe
 //// tab | Python 3.10 і вище
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011_py310.py!}
+{!> ../../../docs_src/python_types/tutorial011_py310.py!}
 ```
 
 ////

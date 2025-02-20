@@ -18,7 +18,9 @@
 
 👈, 👥 📣 👩‍🔬 `__call__`:
 
-{* ../../docs_src/dependencies/tutorial011.py hl[10] *}
+```Python hl_lines="10"
+{!../../../docs_src/dependencies/tutorial011.py!}
+```
 
 👉 💼, 👉 `__call__` ⚫️❔ **FastAPI** 🔜 ⚙️ ✅ 🌖 🔢 &amp; 🎧-🔗, &amp; 👉 ⚫️❔ 🔜 🤙 🚶‍♀️ 💲 🔢 👆 *➡ 🛠️ 🔢* ⏪.
 
@@ -26,7 +28,9 @@
 
 &amp; 🔜, 👥 💪 ⚙️ `__init__` 📣 🔢 👐 👈 👥 💪 ⚙️ "🔗" 🔗:
 
-{* ../../docs_src/dependencies/tutorial011.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/dependencies/tutorial011.py!}
+```
 
 👉 💼, **FastAPI** 🏆 🚫 ⏱ 👆 ⚖️ 💅 🔃 `__init__`, 👥 🔜 ⚙️ ⚫️ 🔗 👆 📟.
 
@@ -34,7 +38,9 @@
 
 👥 💪 ✍ 👐 👉 🎓 ⏮️:
 
-{* ../../docs_src/dependencies/tutorial011.py hl[16] *}
+```Python hl_lines="16"
+{!../../../docs_src/dependencies/tutorial011.py!}
+```
 
 &amp; 👈 🌌 👥 💪 "🔗" 👆 🔗, 👈 🔜 ✔️ `"bar"` 🔘 ⚫️, 🔢 `checker.fixed_content`.
 
@@ -50,7 +56,9 @@ checker(q="somequery")
 
 ...&amp; 🚶‍♀️ ⚫️❔ 👈 📨 💲 🔗 👆 *➡ 🛠️ 🔢* 🔢 `fixed_content_included`:
 
-{* ../../docs_src/dependencies/tutorial011.py hl[20] *}
+```Python hl_lines="20"
+{!../../../docs_src/dependencies/tutorial011.py!}
+```
 
 /// tip
 

@@ -2,7 +2,9 @@
 
 Когда вы объявляете параметры функции, которые не являются параметрами пути,  они автоматически интерпретируются как "query"-параметры.
 
-{* ../../docs_src/query_params/tutorial001.py hl[9] *}
+```Python hl_lines="9"
+{!../../../docs_src/query_params/tutorial001.py!}
+```
 
 Query-параметры представляют из себя набор пар ключ-значение, которые идут после знака `?` в URL-адресе, разделенные символами `&`.
 
@@ -61,11 +63,25 @@ http://127.0.0.1:8000/items/?skip=20
 
 Аналогично, вы можете объявлять необязательные query-параметры, установив их значение по умолчанию, равное `None`:
 
-{* ../../docs_src/query_params/tutorial002_py310.py hl[7] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="7"
+{!> ../../../docs_src/query_params/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/query_params/tutorial002.py!}
+```
+
+////
 
 В этом случае, параметр  `q` будет не обязательным и будет иметь значение `None` по умолчанию.
 
-/// check | Важно
+/// check | "Важно"
 
 Также обратите внимание, что **FastAPI** достаточно умён чтобы заметить, что параметр `item_id` является path-параметром, а `q` нет, поэтому, это параметр запроса.
 
@@ -75,7 +91,21 @@ http://127.0.0.1:8000/items/?skip=20
 
 Вы также можете объявлять параметры с типом `bool`, которые будут преобразованы соответственно:
 
-{* ../../docs_src/query_params/tutorial003_py310.py hl[7] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="7"
+{!> ../../../docs_src/query_params/tutorial003_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/query_params/tutorial003.py!}
+```
+
+////
 
 В этом случае, если вы сделаете запрос:
 
@@ -118,7 +148,21 @@ http://127.0.0.1:8000/items/foo?short=yes
 
 Они будут обнаружены по именам:
 
-{* ../../docs_src/query_params/tutorial004_py310.py hl[6,8] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="6  8"
+{!> ../../../docs_src/query_params/tutorial004_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="8  10"
+{!> ../../../docs_src/query_params/tutorial004.py!}
+```
+
+////
 
 ## Обязательные query-параметры
 
@@ -128,7 +172,9 @@ http://127.0.0.1:8000/items/foo?short=yes
 
 Но если вы хотите сделать query-параметр обязательным, вы можете просто не указывать значение по умолчанию:
 
-{* ../../docs_src/query_params/tutorial005.py hl[6:7] *}
+```Python hl_lines="6-7"
+{!../../../docs_src/query_params/tutorial005.py!}
+```
 
 Здесь параметр запроса `needy` является обязательным параметром с типом данных  `str`.
 
@@ -172,7 +218,21 @@ http://127.0.0.1:8000/items/foo-item?needy=sooooneedy
 
 Конечно, вы можете определить некоторые параметры как обязательные, некоторые - со значением по умполчанию, а некоторые - полностью необязательные:
 
-{* ../../docs_src/query_params/tutorial006_py310.py hl[8] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="8"
+{!> ../../../docs_src/query_params/tutorial006_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="10"
+{!> ../../../docs_src/query_params/tutorial006.py!}
+```
+
+////
 
 В этом примере, у нас есть 3 параметра запроса:
 
@@ -180,7 +240,7 @@ http://127.0.0.1:8000/items/foo-item?needy=sooooneedy
 * `skip`, типа `int` и со значением по умолчанию `0`.
 * `limit`, необязательный `int`.
 
-/// tip | Подсказка
+/// tip | "Подсказка"
 
 Вы можете использовать класс `Enum` также, как ранее применяли его с [Path-параметрами](path-params.md#_7){.internal-link target=_blank}.
 
