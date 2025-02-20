@@ -16,13 +16,17 @@
 
 🗄 `File` &amp; `UploadFile` ⚪️➡️ `fastapi`:
 
-{* ../../docs_src/request_files/tutorial001.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/request_files/tutorial001.py!}
+```
 
 ## 🔬 `File` 🔢
 
 ✍ 📁 🔢 🎏 🌌 👆 🔜 `Body` ⚖️ `Form`:
 
-{* ../../docs_src/request_files/tutorial001.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/request_files/tutorial001.py!}
+```
 
 /// info
 
@@ -50,7 +54,9 @@
 
 🔬 📁 🔢 ⏮️ 🆎 `UploadFile`:
 
-{* ../../docs_src/request_files/tutorial001.py hl[12] *}
+```Python hl_lines="12"
+{!../../../docs_src/request_files/tutorial001.py!}
+```
 
 ⚙️ `UploadFile` ✔️ 📚 📈 🤭 `bytes`:
 
@@ -93,13 +99,13 @@ contents = await myfile.read()
 contents = myfile.file.read()
 ```
 
-/// note | `async` 📡 ℹ
+/// note | "`async` 📡 ℹ"
 
 🕐❔ 👆 ⚙️ `async` 👩‍🔬, **FastAPI** 🏃 📁 👩‍🔬 🧵 &amp; ⌛ 👫.
 
 ///
 
-/// note | 💃 📡 ℹ
+/// note | "💃 📡 ℹ"
 
 **FastAPI**'Ⓜ `UploadFile` 😖 🔗 ⚪️➡️ **💃**'Ⓜ `UploadFile`, ✋️ 🚮 💪 🍕 ⚒ ⚫️ 🔗 ⏮️ **Pydantic** &amp; 🎏 🍕 FastAPI.
 
@@ -111,7 +117,7 @@ contents = myfile.file.read()
 
 **FastAPI** 🔜 ⚒ 💭 ✍ 👈 📊 ⚪️➡️ ▶️️ 🥉 ↩️ 🎻.
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 📊 ⚪️➡️ 📨 🛎 🗜 ⚙️ "📻 🆎" `application/x-www-form-urlencoded` 🕐❔ ⚫️ 🚫 🔌 📁.
 
@@ -133,13 +139,29 @@ contents = myfile.file.read()
 
 👆 💪 ⚒ 📁 📦 ⚙️ 🐩 🆎 ✍ &amp; ⚒ 🔢 💲 `None`:
 
-{* ../../docs_src/request_files/tutorial001_02.py hl[9,17] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="9  17"
+{!> ../../../docs_src/request_files/tutorial001_02.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.1️⃣0️⃣ &amp; 🔛
+
+```Python hl_lines="7  14"
+{!> ../../../docs_src/request_files/tutorial001_02_py310.py!}
+```
+
+////
 
 ## `UploadFile` ⏮️ 🌖 🗃
 
 👆 💪 ⚙️ `File()` ⏮️ `UploadFile`, 🖼, ⚒ 🌖 🗃:
 
-{* ../../docs_src/request_files/tutorial001_03.py hl[13] *}
+```Python hl_lines="13"
+{!../../../docs_src/request_files/tutorial001_03.py!}
+```
 
 ## 💗 📁 📂
 
@@ -149,11 +171,25 @@ contents = myfile.file.read()
 
 ⚙️ 👈, 📣 📇 `bytes` ⚖️ `UploadFile`:
 
-{* ../../docs_src/request_files/tutorial002.py hl[10,15] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="10  15"
+{!> ../../../docs_src/request_files/tutorial002.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.9️⃣ &amp; 🔛
+
+```Python hl_lines="8  13"
+{!> ../../../docs_src/request_files/tutorial002_py39.py!}
+```
+
+////
 
 👆 🔜 📨, 📣, `list` `bytes` ⚖️ `UploadFile`Ⓜ.
 
-/// note | 📡 ℹ
+/// note | "📡 ℹ"
 
 👆 💪 ⚙️ `from starlette.responses import HTMLResponse`.
 
@@ -165,7 +201,21 @@ contents = myfile.file.read()
 
 &amp; 🎏 🌌 ⏭, 👆 💪 ⚙️ `File()` ⚒ 🌖 🔢, `UploadFile`:
 
-{* ../../docs_src/request_files/tutorial003.py hl[18] *}
+//// tab | 🐍 3️⃣.6️⃣ &amp; 🔛
+
+```Python hl_lines="18"
+{!> ../../../docs_src/request_files/tutorial003.py!}
+```
+
+////
+
+//// tab | 🐍 3️⃣.9️⃣ &amp; 🔛
+
+```Python hl_lines="16"
+{!> ../../../docs_src/request_files/tutorial003_py39.py!}
+```
+
+////
 
 ## 🌃
 

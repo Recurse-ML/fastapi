@@ -18,7 +18,9 @@ Der erste Schritt besteht darin, die automatischen Dokumentationen zu deaktivier
 
 Um diese zu deaktivieren, setzen Sie deren URLs beim Erstellen Ihrer `FastAPI`-App auf `None`:
 
-{* ../../docs_src/custom_docs_ui/tutorial001.py hl[8] *}
+```Python hl_lines="8"
+{!../../../docs_src/custom_docs_ui/tutorial001.py!}
+```
 
 ### Die benutzerdefinierten Dokumentationen hinzufügen
 
@@ -34,9 +36,11 @@ Sie können die internen Funktionen von FastAPI wiederverwenden, um die HTML-Sei
 
 Und genau so für ReDoc ...
 
-{* ../../docs_src/custom_docs_ui/tutorial001.py hl[2:6,11:19,22:24,27:33] *}
+```Python hl_lines="2-6  11-19  22-24  27-33"
+{!../../../docs_src/custom_docs_ui/tutorial001.py!}
+```
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Die *Pfadoperation* für `swagger_ui_redirect` ist ein Hilfsmittel bei der Verwendung von OAuth2.
 
@@ -50,7 +54,9 @@ Swagger UI erledigt das hinter den Kulissen für Sie, benötigt aber diesen „U
 
 Um nun testen zu können, ob alles funktioniert, erstellen Sie eine *Pfadoperation*:
 
-{* ../../docs_src/custom_docs_ui/tutorial001.py hl[36:38] *}
+```Python hl_lines="36-38"
+{!../../../docs_src/custom_docs_ui/tutorial001.py!}
+```
 
 ### Es ausprobieren
 
@@ -118,7 +124,9 @@ Danach könnte Ihre Dateistruktur wie folgt aussehen:
 * Importieren Sie `StaticFiles`.
 * „Mounten“ Sie eine `StaticFiles()`-Instanz in einem bestimmten Pfad.
 
-{* ../../docs_src/custom_docs_ui/tutorial002.py hl[7,11] *}
+```Python hl_lines="7  11"
+{!../../../docs_src/custom_docs_ui/tutorial002.py!}
+```
 
 ### Die statischen Dateien testen
 
@@ -150,7 +158,9 @@ Wie bei der Verwendung eines benutzerdefinierten CDN besteht der erste Schritt d
 
 Um diese zu deaktivieren, setzen Sie deren URLs beim Erstellen Ihrer `FastAPI`-App auf `None`:
 
-{* ../../docs_src/custom_docs_ui/tutorial002.py hl[9] *}
+```Python hl_lines="9"
+{!../../../docs_src/custom_docs_ui/tutorial002.py!}
+```
 
 ### Die benutzerdefinierten Dokumentationen, mit statischen Dateien, hinzufügen
 
@@ -166,9 +176,11 @@ Auch hier können Sie die internen Funktionen von FastAPI wiederverwenden, um di
 
 Und genau so für ReDoc ...
 
-{* ../../docs_src/custom_docs_ui/tutorial002.py hl[2:6,14:22,25:27,30:36] *}
+```Python hl_lines="2-6  14-22  25-27  30-36"
+{!../../../docs_src/custom_docs_ui/tutorial002.py!}
+```
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Die *Pfadoperation* für `swagger_ui_redirect` ist ein Hilfsmittel bei der Verwendung von OAuth2.
 
@@ -182,7 +194,9 @@ Swagger UI erledigt das hinter den Kulissen für Sie, benötigt aber diesen „U
 
 Um nun testen zu können, ob alles funktioniert, erstellen Sie eine *Pfadoperation*:
 
-{* ../../docs_src/custom_docs_ui/tutorial002.py hl[39:41] *}
+```Python hl_lines="39-41"
+{!../../../docs_src/custom_docs_ui/tutorial002.py!}
+```
 
 ### Benutzeroberfläche, mit statischen Dateien, testen
 

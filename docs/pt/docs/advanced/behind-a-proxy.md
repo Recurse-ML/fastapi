@@ -18,7 +18,9 @@ Nesse caso, o caminho original `/app` seria servido em `/api/v1/app`.
 
 Embora todo o seu código esteja escrito assumindo que existe apenas `/app`.
 
-{* ../../docs_src/behind_a_proxy/tutorial001.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/behind_a_proxy/tutorial001.py!}
+```
 
 E o proxy estaria **"removendo"** o **prefixo do caminho** dinamicamente antes de transmitir a solicitação para o servidor da aplicação (provavelmente Uvicorn via CLI do FastAPI), mantendo sua aplicação convencida de que está sendo servida em `/app`, para que você não precise atualizar todo o seu código para incluir o prefixo `/api/v1`.
 
@@ -41,7 +43,7 @@ browser --> proxy
 proxy --> server
 ```
 
-/// tip | Dica
+/// tip | "Dica"
 
 O IP `0.0.0.0` é comumente usado para significar que o programa escuta em todos os IPs disponíveis naquela máquina/servidor.
 
@@ -82,7 +84,7 @@ $ fastapi run main.py --root-path /api/v1
 
 Se você usar Hypercorn, ele também tem a opção `--root-path`.
 
-/// note | Detalhes Técnicos
+/// note | "Detalhes Técnicos"
 
 A especificação ASGI define um `root_path` para esse caso de uso.
 
@@ -96,7 +98,9 @@ Você pode obter o `root_path` atual usado pela sua aplicação para cada solici
 
 Aqui estamos incluindo ele na mensagem apenas para fins de demonstração.
 
-{* ../../docs_src/behind_a_proxy/tutorial001.py hl[8] *}
+```Python hl_lines="8"
+{!../../../docs_src/behind_a_proxy/tutorial001.py!}
+```
 
 Então, se você iniciar o Uvicorn com:
 
@@ -123,7 +127,9 @@ A resposta seria algo como:
 
 Alternativamente, se você não tiver uma maneira de fornecer uma opção de linha de comando como `--root-path` ou equivalente, você pode definir o parâmetro `--root-path` ao criar sua aplicação FastAPI:
 
-{* ../../docs_src/behind_a_proxy/tutorial002.py hl[3] *}
+```Python hl_lines="3"
+{!../../../docs_src/behind_a_proxy/tutorial002.py!}
+```
 
 Passar o `root_path`h para `FastAPI` seria o equivalente a passar a opção de linha de comando `--root-path` para Uvicorn ou Hypercorn.
 
@@ -172,7 +178,7 @@ Então, crie um arquivo `traefik.toml` com:
 
 Isso diz ao Traefik para escutar na porta 9999 e usar outro arquivo `routes.toml`.
 
-/// tip | Dica
+/// tip | "Dica"
 
 Estamos usando a porta 9999 em vez da porta padrão HTTP 80 para que você não precise executá-lo com privilégios de administrador (`sudo`).
 
@@ -242,7 +248,7 @@ Agora, se você for ao URL com a porta para o Uvicorn: <a href="http://127.0.0.1
 }
 ```
 
-/// tip | Dica
+/// tip | "Dica"
 
 Perceba que, mesmo acessando em `http://127.0.0.1:8000/app`, ele mostra o `root_path` de `/api/v1`, retirado da opção `--root-path`.
 
@@ -289,7 +295,7 @@ Isso porque o FastAPI usa esse `root_path` para criar o `server` padrão no Open
 
 ## Servidores adicionais
 
-/// warning | Aviso
+/// warning | "Aviso"
 
 Este é um caso de uso mais avançado. Sinta-se à vontade para pular.
 
@@ -303,7 +309,9 @@ Se você passar uma lista personalizada de `servers` e houver um `root_path` (po
 
 Por exemplo:
 
-{* ../../docs_src/behind_a_proxy/tutorial003.py hl[4:7] *}
+```Python hl_lines="4-7"
+{!../../../docs_src/behind_a_proxy/tutorial003.py!}
+```
 
 Gerará um OpenAPI schema como:
 
@@ -330,7 +338,7 @@ Gerará um OpenAPI schema como:
 }
 ```
 
-/// tip | Dica
+/// tip | "Dica"
 
 Perceba o servidor gerado automaticamente com um valor `url` de `/api/v1`, retirado do `root_path`.
 
@@ -340,7 +348,7 @@ Na interface de documentação em <a href="http://127.0.0.1:9999/api/v1/docs" cl
 
 <img src="/img/tutorial/behind-a-proxy/image03.png">
 
-/// tip | Dica
+/// tip | "Dica"
 
 A interface de documentação interagirá com o servidor que você selecionar.
 
@@ -350,7 +358,9 @@ A interface de documentação interagirá com o servidor que você selecionar.
 
 Se você não quiser que o **FastAPI** inclua um servidor automático usando o `root_path`, você pode usar o parâmetro `root_path_in_servers=False`:
 
-{* ../../docs_src/behind_a_proxy/tutorial004.py hl[9] *}
+```Python hl_lines="9"
+{!../../../docs_src/behind_a_proxy/tutorial004.py!}
+```
 
 e então ele não será incluído no OpenAPI schema.
 
