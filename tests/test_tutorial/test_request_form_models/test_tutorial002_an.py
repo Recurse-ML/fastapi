@@ -6,7 +6,7 @@ from tests.utils import needs_pydanticv2
 
 @pytest.fixture(name="client")
 def get_client():
-    from docs_src.request_form_models.tutorial002 import app
+    from docs_src.request_form_models.tutorial002_an import app
 
     client = TestClient(app)
     return client

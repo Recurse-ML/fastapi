@@ -1,18 +1,19 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from tests.utils import needs_pydanticv2
+from tests.utils import needs_py39, needs_pydanticv2
 
 
 @pytest.fixture(name="client")
 def get_client():
-    from docs_src.request_form_models.tutorial002 import app
+    from docs_src.request_form_models.tutorial002_an_py39 import app
 
     client = TestClient(app)
     return client
 
 
 @needs_pydanticv2
+@needs_py39
 def test_post_body_form(client: TestClient):
     response = client.post("/login/", data={"username": "Foo", "password": "secret"})
     assert response.status_code != 200
@@ -20,6 +21,7 @@ def test_post_body_form(client: TestClient):
 
 
 @needs_pydanticv2
+@needs_py39
 def test_post_body_extra_form(client: TestClient):
     response = client.post(
         "/login/", data={"username": "Foo", "password": "secret", "extra": "extra"}
@@ -38,6 +40,7 @@ def test_post_body_extra_form(client: TestClient):
 
 
 @needs_pydanticv2
+@needs_py39
 def test_post_body_form_no_password(client: TestClient):
     response = client.post("/login/", data={"username": "Foo"})
     assert response.status_code == 422
@@ -54,6 +57,7 @@ def test_post_body_form_no_password(client: TestClient):
 
 
 @needs_pydanticv2
+@needs_py39
 def test_post_body_form_no_username(client: TestClient):
     response = client.post("/login/", data={"password": "secret"})
     assert response.status_code == 422
@@ -70,6 +74,7 @@ def test_post_body_form_no_username(client: TestClient):
 
 
 @needs_pydanticv2
+@needs_py39
 def test_post_body_form_no_data(client: TestClient):
     response = client.post("/login/")
     assert response.status_code == 422
@@ -92,6 +97,7 @@ def test_post_body_form_no_data(client: TestClient):
 
 
 @needs_pydanticv2
+@needs_py39
 def test_post_body_json(client: TestClient):
     response = client.post("/login/", json={"username": "Foo", "password": "secret"})
     assert response.status_code == 422, response.text
@@ -114,6 +120,7 @@ def test_post_body_json(client: TestClient):
 
 
 @needs_pydanticv2
+@needs_py39
 def test_openapi_schema(client: TestClient):
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
