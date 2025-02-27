@@ -5,5 +5,5 @@ set -x
 
 bash scripts/test.sh ${@}
 coverage combine
-coverage report
+coverage report --show-missing
 coverage html

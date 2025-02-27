@@ -1,30 +1,13 @@
-import importlib
-
-import pytest
 from dirty_equals import IsDict
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py39, needs_py310
+from docs_src.schema_extra_example.tutorial004 import app
+
+client = TestClient(app)
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial004",
-        pytest.param("tutorial004_py310", marks=needs_py310),
-        "tutorial004_an",
-        pytest.param("tutorial004_an_py39", marks=needs_py39),
-        pytest.param("tutorial004_an_py310", marks=needs_py310),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.schema_extra_example.{request.param}")
-
-    client = TestClient(mod.app)
-    return client
-
-
-def test_post_body_example(client: TestClient):
+# Test required and embedded body parameters with no bodies sent
+def test_post_body_example():
     response = client.put(
         "/items/5",
         json={
@@ -37,7 +20,7 @@ def test_post_body_example(client: TestClient):
     assert response.status_code == 200
 
 
-def test_openapi_schema(client: TestClient):
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {

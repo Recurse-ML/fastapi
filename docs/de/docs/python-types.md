@@ -12,7 +12,7 @@ Dies ist lediglich eine **schnelle Anleitung / Auffrischung** über Pythons Typh
 
 Aber selbst wenn Sie **FastAPI** nie verwenden, wird es für Sie nützlich sein, ein wenig darüber zu lernen.
 
-/// note | Hinweis
+/// note | "Hinweis"
 
 Wenn Sie ein Python-Experte sind und bereits alles über Typhinweise wissen, überspringen Sie dieses Kapitel und fahren Sie mit dem nächsten fort.
 
@@ -22,7 +22,9 @@ Wenn Sie ein Python-Experte sind und bereits alles über Typhinweise wissen, üb
 
 Fangen wir mit einem einfachen Beispiel an:
 
-{* ../../docs_src/python_types/tutorial001.py *}
+```Python
+{!../../../docs_src/python_types/tutorial001.py!}
+```
 
 Dieses Programm gibt aus:
 
@@ -36,7 +38,9 @@ Die Funktion macht Folgendes:
 * Schreibt den ersten Buchstaben eines jeden Wortes groß, mithilfe von `title()`.
 * <abbr title="Füge zu einer Einheit zusammen, eins nach dem anderen.">Verkettet</abbr> sie mit einem Leerzeichen in der Mitte.
 
-{* ../../docs_src/python_types/tutorial001.py hl[2] *}
+```Python hl_lines="2"
+{!../../../docs_src/python_types/tutorial001.py!}
+```
 
 ### Bearbeiten Sie es
 
@@ -78,7 +82,9 @@ Das war's.
 
 Das sind die „Typhinweise“:
 
-{* ../../docs_src/python_types/tutorial002.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial002.py!}
+```
 
 Das ist nicht das gleiche wie das Deklarieren von Defaultwerten, wie es hier der Fall ist:
 
@@ -106,7 +112,9 @@ Hier können Sie durch die Optionen blättern, bis Sie diejenige finden, bei der
 
 Sehen Sie sich diese Funktion an, sie hat bereits Typhinweise:
 
-{* ../../docs_src/python_types/tutorial003.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial003.py!}
+```
 
 Da der Editor die Typen der Variablen kennt, erhalten Sie nicht nur Code-Vervollständigung, sondern auch eine Fehlerprüfung:
 
@@ -114,7 +122,9 @@ Da der Editor die Typen der Variablen kennt, erhalten Sie nicht nur Code-Vervoll
 
 Jetzt, da Sie wissen, dass Sie das reparieren müssen, konvertieren Sie `age` mittels `str(age)` in einen String:
 
-{* ../../docs_src/python_types/tutorial004.py hl[2] *}
+```Python hl_lines="2"
+{!../../../docs_src/python_types/tutorial004.py!}
+```
 
 ## Deklarieren von Typen
 
@@ -133,7 +143,9 @@ Zum Beispiel diese:
 * `bool`
 * `bytes`
 
-{* ../../docs_src/python_types/tutorial005.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial005.py!}
+```
 
 ### Generische Typen mit Typ-Parametern
 
@@ -170,7 +182,7 @@ Als Typ nehmen Sie `list`.
 Da die Liste ein Typ ist, welcher innere Typen enthält, werden diese von eckigen Klammern umfasst:
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial006_py39.py!}
+{!> ../../../docs_src/python_types/tutorial006_py39.py!}
 ```
 
 ////
@@ -180,7 +192,7 @@ Da die Liste ein Typ ist, welcher innere Typen enthält, werden diese von eckige
 Von `typing` importieren Sie `List` (mit Großbuchstaben `L`):
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial006.py!}
+{!> ../../../docs_src/python_types/tutorial006.py!}
 ```
 
 Deklarieren Sie die Variable mit der gleichen Doppelpunkt-Syntax (`:`).
@@ -190,12 +202,12 @@ Als Typ nehmen Sie das `List`, das Sie von `typing` importiert haben.
 Da die Liste ein Typ ist, welcher innere Typen enthält, werden diese von eckigen Klammern umfasst:
 
 ```Python hl_lines="4"
-{!> ../../docs_src/python_types/tutorial006.py!}
+{!> ../../../docs_src/python_types/tutorial006.py!}
 ```
 
 ////
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Die inneren Typen in den eckigen Klammern werden als „Typ-Parameter“ bezeichnet.
 
@@ -205,7 +217,7 @@ In diesem Fall ist `str` der Typ-Parameter, der an `List` übergeben wird (oder 
 
 Das bedeutet: Die Variable `items` ist eine Liste – `list` – und jedes der Elemente in dieser Liste ist ein String – `str`.
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Wenn Sie Python 3.9 oder höher verwenden, müssen Sie `List` nicht von `typing` importieren, Sie können stattdessen den regulären `list`-Typ verwenden.
 
@@ -228,7 +240,7 @@ Das Gleiche gilt für die Deklaration eines Tupels – `tuple` – und einer Men
 //// tab | Python 3.9+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial007_py39.py!}
+{!> ../../../docs_src/python_types/tutorial007_py39.py!}
 ```
 
 ////
@@ -236,7 +248,7 @@ Das Gleiche gilt für die Deklaration eines Tupels – `tuple` – und einer Men
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial007.py!}
+{!> ../../../docs_src/python_types/tutorial007.py!}
 ```
 
 ////
@@ -257,7 +269,7 @@ Der zweite Typ-Parameter ist für die Werte des `dict`:
 //// tab | Python 3.9+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial008_py39.py!}
+{!> ../../../docs_src/python_types/tutorial008_py39.py!}
 ```
 
 ////
@@ -265,7 +277,7 @@ Der zweite Typ-Parameter ist für die Werte des `dict`:
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial008.py!}
+{!> ../../../docs_src/python_types/tutorial008.py!}
 ```
 
 ////
@@ -287,7 +299,7 @@ In Python 3.10 gibt es zusätzlich eine **neue Syntax**, die es erlaubt, die mö
 //// tab | Python 3.10+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial008b_py310.py!}
+{!> ../../../docs_src/python_types/tutorial008b_py310.py!}
 ```
 
 ////
@@ -295,7 +307,7 @@ In Python 3.10 gibt es zusätzlich eine **neue Syntax**, die es erlaubt, die mö
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial008b.py!}
+{!> ../../../docs_src/python_types/tutorial008b.py!}
 ```
 
 ////
@@ -308,7 +320,9 @@ Sie können deklarieren, dass ein Wert ein `str`, aber vielleicht auch `None` se
 
 In Python 3.6 und darüber (inklusive Python 3.10) können Sie das deklarieren, indem Sie `Optional` vom `typing` Modul importieren und verwenden.
 
-{* ../../docs_src/python_types/tutorial009.py hl[1,4] *}
+```Python hl_lines="1  4"
+{!../../../docs_src/python_types/tutorial009.py!}
+```
 
 Wenn Sie `Optional[str]` anstelle von nur `str` verwenden, wird Ihr Editor Ihnen dabei helfen, Fehler zu erkennen, bei denen Sie annehmen könnten, dass ein Wert immer eine String (`str`) ist, obwohl er auch `None` sein könnte.
 
@@ -319,7 +333,7 @@ Das bedeutet auch, dass Sie in Python 3.10 `Something | None` verwenden können:
 //// tab | Python 3.10+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial009_py310.py!}
+{!> ../../../docs_src/python_types/tutorial009_py310.py!}
 ```
 
 ////
@@ -327,7 +341,7 @@ Das bedeutet auch, dass Sie in Python 3.10 `Something | None` verwenden können:
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial009.py!}
+{!> ../../../docs_src/python_types/tutorial009.py!}
 ```
 
 ////
@@ -335,7 +349,7 @@ Das bedeutet auch, dass Sie in Python 3.10 `Something | None` verwenden können:
 //// tab | Python 3.8+ Alternative
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial009b.py!}
+{!> ../../../docs_src/python_types/tutorial009b.py!}
 ```
 
 ////
@@ -355,7 +369,9 @@ Es geht nur um Wörter und Namen. Aber diese Worte können beeinflussen, wie Sie
 
 Nehmen wir zum Beispiel diese Funktion:
 
-{* ../../docs_src/python_types/tutorial009c.py hl[1,4] *}
+```Python hl_lines="1  4"
+{!../../../docs_src/python_types/tutorial009c.py!}
+```
 
 Der Parameter `name` ist definiert als `Optional[str]`, aber er ist **nicht optional**, Sie können die Funktion nicht ohne diesen Parameter aufrufen:
 
@@ -371,7 +387,9 @@ say_hi(name=None)  # Das funktioniert, None is gültig 🎉
 
 Die gute Nachricht ist, dass Sie sich darüber keine Sorgen mehr machen müssen, wenn Sie Python 3.10 verwenden, da Sie einfach `|` verwenden können, um Vereinigungen von Typen zu definieren:
 
-{* ../../docs_src/python_types/tutorial009c_py310.py hl[1,4] *}
+```Python hl_lines="1  4"
+{!../../../docs_src/python_types/tutorial009c_py310.py!}
+```
 
 Und dann müssen Sie sich nicht mehr um Namen wie `Optional` und `Union` kümmern. 😎
 
@@ -433,11 +451,15 @@ Sie können auch eine Klasse als Typ einer Variablen deklarieren.
 
 Nehmen wir an, Sie haben eine Klasse `Person`, mit einem Namen:
 
-{* ../../docs_src/python_types/tutorial010.py hl[1:3] *}
+```Python hl_lines="1-3"
+{!../../../docs_src/python_types/tutorial010.py!}
+```
 
 Dann können Sie eine Variable vom Typ `Person` deklarieren:
 
-{* ../../docs_src/python_types/tutorial010.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/python_types/tutorial010.py!}
+```
 
 Und wiederum bekommen Sie die volle Editor-Unterstützung:
 
@@ -464,7 +486,7 @@ Ein Beispiel aus der offiziellen Pydantic Dokumentation:
 //// tab | Python 3.10+
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011_py310.py!}
+{!> ../../../docs_src/python_types/tutorial011_py310.py!}
 ```
 
 ////
@@ -472,7 +494,7 @@ Ein Beispiel aus der offiziellen Pydantic Dokumentation:
 //// tab | Python 3.9+
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011_py39.py!}
+{!> ../../../docs_src/python_types/tutorial011_py39.py!}
 ```
 
 ////
@@ -480,7 +502,7 @@ Ein Beispiel aus der offiziellen Pydantic Dokumentation:
 //// tab | Python 3.8+
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011.py!}
+{!> ../../../docs_src/python_types/tutorial011.py!}
 ```
 
 ////
@@ -495,7 +517,7 @@ Um mehr über <a href="https://pydantic-docs.helpmanual.io/" class="external-lin
 
 Viel mehr von all dem werden Sie in praktischer Anwendung im [Tutorial - Benutzerhandbuch](tutorial/index.md){.internal-link target=_blank} sehen.
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Pydantic verhält sich speziell, wenn Sie `Optional` oder `Union[Etwas, None]` ohne einen Default-Wert verwenden. Sie können darüber in der Pydantic Dokumentation unter <a href="https://docs.pydantic.dev/2.3/usage/models/#required-fields" class="external-link" target="_blank">Required fields</a> mehr erfahren.
 
@@ -510,7 +532,7 @@ Python bietet auch die Möglichkeit, **zusätzliche Metadaten** in Typhinweisen 
 In Python 3.9 ist `Annotated` ein Teil der Standardbibliothek, Sie können es von `typing` importieren.
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial013_py39.py!}
+{!> ../../../docs_src/python_types/tutorial013_py39.py!}
 ```
 
 ////
@@ -522,7 +544,7 @@ In Versionen niedriger als Python 3.9 importieren Sie `Annotated` von `typing_ex
 Es wird bereits mit **FastAPI** installiert sein.
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial013.py!}
+{!> ../../../docs_src/python_types/tutorial013.py!}
 ```
 
 ////
@@ -537,7 +559,7 @@ Im Moment müssen Sie nur wissen, dass `Annotated` existiert, und dass es Standa
 
 Später werden Sie sehen, wie **mächtig** es sein kann.
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Der Umstand, dass es **Standard-Python** ist, bedeutet, dass Sie immer noch die **bestmögliche Entwickler-Erfahrung** in ihrem Editor haben, sowie mit den Tools, die Sie nutzen, um ihren Code zu analysieren, zu refaktorisieren, usw. ✨
 

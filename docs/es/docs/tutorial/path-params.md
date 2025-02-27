@@ -1,12 +1,14 @@
-# Parámetros de Path
+# Parámetros de path
 
-Puedes declarar "parámetros" o "variables" de path con la misma sintaxis que se usa en los format strings de Python:
+Puedes declarar los "parámetros" o "variables" con la misma sintaxis que usan los format strings de Python:
 
-{* ../../docs_src/path_params/tutorial001.py hl[6:7] *}
+```Python hl_lines="6-7"
+{!../../../docs_src/path_params/tutorial001.py!}
+```
 
-El valor del parámetro de path `item_id` se pasará a tu función como el argumento `item_id`.
+El valor del parámetro de path `item_id` será pasado a tu función como el argumento `item_id`.
 
-Así que, si ejecutas este ejemplo y vas a <a href="http://127.0.0.1:8000/items/foo" class="external-link" target="_blank">http://127.0.0.1:8000/items/foo</a>, verás un response de:
+Entonces, si corres este ejemplo y vas a <a href="http://127.0.0.1:8000/items/foo" class="external-link" target="_blank">http://127.0.0.1:8000/items/foo</a>, verás una respuesta de:
 
 ```JSON
 {"item_id":"foo"}
@@ -14,190 +16,196 @@ Así que, si ejecutas este ejemplo y vas a <a href="http://127.0.0.1:8000/items/
 
 ## Parámetros de path con tipos
 
-Puedes declarar el tipo de un parámetro de path en la función, usando anotaciones de tipos estándar de Python:
+Puedes declarar el tipo de un parámetro de path en la función usando las anotaciones de tipos estándar de Python:
 
-{* ../../docs_src/path_params/tutorial002.py hl[7] *}
+```Python hl_lines="7"
+{!../../../docs_src/path_params/tutorial002.py!}
+```
 
-En este caso, `item_id` se declara como un `int`.
+En este caso, `item_id` es declarado como un `int`.
 
-/// check | Revisa
+/// check | "Revisa"
 
-Esto te dará soporte del editor dentro de tu función, con chequeo de errores, autocompletado, etc.
+Esto te dará soporte en el editor dentro de tu función, con chequeo de errores, auto-completado, etc.
 
 ///
 
-## Conversión de datos
+## <abbr title="también conocido en inglés como: serialization, parsing, marshalling">Conversión</abbr> de datos
 
-Si ejecutas este ejemplo y abres tu navegador en <a href="http://127.0.0.1:8000/items/3" class="external-link" target="_blank">http://127.0.0.1:8000/items/3</a>, verás un response de:
+Si corres este ejemplo y abres tu navegador en <a href="http://127.0.0.1:8000/items/3" class="external-link" target="_blank">http://127.0.0.1:8000/items/3</a> verás una respuesta de:
 
 ```JSON
 {"item_id":3}
 ```
 
-/// check | Revisa
+/// check | "Revisa"
 
-Nota que el valor que tu función recibió (y devolvió) es `3`, como un `int` de Python, no un string `"3"`.
+Observa que el valor que recibió (y devolvió) tu función es `3`, como un Python `int`, y no un string `"3"`.
 
-Entonces, con esa declaración de tipo, **FastAPI** te ofrece <abbr title="converting the string that comes from an HTTP request into Python data">"parsing"</abbr> automático de requests.
+Entonces, con esa declaración de tipos **FastAPI** te da <abbr title="convertir el string que viene de un HTTP request a datos de Python">"parsing"</abbr> automático del request.
 
 ///
 
 ## Validación de datos
 
-Pero si vas al navegador en <a href="http://127.0.0.1:8000/items/foo" class="external-link" target="_blank">http://127.0.0.1:8000/items/foo</a>, verás un bonito error HTTP de:
+Pero si abres tu navegador en <a href="http://127.0.0.1:8000/items/foo" class="external-link" target="_blank">http://127.0.0.1:8000/items/foo</a> verás este lindo error de HTTP:
 
 ```JSON
 {
-  "detail": [
-    {
-      "type": "int_parsing",
-      "loc": [
-        "path",
-        "item_id"
-      ],
-      "msg": "Input should be a valid integer, unable to parse string as an integer",
-      "input": "foo",
-      "url": "https://errors.pydantic.dev/2.1/v/int_parsing"
-    }
-  ]
+    "detail": [
+        {
+            "loc": [
+                "path",
+                "item_id"
+            ],
+            "msg": "value is not a valid integer",
+            "type": "type_error.integer"
+        }
+    ]
 }
 ```
 
-porque el parámetro de path `item_id` tenía un valor de `"foo"`, que no es un `int`.
+debido a que el parámetro de path `item_id` tenía el valor `"foo"`, que no es un `int`.
 
-El mismo error aparecería si proporcionaras un `float` en lugar de un `int`, como en: <a href="http://127.0.0.1:8000/items/4.2" class="external-link" target="_blank">http://127.0.0.1:8000/items/4.2</a>
+El mismo error aparecería si pasaras un `float` en vez de un `int` como en: <a href="http://127.0.0.1:8000/items/4.2" class="external-link" target="_blank">http://127.0.0.1:8000/items/4.2</a>
 
-/// check | Revisa
+/// check | "Revisa"
 
-Entonces, con la misma declaración de tipo de Python, **FastAPI** te ofrece validación de datos.
+Así, con la misma declaración de tipo de Python, **FastAPI** te da validación de datos.
 
-Nota que el error también indica claramente el punto exacto donde la validación falló.
+Observa que el error también muestra claramente el punto exacto en el que no pasó la validación.
 
-Esto es increíblemente útil mientras desarrollas y depuras código que interactúa con tu API.
+Esto es increíblemente útil cuando estás desarrollando y debugging código que interactúa con tu API.
 
 ///
 
 ## Documentación
 
-Y cuando abras tu navegador en <a href="http://127.0.0.1:8000/docs" class="external-link" target="_blank">http://127.0.0.1:8000/docs</a>, verás una documentación de API automática e interactiva como:
+Cuando abras tu navegador en <a href="http://127.0.0.1:8000/docs" class="external-link" target="_blank">http://127.0.0.1:8000/docs</a> verás la documentación automática e interactiva del API como:
 
 <img src="/img/tutorial/path-params/image01.png">
 
-/// check | Revisa
+/// check | "Revisa"
 
-Nuevamente, solo con esa misma declaración de tipo de Python, **FastAPI** te ofrece documentación automática e interactiva (integrando Swagger UI).
+Nuevamente, con la misma declaración de tipo de Python, **FastAPI** te da documentación automática e interactiva (integrándose con Swagger UI)
 
-Nota que el parámetro de path está declarado como un entero.
+Observa que el parámetro de path está declarado como un integer.
 
 ///
 
 ## Beneficios basados en estándares, documentación alternativa
 
-Y porque el esquema generado es del estándar <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.1.0.md" class="external-link" target="_blank">OpenAPI</a>, hay muchas herramientas compatibles.
+Debido a que el schema generado es del estándar <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md" class="external-link" target="_blank">OpenAPI</a> hay muchas herramientas compatibles.
 
-Debido a esto, el propio **FastAPI** proporciona una documentación de API alternativa (usando ReDoc), a la cual puedes acceder en <a href="http://127.0.0.1:8000/redoc" class="external-link" target="_blank">http://127.0.0.1:8000/redoc</a>:
+Es por esto que **FastAPI** mismo provee una documentación alternativa de la API (usando ReDoc), a la que puedes acceder en <a href="http://127.0.0.1:8000/redoc" class="external-link" target="_blank">http://127.0.0.1:8000/redoc</a>:
 
 <img src="/img/tutorial/path-params/image02.png">
 
-De la misma manera, hay muchas herramientas compatibles. Incluyendo herramientas de generación de código para muchos lenguajes.
+De la misma manera hay muchas herramientas compatibles. Incluyendo herramientas de generación de código para muchos lenguajes.
 
 ## Pydantic
 
-Toda la validación de datos se realiza internamente con <a href="https://docs.pydantic.dev/" class="external-link" target="_blank">Pydantic</a>, así que obtienes todos los beneficios de esta. Y sabes que estás en buenas manos.
+Toda la validación de datos es realizada tras bastidores por <a href="https://docs.pydantic.dev/" class="external-link" target="_blank">Pydantic</a>, así que obtienes todos sus beneficios. Así sabes que estás en buenas manos.
 
-Puedes usar las mismas declaraciones de tipo con `str`, `float`, `bool` y muchos otros tipos de datos complejos.
+Puedes usar las mismas declaraciones de tipos con `str`, `float`, `bool` y otros tipos de datos más complejos.
 
-Varios de estos se exploran en los siguientes capítulos del tutorial.
+Exploraremos varios de estos tipos en los próximos capítulos del tutorial.
 
 ## El orden importa
 
-Al crear *path operations*, puedes encontrarte en situaciones donde tienes un path fijo.
+Cuando creas *operaciones de path* puedes encontrarte con situaciones en las que tengas un path fijo.
 
-Como `/users/me`, imaginemos que es para obtener datos sobre el usuario actual.
+Digamos algo como `/users/me` que sea para obtener datos del usuario actual.
 
-Y luego también puedes tener un path `/users/{user_id}` para obtener datos sobre un usuario específico por algún ID de usuario.
+... y luego puedes tener el path `/users/{user_id}` para obtener los datos sobre un usuario específico asociados a un ID de usuario.
 
-Debido a que las *path operations* se evalúan en orden, necesitas asegurarte de que el path para `/users/me` se declara antes que el de `/users/{user_id}`:
+Porque las *operaciones de path* son evaluadas en orden, tienes que asegurarte de que el path para `/users/me` sea declarado antes que el path para `/users/{user_id}`:
 
-{* ../../docs_src/path_params/tutorial003.py hl[6,11] *}
+```Python hl_lines="6  11"
+{!../../../docs_src/path_params/tutorial003.py!}
+```
 
-De lo contrario, el path para `/users/{user_id}` también coincidiría para `/users/me`, "pensando" que está recibiendo un parámetro `user_id` con un valor de `"me"`.
-
-De manera similar, no puedes redefinir una path operation:
-
-{* ../../docs_src/path_params/tutorial003b.py hl[6,11] *}
-
-La primera siempre será utilizada ya que el path coincide primero.
+De otra manera el path para `/users/{user_id}` coincidiría también con `/users/me` "pensando" que está recibiendo el parámetro `user_id` con el valor `"me"`.
 
 ## Valores predefinidos
 
-Si tienes una *path operation* que recibe un *path parameter*, pero quieres que los valores posibles válidos del *path parameter* estén predefinidos, puedes usar un <abbr title="Enumeration">`Enum`</abbr> estándar de Python.
+Si tienes una *operación de path* que recibe un *parámetro de path* pero quieres que los valores posibles del *parámetro de path* sean predefinidos puedes usar un <abbr title="Enumeration">`Enum`</abbr> estándar de Python.
 
-### Crear una clase `Enum`
+### Crea una clase `Enum`
 
-Importa `Enum` y crea una subclase que herede de `str` y de `Enum`.
+Importa `Enum` y crea una sub-clase que herede desde `str` y desde `Enum`.
 
-Al heredar de `str`, la documentación de la API podrá saber que los valores deben ser de tipo `string` y podrá representarlos correctamente.
+Al heredar desde `str` la documentación de la API podrá saber que los valores deben ser de tipo `string` y podrá mostrarlos correctamente.
 
-Luego crea atributos de clase con valores fijos, que serán los valores válidos disponibles:
+Luego crea atributos de clase con valores fijos, que serán los valores disponibles válidos:
 
-{* ../../docs_src/path_params/tutorial005.py hl[1,6:9] *}
+```Python hl_lines="1  6-9"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
-/// info | Información
+/// info | "Información"
 
-<a href="https://docs.python.org/3/library/enum.html" class="external-link" target="_blank">Las enumeraciones (o enums) están disponibles en Python</a> desde la versión 3.4.
-
-///
-
-/// tip | Consejo
-
-Si te estás preguntando, "AlexNet", "ResNet" y "LeNet" son solo nombres de <abbr title="Técnicamente, arquitecturas de modelos de Deep Learning">modelos</abbr> de Machine Learning.
+Las <a href="https://docs.python.org/3/library/enum.html" class="external-link" target="_blank">Enumerations (o enums) están disponibles en Python</a> desde la versión 3.4.
 
 ///
 
-### Declarar un *path parameter*
+/// tip | "Consejo"
 
-Luego crea un *path parameter* con una anotación de tipo usando la clase enum que creaste (`ModelName`):
+Si lo estás dudando, "AlexNet", "ResNet", y "LeNet" son solo nombres de <abbr title="Técnicamente, arquitecturas de modelos de Deep Learning">modelos</abbr> de Machine Learning.
 
-{* ../../docs_src/path_params/tutorial005.py hl[16] *}
+///
+
+### Declara un *parámetro de path*
+
+Luego, crea un *parámetro de path* con anotaciones de tipos usando la clase enum que creaste (`ModelName`):
+
+```Python hl_lines="16"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
 ### Revisa la documentación
 
-Como los valores disponibles para el *path parameter* están predefinidos, la documentación interactiva puede mostrarlos de manera ordenada:
+Debido a que los valores disponibles para el *parámetro de path* están predefinidos, la documentación interactiva los puede mostrar bien:
 
 <img src="/img/tutorial/path-params/image03.png">
 
-### Trabajando con *enumeraciones* de Python
+### Trabajando con los *enumerations* de Python
 
-El valor del *path parameter* será un *miembro* de enumeración.
+El valor del *parámetro de path* será un *enumeration member*.
 
-#### Comparar *miembros* de enumeraciones
+#### Compara *enumeration members*
 
-Puedes compararlo con el *miembro* de enumeración en tu enum creada `ModelName`:
+Puedes compararlo con el *enumeration member* en el enum (`ModelName`) que creaste:
 
-{* ../../docs_src/path_params/tutorial005.py hl[17] *}
+```Python hl_lines="17"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
-#### Obtener el valor de *enumeración*
+#### Obtén el *enumeration value*
 
-Puedes obtener el valor actual (un `str` en este caso) usando `model_name.value`, o en general, `your_enum_member.value`:
+Puedes obtener el valor exacto (un `str` en este caso) usando `model_name.value`, o en general, `your_enum_member.value`:
 
-{* ../../docs_src/path_params/tutorial005.py hl[20] *}
+```Python hl_lines="20"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
-/// tip | Consejo
+/// tip | "Consejo"
 
-También podrías acceder al valor `"lenet"` con `ModelName.lenet.value`.
+También podrías obtener el valor `"lenet"` con `ModelName.lenet.value`.
 
 ///
 
-#### Devolver *miembros* de enumeración
+#### Devuelve *enumeration members*
 
-Puedes devolver *miembros de enum* desde tu *path operation*, incluso anidados en un cuerpo JSON (por ejemplo, un `dict`).
+Puedes devolver *enum members* desde tu *operación de path* inclusive en un body de JSON anidado (por ejemplo, un `dict`).
 
-Serán convertidos a sus valores correspondientes (cadenas en este caso) antes de devolverlos al cliente:
+Ellos serán convertidos a sus valores correspondientes (strings en este caso) antes de devolverlos al cliente:
 
-{* ../../docs_src/path_params/tutorial005.py hl[18,21,23] *}
+```Python hl_lines="18  21  23"
+{!../../../docs_src/path_params/tutorial005.py!}
+```
 
-En tu cliente recibirás un response JSON como:
+En tu cliente obtendrás una respuesta en JSON como:
 
 ```JSON
 {
@@ -206,53 +214,55 @@ En tu cliente recibirás un response JSON como:
 }
 ```
 
-## Parámetros de path conteniendo paths
+## Parámetros de path parameters que contienen paths
 
-Imaginemos que tienes una *path operation* con un path `/files/{file_path}`.
+Digamos que tienes una *operación de path* con un path `/files/{file_path}`.
 
-Pero necesitas que `file_path` en sí mismo contenga un *path*, como `home/johndoe/myfile.txt`.
+Pero necesitas que el mismo `file_path` contenga un path como `home/johndoe/myfile.txt`.
 
 Entonces, la URL para ese archivo sería algo como: `/files/home/johndoe/myfile.txt`.
 
 ### Soporte de OpenAPI
 
-OpenAPI no soporta una manera de declarar un *path parameter* para que contenga un *path* dentro, ya que eso podría llevar a escenarios que son difíciles de probar y definir.
+OpenAPI no soporta una manera de declarar un *parámetro de path* que contenga un path, dado que esto podría llevar a escenarios que son difíciles de probar y definir.
 
-Sin embargo, todavía puedes hacerlo en **FastAPI**, usando una de las herramientas internas de Starlette.
+Sin embargo, lo puedes hacer en **FastAPI** usando una de las herramientas internas de Starlette.
 
-Y la documentación seguiría funcionando, aunque no agregue ninguna documentación indicando que el parámetro debe contener un path.
+La documentación seguirá funcionando, aunque no añadirá ninguna información diciendo que el parámetro debería contener un path.
 
-### Convertidor de Path
+### Convertidor de path
 
-Usando una opción directamente de Starlette puedes declarar un *path parameter* conteniendo un *path* usando una URL como:
+Usando una opción directamente desde Starlette puedes declarar un *parámetro de path* que contenga un path usando una URL como:
 
 ```
 /files/{file_path:path}
 ```
 
-En este caso, el nombre del parámetro es `file_path`, y la última parte, `:path`, indica que el parámetro debería coincidir con cualquier *path*.
+En este caso el nombre del parámetro es `file_path` y la última parte, `:path`, le dice que el parámetro debería coincidir con cualquier path.
 
-Así que, puedes usarlo con:
+Entonces lo puedes usar con:
 
-{* ../../docs_src/path_params/tutorial004.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/path_params/tutorial004.py!}
+```
 
-/// tip | Consejo
+/// tip | "Consejo"
 
-Podrías necesitar que el parámetro contenga `/home/johndoe/myfile.txt`, con una barra inclinada (`/`) inicial.
+Podrías necesitar que el parámetro contenga `/home/johndoe/myfile.txt` con un slash inicial (`/`).
 
-En ese caso, la URL sería: `/files//home/johndoe/myfile.txt`, con una doble barra inclinada (`//`) entre `files` y `home`.
+En este caso la URL sería `/files//home/johndoe/myfile.txt` con un slash doble (`//`) entre `files` y `home`.
 
 ///
 
-## Resumen
+## Repaso
 
-Con **FastAPI**, al usar declaraciones de tipo estándar de Python, cortas e intuitivas, obtienes:
+Con **FastAPI**, usando declaraciones de tipo de Python intuitivas y estándares, obtienes:
 
-* Soporte del editor: chequeo de errores, autocompletado, etc.
-* "<abbr title="converting the string that comes from an HTTP request into Python data">parsing</abbr>" de datos
+* Soporte en el editor: chequeo de errores, auto-completado, etc.
+* "<abbr title="convertir el string que viene de un HTTP request a datos de Python">Parsing</abbr>" de datos
 * Validación de datos
-* Anotación de API y documentación automática
+* Anotación de la API y documentación automática
 
-Y solo tienes que declararlos una vez.
+Solo tienes que declararlos una vez.
 
-Probablemente esa sea la principal ventaja visible de **FastAPI** en comparación con otros frameworks alternativos (aparte del rendimiento bruto).
+Esa es probablemente la principal ventaja visible de **FastAPI**  sobre otros frameworks alternativos (aparte del rendimiento puro).

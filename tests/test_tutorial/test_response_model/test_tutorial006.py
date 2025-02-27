@@ -1,33 +1,18 @@
-import importlib
-
-import pytest
 from dirty_equals import IsDict, IsOneOf
 from fastapi.testclient import TestClient
 
-from ...utils import needs_py310
+from docs_src.response_model.tutorial006 import app
+
+client = TestClient(app)
 
 
-@pytest.fixture(
-    name="client",
-    params=[
-        "tutorial006",
-        pytest.param("tutorial006_py310", marks=needs_py310),
-    ],
-)
-def get_client(request: pytest.FixtureRequest):
-    mod = importlib.import_module(f"docs_src.response_model.{request.param}")
-
-    client = TestClient(mod.app)
-    return client
-
-
-def test_read_item_name(client: TestClient):
+def test_read_item_name():
     response = client.get("/items/bar/name")
     assert response.status_code == 200, response.text
     assert response.json() == {"name": "Bar", "description": "The Bar fighters"}
 
 
-def test_read_item_public_data(client: TestClient):
+def test_read_item_public_data():
     response = client.get("/items/bar/public")
     assert response.status_code == 200, response.text
     assert response.json() == {
@@ -37,7 +22,7 @@ def test_read_item_public_data(client: TestClient):
     }
 
 
-def test_openapi_schema(client: TestClient):
+def test_openapi_schema():
     response = client.get("/openapi.json")
     assert response.status_code == 200, response.text
     assert response.json() == {

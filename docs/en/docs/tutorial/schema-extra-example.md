@@ -8,15 +8,35 @@ Here are several ways to do it.
 
 You can declare `examples` for a Pydantic model that will be added to the generated JSON Schema.
 
-//// tab | Pydantic v2
+//// tab | Python 3.10+ Pydantic v2
 
-{* ../../docs_src/schema_extra_example/tutorial001_py310.py hl[13:24] *}
+```Python hl_lines="13-24"
+{!> ../../../docs_src/schema_extra_example/tutorial001_py310.py!}
+```
 
 ////
 
-//// tab | Pydantic v1
+//// tab | Python 3.10+ Pydantic v1
 
-{* ../../docs_src/schema_extra_example/tutorial001_pv1_py310.py hl[13:23] *}
+```Python hl_lines="13-23"
+{!> ../../../docs_src/schema_extra_example/tutorial001_py310_pv1.py!}
+```
+
+////
+
+//// tab | Python 3.8+ Pydantic v2
+
+```Python hl_lines="15-26"
+{!> ../../../docs_src/schema_extra_example/tutorial001.py!}
+```
+
+////
+
+//// tab | Python 3.8+ Pydantic v1
+
+```Python hl_lines="15-25"
+{!> ../../../docs_src/schema_extra_example/tutorial001_pv1.py!}
+```
 
 ////
 
@@ -24,7 +44,7 @@ That extra info will be added as-is to the output **JSON Schema** for that model
 
 //// tab | Pydantic v2
 
-In Pydantic version 2, you would use the attribute `model_config`, that takes a `dict` as described in <a href="https://docs.pydantic.dev/latest/api/config/" class="external-link" target="_blank">Pydantic's docs: Configuration</a>.
+In Pydantic version 2, you would use the attribute `model_config`, that takes a `dict` as described in <a href="https://docs.pydantic.dev/latest/usage/model_config/" class="external-link" target="_blank">Pydantic's docs: Model Config</a>.
 
 You can set `"json_schema_extra"` with a `dict` containing any additional data you would like to show up in the generated JSON Schema, including `examples`.
 
@@ -60,7 +80,21 @@ You can read more at the end of this page.
 
 When using `Field()` with Pydantic models, you can also declare additional `examples`:
 
-{* ../../docs_src/schema_extra_example/tutorial002_py310.py hl[2,8:11] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="2  8-11"
+{!> ../../../docs_src/schema_extra_example/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="4  10-13"
+{!> ../../../docs_src/schema_extra_example/tutorial002.py!}
+```
+
+////
 
 ## `examples` in JSON Schema - OpenAPI
 
@@ -80,7 +114,57 @@ you can also declare a group of `examples` with additional information that will
 
 Here we pass `examples` containing one example of the data expected in `Body()`:
 
-{* ../../docs_src/schema_extra_example/tutorial003_an_py310.py hl[22:29] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="22-29"
+{!> ../../../docs_src/schema_extra_example/tutorial003_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="22-29"
+{!> ../../../docs_src/schema_extra_example/tutorial003_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="23-30"
+{!> ../../../docs_src/schema_extra_example/tutorial003_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="18-25"
+{!> ../../../docs_src/schema_extra_example/tutorial003_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="20-27"
+{!> ../../../docs_src/schema_extra_example/tutorial003.py!}
+```
+
+////
 
 ### Example in the docs UI
 
@@ -92,7 +176,57 @@ With any of the methods above it would look like this in the `/docs`:
 
 You can of course also pass multiple `examples`:
 
-{* ../../docs_src/schema_extra_example/tutorial004_an_py310.py hl[23:38] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="23-38"
+{!> ../../../docs_src/schema_extra_example/tutorial004_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="23-38"
+{!> ../../../docs_src/schema_extra_example/tutorial004_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="24-39"
+{!> ../../../docs_src/schema_extra_example/tutorial004_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="19-34"
+{!> ../../../docs_src/schema_extra_example/tutorial004_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="21-36"
+{!> ../../../docs_src/schema_extra_example/tutorial004.py!}
+```
+
+////
 
 When you do this, the examples will be part of the internal **JSON Schema** for that body data.
 
@@ -133,7 +267,57 @@ Each specific example `dict` in the `examples` can contain:
 
 You can use it like this:
 
-{* ../../docs_src/schema_extra_example/tutorial005_an_py310.py hl[23:49] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="23-49"
+{!> ../../../docs_src/schema_extra_example/tutorial005_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="23-49"
+{!> ../../../docs_src/schema_extra_example/tutorial005_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="24-50"
+{!> ../../../docs_src/schema_extra_example/tutorial005_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="19-45"
+{!> ../../../docs_src/schema_extra_example/tutorial005_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="21-47"
+{!> ../../../docs_src/schema_extra_example/tutorial005.py!}
+```
+
+////
 
 ### OpenAPI Examples in the Docs UI
 
@@ -163,7 +347,7 @@ If the ideas above already work for you, that might be enough, and you probably 
 
 Before OpenAPI 3.1.0, OpenAPI used an older and modified version of **JSON Schema**.
 
-JSON Schema didn't have `examples`, so OpenAPI added its own `example` field to its own modified version.
+JSON Schema didn't have `examples`, so OpenAPI added it's own `example` field to its own modified version.
 
 OpenAPI also added `example` and `examples` fields to other parts of the specification:
 
