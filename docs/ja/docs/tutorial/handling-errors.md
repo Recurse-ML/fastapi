@@ -25,7 +25,9 @@ HTTPレスポンスをエラーでクライアントに返すには、`HTTPExcep
 
 ### `HTTPException`のインポート
 
-{* ../../docs_src/handling_errors/tutorial001.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/handling_errors/tutorial001.py!}
+```
 
 ### コード内での`HTTPException`の発生
 
@@ -39,7 +41,9 @@ Pythonの例外なので、`return`ではなく、`raise`です。
 
 この例では、クライアントが存在しないIDでアイテムを要求した場合、`404`のステータスコードを持つ例外を発生させます:
 
-{* ../../docs_src/handling_errors/tutorial001.py hl[11] *}
+```Python hl_lines="11"
+{!../../../docs_src/handling_errors/tutorial001.py!}
+```
 
 ### レスポンス結果
 
@@ -59,7 +63,7 @@ Pythonの例外なので、`return`ではなく、`raise`です。
 }
 ```
 
-/// tip | 豆知識
+/// tip | "豆知識"
 
 `HTTPException`を発生させる際には、`str`だけでなく、JSONに変換できる任意の値を`detail`パラメータとして渡すことができます。
 
@@ -77,7 +81,9 @@ Pythonの例外なので、`return`ではなく、`raise`です。
 
 しかし、高度なシナリオのために必要な場合には、カスタムヘッダーを追加することができます:
 
-{* ../../docs_src/handling_errors/tutorial002.py hl[14] *}
+```Python hl_lines="14"
+{!../../../docs_src/handling_errors/tutorial002.py!}
+```
 
 ## カスタム例外ハンドラのインストール
 
@@ -89,7 +95,9 @@ Pythonの例外なので、`return`ではなく、`raise`です。
 
 カスタム例外ハンドラを`@app.exception_handler()`で追加することができます:
 
-{* ../../docs_src/handling_errors/tutorial003.py hl[5,6,7,13,14,15,16,17,18,24] *}
+```Python hl_lines="5 6 7  13 14 15 16 17 18  24"
+{!../../../docs_src/handling_errors/tutorial003.py!}
+```
 
 ここで、`/unicorns/yolo`をリクエストすると、*path operation*は`UnicornException`を`raise`します。
 
@@ -101,7 +109,7 @@ Pythonの例外なので、`return`ではなく、`raise`です。
 {"message": "Oops! yolo did something. There goes a rainbow..."}
 ```
 
-/// note | 技術詳細
+/// note | "技術詳細"
 
 また、`from starlette.requests import Request`と`from starlette.responses import JSONResponse`を使用することもできます。
 
@@ -127,7 +135,9 @@ Pythonの例外なので、`return`ではなく、`raise`です。
 
 この例外ハンドラは`Requset`と例外を受け取ります。
 
-{* ../../docs_src/handling_errors/tutorial004.py hl[2,14,15,16] *}
+```Python hl_lines="2 14 15 16"
+{!../../../docs_src/handling_errors/tutorial004.py!}
+```
 
 これで、`/items/foo`にアクセスすると、デフォルトのJSONエラーの代わりに以下が返されます:
 
@@ -156,7 +166,7 @@ path -> item_id
 
 #### `RequestValidationError`と`ValidationError`
 
-/// warning | 注意
+/// warning | "注意"
 
 これらは今のあなたにとって重要でない場合は省略しても良い技術的な詳細です。
 
@@ -178,9 +188,11 @@ path -> item_id
 
 例えば、これらのエラーに対しては、JSONではなくプレーンテキストを返すようにすることができます:
 
-{* ../../docs_src/handling_errors/tutorial004.py hl[3,4,9,10,11,22] *}
+```Python hl_lines="3 4  9 10 11 22"
+{!../../../docs_src/handling_errors/tutorial004.py!}
+```
 
-/// note | 技術詳細
+/// note | "技術詳細"
 
 また、`from starlette.responses import PlainTextResponse`を使用することもできます。
 
@@ -194,7 +206,9 @@ path -> item_id
 
 アプリ開発中に本体のログを取ってデバッグしたり、ユーザーに返したりなどに使用することができます。
 
-{* ../../docs_src/handling_errors/tutorial005.py hl[14] *}
+```Python hl_lines="14"
+{!../../../docs_src/handling_errors/tutorial005.py!}
+```
 
 ここで、以下のような無効な項目を送信してみてください:
 
@@ -254,7 +268,9 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 デフォルトの例外ハンドラを`fastapi.exception_handlers`からインポートして再利用することができます:
 
-{* ../../docs_src/handling_errors/tutorial006.py hl[2,3,4,5,15,21] *}
+```Python hl_lines="2 3 4 5 15 21"
+{!../../../docs_src/handling_errors/tutorial006.py!}
+```
 
 この例では、非常に表現力のあるメッセージでエラーを`print`しています。
 

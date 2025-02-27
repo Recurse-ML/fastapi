@@ -18,7 +18,35 @@ Not the class itself (which is already a callable), but an instance of that clas
 
 To do that, we declare a method `__call__`:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[12] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="11"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="10"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
 
 In this case, this `__call__` is what **FastAPI** will use to check for additional parameters and sub-dependencies, and this is what will be called to pass a value to the parameter in your *path operation function* later.
 
@@ -26,7 +54,35 @@ In this case, this `__call__` is what **FastAPI** will use to check for addition
 
 And now, we can use `__init__` to declare the parameters of the instance that we can use to "parameterize" the dependency:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[9] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="9"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="8"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="7"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
 
 In this case, **FastAPI** won't ever touch or care about `__init__`, we will use it directly in our code.
 
@@ -34,7 +90,35 @@ In this case, **FastAPI** won't ever touch or care about `__init__`, we will use
 
 We could create an instance of this class with:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[18] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="18"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="17"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="16"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
 
 And that way we are able to "parameterize" our dependency, that now has `"bar"` inside of it, as the attribute `checker.fixed_content`.
 
@@ -50,7 +134,35 @@ checker(q="somequery")
 
 ...and pass whatever that returns as the value of the dependency in our *path operation function* as the parameter `fixed_content_included`:
 
-{* ../../docs_src/dependencies/tutorial011_an_py39.py hl[22] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="22"
+{!> ../../../docs_src/dependencies/tutorial011_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="21"
+{!> ../../../docs_src/dependencies/tutorial011_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="20"
+{!> ../../../docs_src/dependencies/tutorial011.py!}
+```
+
+////
 
 /// tip
 

@@ -38,15 +38,19 @@ In der Produktion hätten Sie eine der oben genannten Optionen.
 
 Aber es ist die einfachste Möglichkeit, sich auf die Serverseite von WebSockets zu konzentrieren und ein funktionierendes Beispiel zu haben:
 
-{* ../../docs_src/websockets/tutorial001.py hl[2,6:38,41:43] *}
+```Python hl_lines="2  6-38  41-43"
+{!../../../docs_src/websockets/tutorial001.py!}
+```
 
 ## Einen `websocket` erstellen
 
 Erstellen Sie in Ihrer **FastAPI**-Anwendung einen `websocket`:
 
-{* ../../docs_src/websockets/tutorial001.py hl[1,46:47] *}
+```Python hl_lines="1  46-47"
+{!../../../docs_src/websockets/tutorial001.py!}
+```
 
-/// note | Technische Details
+/// note | "Technische Details"
 
 Sie können auch `from starlette.websockets import WebSocket` verwenden.
 
@@ -58,7 +62,9 @@ Sie können auch `from starlette.websockets import WebSocket` verwenden.
 
 In Ihrer WebSocket-Route können Sie Nachrichten `await`en und Nachrichten senden.
 
-{* ../../docs_src/websockets/tutorial001.py hl[48:52] *}
+```Python hl_lines="48-52"
+{!../../../docs_src/websockets/tutorial001.py!}
+```
 
 Sie können Binär-, Text- und JSON-Daten empfangen und senden.
 
@@ -109,7 +115,57 @@ In WebSocket-Endpunkten können Sie Folgendes aus `fastapi` importieren und verw
 
 Diese funktionieren auf die gleiche Weise wie für andere FastAPI-Endpunkte/*Pfadoperationen*:
 
-{* ../../docs_src/websockets/tutorial002_an_py310.py hl[68:69,82] *}
+//// tab | Python 3.10+
+
+```Python hl_lines="68-69  82"
+{!> ../../../docs_src/websockets/tutorial002_an_py310.py!}
+```
+
+////
+
+//// tab | Python 3.9+
+
+```Python hl_lines="68-69  82"
+{!> ../../../docs_src/websockets/tutorial002_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="69-70  83"
+{!> ../../../docs_src/websockets/tutorial002_an.py!}
+```
+
+////
+
+//// tab | Python 3.10+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="66-67  79"
+{!> ../../../docs_src/websockets/tutorial002_py310.py!}
+```
+
+////
+
+//// tab | Python 3.8+ nicht annotiert
+
+/// tip | "Tipp"
+
+Bevorzugen Sie die `Annotated`-Version, falls möglich.
+
+///
+
+```Python hl_lines="68-69  81"
+{!> ../../../docs_src/websockets/tutorial002.py!}
+```
+
+////
 
 /// info
 
@@ -140,7 +196,7 @@ Dort können Sie einstellen:
 * Die „Item ID“, die im Pfad verwendet wird.
 * Das „Token“, das als Query-Parameter verwendet wird.
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Beachten Sie, dass der Query-„Token“ von einer Abhängigkeit verarbeitet wird.
 
@@ -154,7 +210,21 @@ Damit können Sie den WebSocket verbinden und dann Nachrichten senden und empfan
 
 Wenn eine WebSocket-Verbindung geschlossen wird, löst `await websocket.receive_text()` eine `WebSocketDisconnect`-Exception aus, die Sie dann wie in folgendem Beispiel abfangen und behandeln können.
 
-{* ../../docs_src/websockets/tutorial003_py39.py hl[79:81] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="79-81"
+{!> ../../../docs_src/websockets/tutorial003_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python hl_lines="81-83"
+{!> ../../../docs_src/websockets/tutorial003.py!}
+```
+
+////
 
 Zum Ausprobieren:
 
@@ -168,7 +238,7 @@ Das wird die Ausnahme `WebSocketDisconnect` auslösen und alle anderen Clients e
 Client #1596980209979 left the chat
 ```
 
-/// tip | Tipp
+/// tip | "Tipp"
 
 Die obige Anwendung ist ein minimales und einfaches Beispiel, das zeigt, wie Nachrichten verarbeitet und an mehrere WebSocket-Verbindungen gesendet werden.
 

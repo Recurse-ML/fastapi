@@ -22,7 +22,9 @@ If you are a Python expert, and you already know everything about type hints, sk
 
 Let's start with a simple example:
 
-{* ../../docs_src/python_types/tutorial001.py *}
+```Python
+{!../../../docs_src/python_types/tutorial001.py!}
+```
 
 Calling this program outputs:
 
@@ -36,7 +38,9 @@ The function does the following:
 * Converts the first letter of each one to upper case with `title()`.
 * <abbr title="Puts them together, as one. With the contents of one after the other.">Concatenates</abbr> them with a space in the middle.
 
-{* ../../docs_src/python_types/tutorial001.py hl[2] *}
+```Python hl_lines="2"
+{!../../../docs_src/python_types/tutorial001.py!}
+```
 
 ### Edit it
 
@@ -78,7 +82,9 @@ That's it.
 
 Those are the "type hints":
 
-{* ../../docs_src/python_types/tutorial002.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial002.py!}
+```
 
 That is not the same as declaring default values like would be with:
 
@@ -106,7 +112,9 @@ With that, you can scroll, seeing the options, until you find the one that "ring
 
 Check this function, it already has type hints:
 
-{* ../../docs_src/python_types/tutorial003.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial003.py!}
+```
 
 Because the editor knows the types of the variables, you don't only get completion, you also get error checks:
 
@@ -114,7 +122,9 @@ Because the editor knows the types of the variables, you don't only get completi
 
 Now you know that you have to fix it, convert `age` to a string with `str(age)`:
 
-{* ../../docs_src/python_types/tutorial004.py hl[2] *}
+```Python hl_lines="2"
+{!../../../docs_src/python_types/tutorial004.py!}
+```
 
 ## Declaring types
 
@@ -133,7 +143,9 @@ You can use, for example:
 * `bool`
 * `bytes`
 
-{* ../../docs_src/python_types/tutorial005.py hl[1] *}
+```Python hl_lines="1"
+{!../../../docs_src/python_types/tutorial005.py!}
+```
 
 ### Generic types with type parameters
 
@@ -170,7 +182,7 @@ As the type, put `list`.
 As the list is a type that contains some internal types, you put them in square brackets:
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial006_py39.py!}
+{!> ../../../docs_src/python_types/tutorial006_py39.py!}
 ```
 
 ////
@@ -180,7 +192,7 @@ As the list is a type that contains some internal types, you put them in square 
 From `typing`, import `List` (with a capital `L`):
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial006.py!}
+{!> ../../../docs_src/python_types/tutorial006.py!}
 ```
 
 Declare the variable, with the same colon (`:`) syntax.
@@ -190,7 +202,7 @@ As the type, put the `List` that you imported from `typing`.
 As the list is a type that contains some internal types, you put them in square brackets:
 
 ```Python hl_lines="4"
-{!> ../../docs_src/python_types/tutorial006.py!}
+{!> ../../../docs_src/python_types/tutorial006.py!}
 ```
 
 ////
@@ -228,7 +240,7 @@ You would do the same to declare `tuple`s and `set`s:
 //// tab | Python 3.9+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial007_py39.py!}
+{!> ../../../docs_src/python_types/tutorial007_py39.py!}
 ```
 
 ////
@@ -236,7 +248,7 @@ You would do the same to declare `tuple`s and `set`s:
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial007.py!}
+{!> ../../../docs_src/python_types/tutorial007.py!}
 ```
 
 ////
@@ -257,7 +269,7 @@ The second type parameter is for the values of the `dict`:
 //// tab | Python 3.9+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial008_py39.py!}
+{!> ../../../docs_src/python_types/tutorial008_py39.py!}
 ```
 
 ////
@@ -265,7 +277,7 @@ The second type parameter is for the values of the `dict`:
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial008.py!}
+{!> ../../../docs_src/python_types/tutorial008.py!}
 ```
 
 ////
@@ -287,7 +299,7 @@ In Python 3.10 there's also a **new syntax** where you can put the possible type
 //// tab | Python 3.10+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial008b_py310.py!}
+{!> ../../../docs_src/python_types/tutorial008b_py310.py!}
 ```
 
 ////
@@ -295,7 +307,7 @@ In Python 3.10 there's also a **new syntax** where you can put the possible type
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial008b.py!}
+{!> ../../../docs_src/python_types/tutorial008b.py!}
 ```
 
 ////
@@ -309,10 +321,10 @@ You can declare that a value could have a type, like `str`, but that it could al
 In Python 3.6 and above (including Python 3.10) you can declare it by importing and using `Optional` from the `typing` module.
 
 ```Python hl_lines="1  4"
-{!../../docs_src/python_types/tutorial009.py!}
+{!../../../docs_src/python_types/tutorial009.py!}
 ```
 
-Using `Optional[str]` instead of just `str` will let the editor help you detect errors where you could be assuming that a value is always a `str`, when it could actually be `None` too.
+Using `Optional[str]` instead of just `str` will let the editor help you detecting errors where you could be assuming that a value is always a `str`, when it could actually be `None` too.
 
 `Optional[Something]` is actually a shortcut for `Union[Something, None]`, they are equivalent.
 
@@ -321,7 +333,7 @@ This also means that in Python 3.10, you can use `Something | None`:
 //// tab | Python 3.10+
 
 ```Python hl_lines="1"
-{!> ../../docs_src/python_types/tutorial009_py310.py!}
+{!> ../../../docs_src/python_types/tutorial009_py310.py!}
 ```
 
 ////
@@ -329,7 +341,7 @@ This also means that in Python 3.10, you can use `Something | None`:
 //// tab | Python 3.8+
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial009.py!}
+{!> ../../../docs_src/python_types/tutorial009.py!}
 ```
 
 ////
@@ -337,7 +349,7 @@ This also means that in Python 3.10, you can use `Something | None`:
 //// tab | Python 3.8+ alternative
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial009b.py!}
+{!> ../../../docs_src/python_types/tutorial009b.py!}
 ```
 
 ////
@@ -357,7 +369,9 @@ It's just about the words and names. But those words can affect how you and your
 
 As an example, let's take this function:
 
-{* ../../docs_src/python_types/tutorial009c.py hl[1,4] *}
+```Python hl_lines="1  4"
+{!../../../docs_src/python_types/tutorial009c.py!}
+```
 
 The parameter `name` is defined as `Optional[str]`, but it is **not optional**, you cannot call the function without the parameter:
 
@@ -373,7 +387,9 @@ say_hi(name=None)  # This works, None is valid 🎉
 
 The good news is, once you are on Python 3.10 you won't have to worry about that, as you will be able to simply use `|` to define unions of types:
 
-{* ../../docs_src/python_types/tutorial009c_py310.py hl[1,4] *}
+```Python hl_lines="1  4"
+{!../../../docs_src/python_types/tutorial009c_py310.py!}
+```
 
 And then you won't have to worry about names like `Optional` and `Union`. 😎
 
@@ -435,11 +451,15 @@ You can also declare a class as the type of a variable.
 
 Let's say you have a class `Person`, with a name:
 
-{* ../../docs_src/python_types/tutorial010.py hl[1:3] *}
+```Python hl_lines="1-3"
+{!../../../docs_src/python_types/tutorial010.py!}
+```
 
 Then you can declare a variable to be of type `Person`:
 
-{* ../../docs_src/python_types/tutorial010.py hl[6] *}
+```Python hl_lines="6"
+{!../../../docs_src/python_types/tutorial010.py!}
+```
 
 And then, again, you get all the editor support:
 
@@ -466,7 +486,7 @@ An example from the official Pydantic docs:
 //// tab | Python 3.10+
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011_py310.py!}
+{!> ../../../docs_src/python_types/tutorial011_py310.py!}
 ```
 
 ////
@@ -474,7 +494,7 @@ An example from the official Pydantic docs:
 //// tab | Python 3.9+
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011_py39.py!}
+{!> ../../../docs_src/python_types/tutorial011_py39.py!}
 ```
 
 ////
@@ -482,7 +502,7 @@ An example from the official Pydantic docs:
 //// tab | Python 3.8+
 
 ```Python
-{!> ../../docs_src/python_types/tutorial011.py!}
+{!> ../../../docs_src/python_types/tutorial011.py!}
 ```
 
 ////
@@ -499,7 +519,7 @@ You will see a lot more of all this in practice in the [Tutorial - User Guide](t
 
 /// tip
 
-Pydantic has a special behavior when you use `Optional` or `Union[Something, None]` without a default value, you can read more about it in the Pydantic docs about <a href="https://docs.pydantic.dev/2.3/usage/models/#required-fields" class="external-link" target="_blank">Required Optional fields</a>.
+Pydantic has a special behavior when you use `Optional` or `Union[Something, None]` without a default value, you can read more about it in the Pydantic docs about <a href="https://docs.pydantic.dev/latest/concepts/models/#required-optional-fields" class="external-link" target="_blank">Required Optional fields</a>.
 
 ///
 
@@ -512,7 +532,7 @@ Python also has a feature that allows putting **additional <abbr title="Data abo
 In Python 3.9, `Annotated` is part of the standard library, so you can import it from `typing`.
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial013_py39.py!}
+{!> ../../../docs_src/python_types/tutorial013_py39.py!}
 ```
 
 ////
@@ -524,7 +544,7 @@ In versions below Python 3.9, you import `Annotated` from `typing_extensions`.
 It will already be installed with **FastAPI**.
 
 ```Python hl_lines="1  4"
-{!> ../../docs_src/python_types/tutorial013.py!}
+{!> ../../../docs_src/python_types/tutorial013.py!}
 ```
 
 ////

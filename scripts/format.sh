@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh -e
 set -x
 
 ruff check fastapi tests docs_src scripts --fix

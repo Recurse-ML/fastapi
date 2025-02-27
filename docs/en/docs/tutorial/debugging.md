@@ -6,7 +6,9 @@ You can connect the debugger in your editor, for example with Visual Studio Code
 
 In your FastAPI application, import and run `uvicorn` directly:
 
-{* ../../docs_src/debugging/tutorial001.py hl[1,15] *}
+```Python hl_lines="1  15"
+{!../../../docs_src/debugging/tutorial001.py!}
+```
 
 ### About `__name__ == "__main__"`
 

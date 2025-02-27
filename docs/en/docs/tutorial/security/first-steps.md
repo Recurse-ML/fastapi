@@ -20,7 +20,35 @@ Let's first just use the code and see how it works, and then we'll come back to 
 
 Copy the example in a file `main.py`:
 
-{* ../../docs_src/security/tutorial001_an_py39.py *}
+//// tab | Python 3.9+
+
+```Python
+{!> ../../../docs_src/security/tutorial001_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python
+{!> ../../../docs_src/security/tutorial001_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python
+{!> ../../../docs_src/security/tutorial001.py!}
+```
+
+////
 
 ## Run it
 
@@ -28,13 +56,9 @@ Copy the example in a file `main.py`:
 
 The <a href="https://github.com/Kludex/python-multipart" class="external-link" target="_blank">`python-multipart`</a> package is automatically installed with **FastAPI** when you run the `pip install "fastapi[standard]"` command.
 
-However, if you use the `pip install fastapi` command, the `python-multipart` package is not included by default.
+However, if you use the `pip install fastapi` command, the `python-multipart` package is not included by default. To install it manually, use the following command:
 
-To install it manually, make sure you create a [virtual environment](../../virtual-environments.md){.internal-link target=_blank}, activate it, and then install it with:
-
-```console
-$ pip install python-multipart
-```
+`pip install python-multipart`
 
 This is because **OAuth2** uses "form data" for sending the `username` and `password`.
 
@@ -60,7 +84,7 @@ You will see something like this:
 
 <img src="/img/tutorial/security/image01.png">
 
-/// check | Authorize button!
+/// check | "Authorize button!"
 
 You already have a shiny new "Authorize" button.
 
@@ -124,7 +148,7 @@ A "bearer" token is not the only option.
 
 But it's the best one for our use case.
 
-And it might be the best for most use cases, unless you are an OAuth2 expert and know exactly why there's another option that better suits your needs.
+And it might be the best for most use cases, unless you are an OAuth2 expert and know exactly why there's another option that suits better your needs.
 
 In that case, **FastAPI** also provides you with the tools to build it.
 
@@ -132,7 +156,35 @@ In that case, **FastAPI** also provides you with the tools to build it.
 
 When we create an instance of the `OAuth2PasswordBearer` class we pass in the `tokenUrl` parameter. This parameter contains the URL that the client (the frontend running in the user's browser) will use to send the `username` and `password` in order to get a token.
 
-{* ../../docs_src/security/tutorial001_an_py39.py hl[8] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="8"
+{!> ../../../docs_src/security/tutorial001_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python  hl_lines="7"
+{!> ../../../docs_src/security/tutorial001_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="6"
+{!> ../../../docs_src/security/tutorial001.py!}
+```
+
+////
 
 /// tip
 
@@ -170,13 +222,41 @@ So, it can be used with `Depends`.
 
 Now you can pass that `oauth2_scheme` in a dependency with `Depends`.
 
-{* ../../docs_src/security/tutorial001_an_py39.py hl[12] *}
+//// tab | Python 3.9+
+
+```Python hl_lines="12"
+{!> ../../../docs_src/security/tutorial001_an_py39.py!}
+```
+
+////
+
+//// tab | Python 3.8+
+
+```Python  hl_lines="11"
+{!> ../../../docs_src/security/tutorial001_an.py!}
+```
+
+////
+
+//// tab | Python 3.8+ non-Annotated
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
+
+```Python hl_lines="10"
+{!> ../../../docs_src/security/tutorial001.py!}
+```
+
+////
 
 This dependency will provide a `str` that is assigned to the parameter `token` of the *path operation function*.
 
 **FastAPI** will know that it can use this dependency to define a "security scheme" in the OpenAPI schema (and the automatic API docs).
 
-/// info | Technical Details
+/// info | "Technical Details"
 
 **FastAPI** will know that it can use the class `OAuth2PasswordBearer` (declared in a dependency) to define the security scheme in OpenAPI because it inherits from `fastapi.security.oauth2.OAuth2`, which in turn inherits from `fastapi.security.base.SecurityBase`.
 
