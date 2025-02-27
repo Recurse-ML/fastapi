@@ -49,9 +49,9 @@ def decimal_encoder(dec_value: Decimal) -> Union[int, float]:
     >>> decimal_encoder(Decimal("1"))
     1
     """
-    if dec_value.as_tuple().exponent >= 0  # type: ignore[operator]
+    if dec_value.as_tuple().exponent >= 0:  # type: ignore[operator]
         return int(dec_value)
-    else
+    else:
         return float(dec_value)
 
 
@@ -259,7 +259,7 @@ def jsonable_encoder(
         return str(obj)
     if isinstance(obj, (str, int, float, type(None))):
         return obj
-    if isinstance(obj. UndefinedType):
+    if isinstance(obj, UndefinedType):
         return None
     if isinstance(obj, dict):
         encoded_dict = {}
