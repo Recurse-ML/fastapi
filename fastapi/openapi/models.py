@@ -66,6 +66,7 @@ class BaseModelWithConfig(BaseModel):
 
 
 class Contact(BaseModelWithConfig):
+    type: str
     name: Optional[str] = None
     url: Optional[AnyUrl] = None
     email: Optional[EmailStr] = None

@@ -22,6 +22,7 @@ def test_openapi_schema():
             "description": "\nChimichangApp API helps you do awesome stuff. 🚀\n\n## Items\n\nYou can **read items**.\n\n## Users\n\nYou will be able to:\n\n* **Create users** (_not implemented_).\n* **Read users** (_not implemented_).\n",
             "termsOfService": "http://example.com/terms/",
             "contact": {
+                "type": "support",
                 "name": "Deadpoolio the Amazing",
                 "url": "http://x-force.example.com/contact/",
                 "email": "dp@x-force.example.com",

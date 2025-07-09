@@ -22,6 +22,7 @@ app = FastAPI(
     version="0.0.1",
     terms_of_service="http://example.com/terms/",
     contact={
+        "type": "support",
         "name": "Deadpoolio the Amazing",
         "url": "http://x-force.example.com/contact/",
         "email": "dp@x-force.example.com",

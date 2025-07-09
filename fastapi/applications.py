@@ -565,6 +565,7 @@ class FastAPI(Starlette):
 
                 It can contain several fields.
 
+                * `type`: (`str`) **REQUIRED**. The type of contact (e.g., "support", "sales", "technical").
                 * `name`: (`str`) The name of the contact person/organization.
                 * `url`: (`str`) A URL pointing to the contact information. MUST be in
                     the format of a URL.
@@ -581,6 +582,7 @@ class FastAPI(Starlette):
                 ```python
                 app = FastAPI(
                     contact={
+                        "type": "support",
                         "name": "Deadpoolio the Amazing",
                         "url": "http://x-force.example.com/contact/",
                         "email": "dp@x-force.example.com",
